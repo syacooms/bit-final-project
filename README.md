@@ -3,8 +3,6 @@ paperhouse
 
 # Using Stack
 Java, spring boot, mybatis, maven, html, css, jquery, bootstrap
-
-# Using Tools
 git, tomcat, eclipse, intellij, vscode
 
 # Project Goals
@@ -13,3 +11,7 @@ git, tomcat, eclipse, intellij, vscode
 
 # Project Manage
 notion을 통해서 관리 및 초기 세팅을 정하고 trouble shooting 및 issue 관리를 진행하였습니다.
+
+# Branch Status
+master, develope, functions
+
