@@ -14,4 +14,4 @@ notion을 통해서 관리 및 초기 세팅을 정하고 trouble shooting 및 i
 
 # Branch Status
 master, develope, functions
-
+브랜치 사용 잘 해주세용...
