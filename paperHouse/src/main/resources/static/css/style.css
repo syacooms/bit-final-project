@@ -1,0 +1,127 @@
+/* header */
+header {
+  padding: 25px 0;
+}
+header .logo {
+  float: left;
+}
+header .util {
+  float: right;
+}
+header .util .btn {
+  line-height: 30px;
+}
+header.fixed {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 99;
+}
+/* landing */
+.landing {
+  background-color: #ffeb60;
+}
+/* landing sections */
+.section01 {
+  padding-top: 80px;
+}
+.section01 .desc-wrap * {
+  font-weight: 700;
+  font-family: "Noto Serif KR";
+}
+.section01 .desc-wrap .desc01 {
+  font-size: 45px;
+  line-height: 55px;
+}
+.section01 .desc-wrap .desc02 {
+  font-size: 20px;
+  line-height: 25px;
+  padding-top: 50px;
+}
+.section01 .img-wrap img {
+  float: right;
+}
+.section02 {
+  opacity: 0;
+  padding-bottom: 100px;
+}
+.section02 .shelfs {
+  position: relative;
+}
+.section02 .shelfs .text,
+.section02 .shelfs .text * {
+  text-align: center;
+  font-size: 30px;
+  line-height: 35px;
+  font-family: "Noto Serif KR";
+  font-weight: 700;
+}
+.section02 .shelfs .shelf01 img {
+  float: right;
+}
+.section02 .shelfs .shelf02 img {
+  float: left;
+}
+.section02 .shelfs .shelf03 img {
+  float: right;
+  margin-right: 10vw;
+}
+.section02 .writers {
+  padding-top: 100px;
+}
+.section02 .writers .w-grid {
+  width: 20%;
+  float: left;
+}
+.section02 .writers .first-row {
+  opacity: 0;
+}
+.section02 .writers .second-row {
+  margin-top: 30px;
+  opacity: 0;
+}
+.section03 {
+  position: relative;
+  min-height: calc(100vh - 160px);
+  background-color: #343434;
+  padding: 80px 0;
+}
+.section03 .desc-wrap {
+}
+.section03 .desc-wrap .desc {
+  color: #fff;
+  font-size: 50px;
+  line-height: 60px;
+  font-family: "Noto Serif KR";
+}
+.section03 .desc-wrap .desc.desc01 {
+  font-size: 20px;
+  color: #fff;
+  line-height: 25px;
+}
+.section03 .img-wrap {
+  padding-top: 40px;
+}
+.section03 .img-wrap img {
+  float: right;
+  width: 500px;
+}
+.section03 .meet {
+  position: fixed;
+  opacity: 0;
+  left: 50%;
+  bottom: -10px;
+  width: 330px;
+  height: 60px;
+  border-radius: 40px;
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
+  transform: translateX(-50%);
+  background-color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  color: #542385;
+  text-align: center;
+  line-height: 60px;
+  transition: all 1.25s ease;
+}
