@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserFollowDto implements Serializable {
 	
-	private int user_seq;
+	private int userSeq;
 	private String follower;
 	
 }
