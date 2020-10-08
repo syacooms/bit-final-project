@@ -26,7 +26,7 @@ public class UserService {
 		String securityPwd = bCryptPasswordEncoder.encode(rPwd);
 		dto.setAuthority("ROLE_USER");
 		dto.setPwd(securityPwd);
-		dto.setNickName("화려한유니콘654");
+		dto.setNickname("화려한유니콘654");
 		 dao.regi(dto);
 	}
 
