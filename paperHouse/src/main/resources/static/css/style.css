@@ -125,3 +125,20 @@ header.fixed {
   line-height: 60px;
   transition: all 1.25s ease;
 }
+
+/* login */
+.login-page {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../asset/login-bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.login-page .login-wrap {
+}
+
+.login-page .sns-wrap {
+}
+.login-page .else-wrap {
+}

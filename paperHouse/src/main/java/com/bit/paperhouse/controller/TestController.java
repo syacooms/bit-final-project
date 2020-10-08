@@ -16,37 +16,43 @@ public class TestController {
 	@Autowired
 	UserService svc;
 
-	  // 메인 페이지
-    @GetMapping("/")
-    public String index() {
-        return "/index";
-    }
+	// 메인 페이지
+	@GetMapping("/")
+	public String index() {
+		return "/index";
+	}
 
-    // 회원가입 페이지
-    @GetMapping("/user/join")
-    public String dispJoin() {
-        return "/join";
-    }
+	// 회원가입 페이지
+	@GetMapping("/user/join")
+	public String dispJoin() {
+		return "/join";
+	}
 
-    // 회원가입 처리
-    @PostMapping("/user/join")
-    public String execSignup(UserDto UserDto) {
-        svc.regi(UserDto);
-        return "redirect:/user/login";
-    }
-    
-    // 로그인 페이지
-    @GetMapping("/user/login")
-    public String dispLogin() {
-    	System.out.println("Login");
-        return "/login";
-    }
-    
-    // 로그인 결과 페이지
-    @GetMapping("/user/login/result")
-    public String dispLoginResult() {
-    	System.out.println("Login result");
-    	
-        return "/main";
-    }
+	// 회원가입 처리
+	@PostMapping("/user/join")
+	public String execSignup(UserDto UserDto) {
+		svc.regi(UserDto);
+		return "redirect:/user/login";
+	}
+
+	// 로그인 페이지
+	@GetMapping("/user/login")
+	public String dispLogin() {
+		System.out.println("Login");
+		return "/login";
+	}
+
+	// 로그인 결과 페이지
+	@GetMapping("/user/login/result")
+	public String dispLoginResult() {
+		System.out.println("Login result");
+		return "/main";
+	}
+
+	// 로그아웃 결과 페이지
+	@GetMapping("/user/logout/result")
+	public String dispLogout() {
+		return "redirect:/";
+	}
+
 }
