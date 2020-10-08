@@ -107,6 +107,7 @@
           <artifactId>ojdbc6</artifactId>
           <version>11.2.0.4</version>
       </dependency>
+      <!-- lombok -->
       <dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
