@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<title>작가 신청하기</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style type="text/css">
+.img_wrap {
+	width: 300px;
+	margin-top: 50px;
+}
+
+.img_wrap img {
+	max-width: 100%;
+}
+
+</style>
+</head>
+<body>
+
+<form th:action="@{/writer/writer/upload}" method="post" enctype="multipart/form-data">
+		<h2>
+			<b>이미지 미리보기</b>
+		</h2>
+		<div>
+			<div class="img_wrap">
+				<img id="output" border="1" src="/static/profile/profiledefault.png"/>
+			</div>
+		</div>
+			<input type="file" id="image" onchange="loadFile(event)"/>
+	
+<h2>작가 글 업로드</h2>
+    <div class="input-field col s6">
+        <input multiple="multiple" type="file" name="files"/>
+    </div>
+     
+    <div class="input-field col s6">
+        <button class="btn indigo waves-effect waves-light"
+            type="submit" name="save">
+             Submit<i class="mdi-content-send right"></i>
+        </button>
+    </div>
+</form>
+
+<script type="text/javascript">
+var loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    
+    var img_width=180;
+    var img_height=180;
+   	var max_width=180;
+   	var max_height=180;
+
+    
+    
+    output.onload = function() {
+    	
+    	 img_width=this.width;
+         img_height=this.height;
+         if(img_width != max_width && img_height != max_height ){
+             alert('이미지 가로 크기가 '+ max_width + '(pixel)이 아닙니다.');
+             //jasny bootstrap fileinput을 이용함. 참고는 http://www.jasny.net/bootstrap/javascript/#fileinput 참조바람
+             $("#image").fileinput('clear');
+             return false;
+         }
+      URL.revokeObjectURL(output.src) // free memory
+    }
+};
+</script>
+
+<script type="text/javascript">
+function previewBanner(event) {
+    var img_width=0;
+    var img_height=0;
+    var img_size=0;
+    var img_frame = "#"+id;
+    var img_preview = "#push-"+id;
+ 
+    // input : 해당 <input type="file">의 input form
+    // id : preview div tag의 id 값
+    // max_size : 이미지 파일의 최대 크기
+    // max_width : 이미지 파일의 최대 가로 사이즈
+    // max_height : 이미지 파일의 최대 세로 사이즈
+     
+    if (input.files && input.files[0]) {
+ 	
+    // image file check
+    var filename = input.value;
+    var ext = filename.slice(filename.indexOf(".") + 1).toLowerCase();
+ 
+    if(ext != "jpg" && ext != "png" &&  ext != "gif"){
+        alert('이미지 파일(jpg, png, gif)만 등록 가능합니다.');
+        //jasny bootstrap fileinput을 이용함. 참고는 http://www.jasny.net/bootstrap/javascript/#fileinput 참조바람
+        $(img_frame).fileinput('clear');
+        return false;
+    }
+ 
+    // file 읽어 오기
+     
+    var reader = new FileReader();           
+    reader.onload = function (e) {
+        var image = new Image();
+         // 파일의 내용을 읽어서 넣어준다.
+        image.src = e.target.result;
+        img_size = Math.round(e.total/1024);
+        if(img_size > max_size){
+            alert('이미지 크기는 '+ max_size + 'Kb 를 넘을 수 없습니다.');
+            //jasny bootstrap fileinput을 이용함. 참고는 http://www.jasny.net/bootstrap/javascript/#fileinput 참조바람
+            $(img_frame).fileinput('clear');
+            return false;
+        }
+ 
+         
+        image.onload = function(){
+                             
+            img_width=this.width;
+            img_height=this.height;
+            if(img_width != max_width){
+                alert('이미지 가로 크기가 '+ max_width + '(pixel)이 아닙니다.');
+                //jasny bootstrap fileinput을 이용함. 참고는 http://www.jasny.net/bootstrap/javascript/#fileinput 참조바람
+                $(img_frame).fileinput('clear');
+                return false;
+            } else if(img_height != max_height){
+                alert('이미지 세로 크기가 '+ max_height + '(pixel)이 아닙니다.');
+                //jasny bootstrap fileinput을 이용함. 참고는 http://www.jasny.net/bootstrap/javascript/#fileinput 참조바람
+                $(img_frame).fileinput('clear');
+                return false;
+            }
+            // 이미지가 모두 로드되면 Preview 에 노출 시킨다.
+            $(img_preview).attr('src', this.src);
+        };                      
+    }
+    reader.readAsDataURL(input.files[0]);
+}
+</script>
+
+</body>
+</html>
+
