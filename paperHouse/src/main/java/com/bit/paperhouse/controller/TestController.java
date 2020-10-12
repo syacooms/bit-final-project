@@ -46,7 +46,7 @@ public class TestController {
     	return "/main";
     }
     
- // 로그인 결과 페이지
+    // 로그인 결과 페이지
     @GetMapping("/user/login/oauth2/result")
     public String oauth2Login() {
     	System.out.println("oauth2Login result");

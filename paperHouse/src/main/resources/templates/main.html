@@ -1,14 +1,249 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>종이의 집</title>
+    <th:block th:replace="fragment/head"></th:block>
   </head>
   <body>
-    <h1>로그인 성공!!</h1>
-    <hr />
-    <!-- <p><span sec:authentication="nickName"></span>님 환영합니다~</p> -->
-    <a th:href="@{'/'}">메인으로 이동</a>
+    <header class="main-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="inner-wrap">
+              <h1 class="logo">
+                <a href="/main">
+                  <img src="/static/asset/logo-Text-black.png" alt="logo" />
+                </a>
+              </h1>
+              <ul class="header-menu">
+                <li><a href="#">투데이</a></li>
+                <li><a href="#">검색</a></li>
+                <li><a href="#">내 서재</a></li>
+                <li><a href="#">마이페이지</a></li>
+              </ul>
+              <div class="utils">
+                <a class="alert" href="#">
+                  <span class="iconify" data-icon="codicon:bell" data-inline="false"></span>
+                </a>
+                <a class="logout" sec:authorize="isAuthenticated()" th:href="@{/user/logout}">로그아웃</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <div class="main-banner">
+        <div id="bg-wrap"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="outer-wrap">
+                <div class="banner-wrap">
+                  <div class="banner">
+                    <div class="banner-title">`11111111111111`</div>
+                    <div class="banner-desc">`1`1`1`1`1`1`1`1`</div>
+                  </div>
+                  <div class="banner">
+                    <div class="banner-title">`222222222222222222222`</div>
+                    <div class="banner-desc">`2`22`2`2`2`2`2`2</div>
+                  </div>
+                  <div class="banner">
+                    <div class="banner-title">`3333333333333333333333`</div>
+                    <div class="banner-desc">`3`3`33``3`33`3</div>
+                  </div>
+                  <div class="banner">
+                    <div class="banner-title">`44444444444444444`</div>
+                    <div class="banner-desc">`4`44`4`4`4`4`4</div>
+                  </div>
+                  <div class="banner">
+                    <div class="banner-title">`55555555555555555`</div>
+                    <div class="banner-desc">`5`555`5`5`5</div>
+                  </div>
+                  <div class="banner">
+                    <div class="banner-title">`6666666666666666`</div>
+                    <div class="banner-desc">6``66``6`6`6`6`</div>
+                  </div>
+                  <div class="banner">
+                    <div class="banner-title">`7777777777777777`</div>
+                    <div class="banner-desc">`7`777`77``7`77</div>
+                  </div>
+                </div>
+                <div class="banner-arrows"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="main-section today-writer">
+              <div class="section-title">오늘의 작가</div>
+              <div class="section-body writer-grid clearfix">
+                <div class="grid-wrap left clearfix">
+                  <div class="writer-pic">프로필사진</div>
+                  <div class="writer-info-wrap">
+                    <div class="writer-name">작가이름</div>
+                    <div class="writer-birth">작가 정보</div>
+                  </div>
+                </div>
+                <div class="right">
+                  <div class="grid-wrap right-up">
+                    <div class="writer-desc">작가 설명입니당.</div>
+                  </div>
+                  <div class="grid-wrap right-down">
+                    <div class="writer-recommend">
+                      <div class="recommender-id">"추천자 아이디"</div>
+                      <div class="recommender-comment">추천자 추천글내용</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="main-section monthly-recommend">
+              <div class="section-title">이번 달 추천 작가</div>
+              <div class="section-body">
+                <div class="weekly-grid">
+                  <div class="grid-wrap">
+                    <div class="writer-photo"></div>
+                    <div class="writer-desc">한국인이 가장 사랑하는 작가</div>
+                    <div class="writer-name">베르나르 베르베르</div>
+                  </div>
+                  <div class="grid-wrap">
+                    <div class="writer-photo"></div>
+                    <div class="writer-desc">한국인이 가장 사랑하는 작가</div>
+                    <div class="writer-name">베르나르 베르베르</div>
+                  </div>
+                  <div class="grid-wrap">
+                    <div class="writer-photo"></div>
+                    <div class="writer-desc">한국인이 가장 사랑하는 작가</div>
+                    <div class="writer-name">베르나르 베르베르</div>
+                  </div>
+                  <div class="grid-wrap">
+                    <div class="writer-photo"></div>
+                    <div class="writer-desc">한국인이 가장 사랑하는 작가</div>
+                    <div class="writer-name">베르나르 베르베르</div>
+                  </div>
+                  <div class="grid-wrap">
+                    <div class="writer-photo"></div>
+                    <div class="writer-desc">한국인이 가장 사랑하는 작가</div>
+                    <div class="writer-name">베르나르 베르베르</div>
+                  </div>
+                  <div class="grid-wrap">
+                    <div class="writer-photo"></div>
+                    <div class="writer-desc">한국인이 가장 사랑하는 작가</div>
+                    <div class="writer-name">베르나르 베르베르</div>
+                  </div>
+                  <div class="grid-wrap">
+                    <div class="writer-photo"></div>
+                    <div class="writer-desc">한국인이 가장 사랑하는 작가</div>
+                    <div class="writer-name">베르나르 베르베르</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="main-section writer-intro" style="height: 200px; background-color: pink">
+              <div class="section-title">종이의 집 작가 소개</div>
+            </div>
+            <div class="main-section most-subs-writer" style="height: 200px; background-color: purple">
+              <div class="section-title">인기 작가</div>
+            </div>
+            <div class="main-section newest-writer" style="height: 200px; background-color: gray">
+              <div class="section-title">처음 만나는 작가</div>
+            </div>
+            <div class="main-section today-sentence" style="height: 200px; background-color: hotpink">
+              <div class="section-title">오늘의 문장</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="title">종이의 집</div>
+            <ul class="footer-menu">
+              <li><a href="#">고객센터</a></li>
+              <li><a href="#">이용약관</a></li>
+              <li><a href="#">개인정보처리방침</a></li>
+              <li><a href="#">작가신청방법</a></li>
+              <li><a href="#">만든이들</a></li>
+            </ul>
+            <p class="copyright">Copyright © 2020 종이의 집 All Rights Reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div sec:authorize="isAuthenticated()">
+      <span sec:authentication="principal.NICKNAME"></span>
+    </div>
   </body>
+  <script>
+    function bannerBg() {
+      console.log("bannerBg");
+      const colors = new Array(
+        (color01 = new Array([213, 223, 233], [217, 207, 228])),
+        (color02 = new Array([217, 207, 228], [233, 213, 228])),
+        (color03 = new Array([233, 213, 228], [221, 228, 207])),
+        (color04 = new Array([221, 228, 207], [235, 219, 209])),
+        (color05 = new Array([235, 219, 209], [222, 202, 210])),
+        (color06 = new Array([222, 202, 210], [221, 216, 231])),
+        (color07 = new Array([221, 216, 231], [237, 233, 194]))
+      );
+      $(".banner-wrap").on("init", function (event, slick, currentSlide, nextSlide) {
+        slick.$slides.each(function (e) {
+          console.log(e);
+          // bg div create
+          var div = document.createElement("div");
+          div.classList.add("gradient" + e);
+          var bgWrap = document.getElementById("bg-wrap");
+          div.style.background = "linear-gradient(90deg, rgb(" + colors[e][0] + ") 0%, rgb(" + colors[e][1] + ") 100%)";
+          bgWrap.appendChild(div);
+        });
+        // bg slide init
+        $("#bg-wrap").slick({
+          arrows: false,
+          dots: false,
+          touchMove: false,
+          draggable: false,
+        });
+      });
+    }
+    $(document).ready(function () {
+      // main banner
+      bannerBg();
+      $(".banner-wrap").slick({
+        dots: false,
+        appendArrows: $(".banner-arrows"),
+        prevArrow: '<div class="arrow prev-arrow"><span class="iconify" data-icon="bi:chevron-left" data-inline="false"></span></div>',
+        nextArrow: '<div class="arrow next-arrow"><span class="iconify" data-icon="bi:chevron-right" data-inline="false"></span></div>',
+      });
+      $(".main .main-banner .banner-arrows .next-arrow").on("click", function () {
+        $("#bg-wrap").slick("slickNext");
+      });
+      $(".main .main-banner .banner-arrows .prev-arrow").on("click", function () {
+        $("#bg-wrap").slick("slickPrev");
+      });
+
+      // weekly recommend
+      // grid photo size
+      $(".main .main-section.monthly-recommend .weekly-grid").on("init", function (event, slick) {
+        $(".main .main-section.monthly-recommend .weekly-grid .writer-photo").css("height", slick.$slides[0].clientWidth + "px");
+      });
+      // grid slick
+      $(".main .main-section.monthly-recommend .weekly-grid").slick({
+        infinite: false,
+        arrows: false,
+        dots: false,
+        slidesToShow: 4,
+      });
+    });
+  </script>
 </html>
