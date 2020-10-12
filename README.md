@@ -15,6 +15,15 @@ notion을 통해서 관리 및 초기 세팅을 정하고 trouble shooting 및 i
 # Branch Status
 master, develope, functions
 <<<<<<< HEAD
+
+=======
+<<<<<<< HEAD
+
+# Front
+=======
+<<<<<<< HEAD
 =======
 브랜치 사용 잘 해주세용...
 >>>>>>> f0da162f0699fbbad2e0dcef778b94a5bca188d4
+>>>>>>> 7e26c92ec5a726c7b82ed3fb7db4ad5eee02d444
+>>>>>>> writer-fnc

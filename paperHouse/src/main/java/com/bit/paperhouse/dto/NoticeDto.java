@@ -10,12 +10,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NoticeDto implements Serializable {
-	private int notice_seq;
+	private int noticeSeq;
 	private String title;
 	private String cont;
-	private String upload_date;
-	private String file_original;
-	private String file_system;
-	private int viewcount;
+	private String uploadDate;
+	private String fileOriginal;
+	private String fileSystem;
+	private int viewCount;
 	private int del;
 }
