@@ -72,7 +72,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 			System.out.println("이미 회원가입한 유저");
 		}
 		
-		return new CustomSecurityDetails(user.getUser_seq(), user.getEmail(), user.getPwd(), user.getNickname(), user.getAuthority(), user.getEnabled(), oauth2User.getAttributes());
+		return new CustomSecurityDetails(user.getUserSeq(), user.getEmail(), user.getPwd(), user.getNickname(), user.getAuthority(), user.getEnabled(), oauth2User.getAttributes());
 	}
 	
 	
