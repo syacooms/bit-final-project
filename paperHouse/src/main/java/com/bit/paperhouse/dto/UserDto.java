@@ -12,10 +12,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class UserDto implements Serializable {
 	
+	private int user_seq;
 	private String email;
 	private String pwd;
 	private String nickname;
 	private String authority;
-	private String enabled;
+	private int enabled;
 	
 }

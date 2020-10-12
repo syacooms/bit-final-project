@@ -14,4 +14,10 @@
    WHERE EMAIL = #{username}
 </select>
 
+ <select id="findByEmail" parameterType="java.lang.String" resultType="com.bit.paperhouse.dto.UserDto">
+   SELECT *
+   FROM MEMBER
+   WHERE EMAIL = #{email}
+</select>
+
 </mapper>

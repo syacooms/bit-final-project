@@ -3,19 +3,32 @@ package com.bit.paperhouse.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
-public class CustomSecurityDetails implements Serializable, UserDetails {
+import com.bit.paperhouse.dto.UserDto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+@Data
+@AllArgsConstructor
+public class CustomSecurityDetails implements Serializable, UserDetails, OAuth2User {
 	
 	private int USER_SEQ;
 	private String EMAIL;
 	private String PWD;
 	private String NICKNAME;
 	private String AUTHORITY;     // 권한
-	private boolean ENABLED;      // 접근 가능 여부 체크
+	private int ENABLED;      // 접근 가능 여부 체크
+	
+	private Map<String , Object> attributes;
 	
 	public CustomSecurityDetails() {
 		
@@ -65,5 +78,19 @@ public class CustomSecurityDetails implements Serializable, UserDetails {
 		
 		return true;
 	}
+
+	@Override
+	public Map<String, Object> getAttributes() {
+		// TODO Auto-generated method stub
+		return attributes;
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 
 }

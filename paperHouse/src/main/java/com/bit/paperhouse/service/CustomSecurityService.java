@@ -15,6 +15,7 @@ public class CustomSecurityService implements UserDetailsService {
 	@Autowired
 	private UserRepository dao;
 
+	// 함수 종료시 @AuthenticationPrincipal 어노테이션이 만들어진다.
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
       
@@ -28,5 +29,6 @@ public class CustomSecurityService implements UserDetailsService {
 		}		
 		return user;
 	}
+	
 
 }
