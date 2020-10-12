@@ -1,121 +1,56 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-  <head>
-    <title>종이의 집</title>
-    <th:block th:replace="fragment/head"></th:block>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  
-  <body>
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    <h1>로그인</h1>
-    <hr />
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>종이의 집</title>
+<th:block th:replace="fragment/head"></th:block>
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+	rel="stylesheet" />
+</head>
 
-    <form action="/user/login" method="post">
-      <input
-        type="hidden"
-        th:name="${_csrf.parameterName}"
-        th:value="${_csrf.token}"
-      />
+<body>
+	<main class="login-page member-page">
+		<div class="inner-wrap">
+			<div class="logo-wrap">
+				<a href="/"><img src="/static/asset/logo-Text-white.png" alt="" /></a>
+			</div>
+			<div class="login-wrap">
+				<form action="/user/login" method="post">
+					<input type="hidden" th:name="${_csrf.parameterName}"
+						th:value="${_csrf.token}" /> <input type="text"
+						name="username" placeholder="이메일" /> <input type="password"
+						name="password" placeholder="비밀번호" />
+					<button type="submit">이메일 로그인</button>
+				</form>
+			</div>
 
-      <input type="text" name="username" placeholder="이메일 입력해주세요" />
-      <input type="password" name="password" placeholder="비밀번호" />
-      <button type="submit">로그인</button>
-    </form>
-    <a href="join.html">회원가입</a>
-=======
-    <main class="login-page member-page">
-      <div class="inner-wrap">
-        <div class="logo-wrap">
-          <a href="/"><img src="/static/asset/logo-Text-white.png" alt="" /></a>
-        </div>
-        <div class="login-wrap">
-          <form action="/user/login" method="post">
-            <input
-              type="hidden"
-              th:name="${_csrf.parameterName}"
-              th:value="${_csrf.token}"
-            />
-            <input type="text" name="username" placeholder="이메일" />
-            <input type="password" name="password" placeholder="비밀번호" />
-            <button type="submit">이메일 로그인</button>
-          </form>
-        </div>
-        <div class="sns-wrap clearfix">
-          <a class="snsBtn kakao" href="#"></a>
-          <a class="snsBtn naver" href="#"></a>
-          <a class="snsBtn facebook" href="#"></a>
-          <a class="snsBtn google" href="#"></a>
-        </div>
-        <div class="else-wrap">
-          <a
-            class="join-btn"
-            sec:authorize="isAnonymous()"
-            th:href="@{/user/join}"
-            >회원가입</a
-          >
-          <a href="password-reset">비밀번호 재설정</a>
-        </div>
-      </div>
-    </main>
->>>>>>> 863a53c6d3e3945bf3f34585b384217b243bf7e6
-  </body>
-=======
-    <main class="login-page member-page">
-      <div class="inner-wrap">
-        <div class="logo-wrap">
-          <a href="/"><img src="/static/asset/logo-Text-white.png" alt="" /></a>
-        </div>
-        <div class="login-wrap">
-          <form action="/user/login" method="post">
-            <input
-              type="hidden"
-              th:name="${_csrf.parameterName}"
-              th:value="${_csrf.token}"
-            />
-            <input type="text" name="username" placeholder="이메일" />
-            <input type="password" name="password" placeholder="비밀번호" />
-            <button type="submit">이메일 로그인</button>
-          </form>
-        </div>
-        
-
-      
-        <div class="sns-wrap clearfix">
-          <a class="snsBtn kakao"  href="#" onclick="window.open('/oauth2/authorization/kakao','카카오 로그인','width=430,height=500,location=no,status=no,scrollbars=yes')">
-            <img data-v-4174ad9d="" src="https://d3udu241ivsax2.cloudfront.net/v3/images/login/kakao-icon.9c9940291430ca6ad83b9ae1f3cc81a8.svg" alt="카카오로 로그인"></a>
-          <a class="snsBtn naver" href="#" onclick="window.open('/oauth2/authorization/naver','Naver 로그인','width=550,height=750,location=no,status=no,scrollbars=yes')">
-          <img data-v-4174ad9d="" src="https://d3udu241ivsax2.cloudfront.net/v3/images/login/naver-icon.7128d171ea0b01233bb4b32a2b5ad260.svg" alt="네이버로 로그인"></a>
-          <a class="snsBtn facebook"  href="#" onclick="window.open('/oauth2/authorization/facebook','Facebook 로그인','width=550,height=550,location=no,status=no,scrollbars=yes')">
-            <img data-v-4174ad9d="" src="https://d3udu241ivsax2.cloudfront.net/v3/images/login/facebook-icon.f3e1fcc7af9f4cac5be2179a846417f8.svg" alt="페이스북으로 로그인"></a>
-          <a class="snsBtn google" href="#" onclick="window.open('/oauth2/authorization/google','Google 로그인','width=550,height=600,location=no,status=no,scrollbars=yes')">
-          <img alt="" src="/static/asset/googleLogin.png" width="40px" height="40px"></a>
-        </div>
-        <div class="else-wrap">
-          <a
-            class="join-btn"
-            sec:authorize="isAnonymous()"
-            th:href="@{/user/join}"
-            >회원가입</a
-          >
-          <a href="#">비밀번호 재설정</a>
-        </div>
-      </div>
-    </main>
-    
-    
-<!-- <div id="fb-root"></div>
-<script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v8.0&appId=3244109895637895&redirect_uri=http://localhost:8888/user/login/facebook";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-  </body> -->
->>>>>>> Stashed changes
+			<div class="sns-wrap clearfix">
+				<a class="snsBtn kakao" href="#"
+					onclick="window.open('/oauth2/authorization/kakao','카카오 로그인','width=430,height=500,location=no,status=no,scrollbars=yes')">
+					<img data-v-4174ad9d=""
+					src="https://d3udu241ivsax2.cloudfront.net/v3/images/login/kakao-icon.9c9940291430ca6ad83b9ae1f3cc81a8.svg"
+					alt="카카오로 로그인">
+				</a> <a class="snsBtn naver" href="#"
+					onclick="window.open('/oauth2/authorization/naver','Naver 로그인','width=550,height=750,location=no,status=no,scrollbars=yes')">
+					<img data-v-4174ad9d=""
+					src="https://d3udu241ivsax2.cloudfront.net/v3/images/login/naver-icon.7128d171ea0b01233bb4b32a2b5ad260.svg"
+					alt="네이버로 로그인">
+				</a> <a class="snsBtn facebook" href="#"
+					onclick="window.open('/oauth2/authorization/facebook','Facebook 로그인','width=550,height=550,location=no,status=no,scrollbars=yes')">
+					<img data-v-4174ad9d=""
+					src="https://d3udu241ivsax2.cloudfront.net/v3/images/login/facebook-icon.f3e1fcc7af9f4cac5be2179a846417f8.svg"
+					alt="페이스북으로 로그인">
+				</a> <a class="snsBtn google" href="#"
+					onclick="window.open('/oauth2/authorization/google','Google 로그인','width=550,height=600,location=no,status=no,scrollbars=yes')">
+					<img alt="" src="/static/asset/googleLogin.png" width="40px"
+					height="40px">
+				</a>
+			</div>
+			<div class="else-wrap">
+				<a class="join-btn" sec:authorize="isAnonymous()"
+					th:href="@{/user/join}">회원가입</a> <a href="#">비밀번호
+					재설정</a>
+			</div>
+		</div>
+	</main>
 </html>
