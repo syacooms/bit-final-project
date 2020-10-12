@@ -25,12 +25,14 @@
 </div>
 
 <button type="button" id="nameSort">작가 이름 순서</button>
+<div id="getWriteSize"></div>
 <div style="width: 70%; height:300px; border: 1px solid;" id="getSearchWlist" >
-
+	
 </div>
 <button type="button" id="viewSort">조회수 순서</button>
+<div id="getContSize"></div>
 <div style="width: 70%; height:300px; border: 1px solid;" id="getSearcClist" >
-
+	
 </div>
 </div>
 <script type="text/javascript">
@@ -62,6 +64,7 @@ function searchWriter(formData){
 		success: function(data){
 		//	alert(data);
 		let addlist = "";
+		let size = Object.keys(data).length;
 			$.each(data, function(i,ser){
 				addlist += "<div style='float:left'><table border='1'><tr><th>"+ser.writerName+"</th></tr>"
 						+"<input type='hidden'id='"+ser.writerSeq+"' value='"+ser.writerSeq+"'>"
@@ -70,7 +73,9 @@ function searchWriter(formData){
 						+"</table></div>";
 				
 			});
+		$("#getWriteSize").empty();
 		$("#getSearchWlist").empty();
+		$("#getWriteSize").append("총"+size+"건의 검색 결과");
 		$("#getSearchWlist").append(addlist);
 		},
 		error:function(){
@@ -86,6 +91,7 @@ function searchCont(formData){
 		data: formData,
 		success:function(data){
 			let addlist = "";
+			let size = Object.keys(data).length;
 			$.each(data, function(i,ser){
 				addlist += "<div style='float:left'><table border='1'><tr><th>"+ser.title+"</th></tr>"
 						+"<input type='hidden'id='"+ser.articleSeq+"' value='"+ser.articleSeq+"'>"
@@ -94,7 +100,9 @@ function searchCont(formData){
 						+"</table></div>";
 				
 			});
+		$("#getContSize").empty();
 		$("#getSearcClist").empty();	
+		$("#getContSize").append("총"+size+"건의 검색 결과");
 		$("#getSearcClist").append(addlist);
 		},
 		error:function(){
