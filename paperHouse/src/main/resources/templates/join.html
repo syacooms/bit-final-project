@@ -1,18 +1,46 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>종이의 집</title>
+    <th:block th:replace="fragment/head"></th:block>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1>회원 가입</h1>
-    <hr />
-
-    <form th:action="@{/user/join}" method="post">
-      <input type="text" name="email" placeholder="이메일 입력해주세요" />
-      <input type="password" name="pwd" placeholder="비밀번호" />
-      <button type="submit">가입하기</button>
-    </form>
+    <main class="join-page member-page">
+      <div class="inner-wrap">
+        <div class="logo-wrap">
+          <a href="/"><img src="/static/asset/logo-Text-white.png" alt="" /></a>
+        </div>
+        <div class="login-wrap">
+          <form action="/user/login" method="post">
+            <input type="email" name="username" placeholder="이메일" />
+            <input type="password" name="password" placeholder="비밀번호" />
+            <input
+              type="password"
+              name="passwordChk"
+              placeholder="비밀번호 확인"
+            />
+            <button type="submit">이메일로 가입하기</button>
+          </form>
+        </div>
+        <div class="sns-wrap clearfix">
+          <a class="snsBtn kakao" href="#"></a>
+          <a class="snsBtn naver" href="#"></a>
+          <a class="snsBtn facebook" href="#"></a>
+          <a class="snsBtn google" href="#"></a>
+        </div>
+        <div class="else-wrap">
+          <a
+            class="btn line"
+            sec:authorize="isAnonymous()"
+            th:href="@{/user/login}"
+            >이미 회원이신가요 ?</a
+          >
+        </div>
+      </div>
+    </main>
   </body>
 </html>

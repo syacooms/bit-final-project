@@ -11,15 +11,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ArticleDto implements Serializable {
 
-	private int writer_seq;
-	private int article_seq;
+	private int writerSeq;
+	private int articleSeq;
 	private String title;
 	private String cont;
-	private String upload_date;
-	private int viewcount;
+	private String uploadDate;
+	private int viewCount;
 	private int likes;
 	private String categorys;
-	private String file_original;
-	private String file_system;
+	private String fileOriginal;
+	private String fileSystem;
 	
 }

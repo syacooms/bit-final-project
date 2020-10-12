@@ -6,17 +6,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDto implements Serializable {
-	
-	private int userSeq;
-	private String email;
-	private String pwd;
-	private String nickname;
-	private String authority;
-	private String enabled;
-	
+public class SearchDto implements Serializable {
+
+	private String searchCategory;
+	private String searchWord;
+	private String searchSort;
+	private String sort;
 }
