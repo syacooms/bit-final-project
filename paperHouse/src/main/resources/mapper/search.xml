@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bit.paperhouse.dao.SearchRepository">
+<select id="getSearchWriter" parameterType="com.bit.paperhouse.dto.SearchDto" resultType="com.bit.paperhouse.dto.WriterDto">
+	SELECT * 
+	FROM WRITER 
+	WHERE 1=1 
+	<!-- 1. 작가로 검색했을 경우 -->
+	<if test="searchCategory != null and searchCategory != '' and searchCategory == 'writer'">
+		AND WRITER_NAME = #{searchWord}
+	</if>
+	<!-- 2. 카테고리로 검색 -->
+	<if test="searchCategory != null and searchCategory != '' and searchCategory == 'category'">
+		AND WRITER_SEQ IN (SELECT WRITER_SEQ FROM ARTICLE WHERE CATEGORYS = #{searchWord})
+	</if> 
+	<!-- 3 .글 제목으로 검색 -->
+	<if test="searchCategory != null and searchCategory != '' and searchCategory == 'title'">
+		AND WRITER_SEQ IN (SELECT WRITER_SEQ FROM ARTICLE WHERE TITLE LIKE '%'||#{searchWord}||'%')
+	</if>
+	ORDER BY ${searchSort} ${sort}
+</select>
+
+<select id="getSearchCont" parameterType="com.bit.paperhouse.dto.SearchDto" resultType="com.bit.paperhouse.dto.ArticleDto">
+	SELECT *
+	FROM ARTICLE 
+	WHERE 1=1
+	<!-- 1. 작가로 검색했을 경우 -->
+	<if test="searchCategory != null and searchCategory != '' and searchCategory == 'writer'">
+	AND WRITER_SEQ = (SELECT WRITER_SEQ FROM WRITER WHERE WRITER_NAME = #{searchWord})
+	</if>
+	<!-- 2. 카테고리로 검색 -->
+	<if test="searchCategory != null and searchCategory != '' and searchCategory == 'category'">
+	AND CATEGORYS = #{searchWord}
+	</if>
+	<!-- 3. 글 제목으로 검색 -->
+	<if test="searchCategory != null and searchCategory != '' and searchCategory == 'title'">
+	AND TITLE LIKE '%'||#{searchWord}||'%'
+	</if>
+	ORDER BY ${searchSort} ${sort}
+</select>
+</mapper>

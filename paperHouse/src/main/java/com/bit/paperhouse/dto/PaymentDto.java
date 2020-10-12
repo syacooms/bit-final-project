@@ -11,11 +11,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PaymentDto implements Serializable {
 
-	private int pay_seq;
-	private int user_seq;
-	private int write_seq;
-	private String approval_number;
-	private String payment_method;
-	private String payment_detail;
-	private String payment_date;
+	private int paySeq;
+	private int userSeq;
+	private int writeSeq;
+	private String approvalNumber;
+	private String paymentMethod;
+	private String paymentDetail;
+	private String paymentDate;
 }

@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>종이의 집</title>
+    <th:block th:replace="fragment/head"></th:block>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato&display=swap"
+      rel="stylesheet"
+    />
   </head>
   
   <body>
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     <h1>로그인</h1>
     <hr />
@@ -23,6 +27,42 @@
       <button type="submit">로그인</button>
     </form>
     <a href="join.html">회원가입</a>
+=======
+    <main class="login-page member-page">
+      <div class="inner-wrap">
+        <div class="logo-wrap">
+          <a href="/"><img src="/static/asset/logo-Text-white.png" alt="" /></a>
+        </div>
+        <div class="login-wrap">
+          <form action="/user/login" method="post">
+            <input
+              type="hidden"
+              th:name="${_csrf.parameterName}"
+              th:value="${_csrf.token}"
+            />
+            <input type="text" name="username" placeholder="이메일" />
+            <input type="password" name="password" placeholder="비밀번호" />
+            <button type="submit">이메일 로그인</button>
+          </form>
+        </div>
+        <div class="sns-wrap clearfix">
+          <a class="snsBtn kakao" href="#"></a>
+          <a class="snsBtn naver" href="#"></a>
+          <a class="snsBtn facebook" href="#"></a>
+          <a class="snsBtn google" href="#"></a>
+        </div>
+        <div class="else-wrap">
+          <a
+            class="join-btn"
+            sec:authorize="isAnonymous()"
+            th:href="@{/user/join}"
+            >회원가입</a
+          >
+          <a href="password-reset">비밀번호 재설정</a>
+        </div>
+      </div>
+    </main>
+>>>>>>> 863a53c6d3e3945bf3f34585b384217b243bf7e6
   </body>
 =======
     <main class="login-page member-page">

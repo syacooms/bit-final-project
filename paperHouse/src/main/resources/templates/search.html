@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div align="center">
+<h1>Search Test</h1>
+
+<div>
+	<form id="searchForm">
+		<div>
+			<select name="searchCategory">
+				<option value="writer">작가</option>
+				<option value="category">카테고리</option>
+				<option value="title">글 제목</option>
+			</select>
+			<input type="text" name="searchWord">
+			<input type="button" value="검색" id="searchButton">
+		</div>
+	</form>
+</div>
+
+<button type="button" id="nameSort">작가 이름 순서</button>
+<div id="getWriteSize"></div>
+<div style="width: 70%; height:300px; border: 1px solid;" id="getSearchWlist" >
+	
+</div>
+<button type="button" id="viewSort">조회수 순서</button>
+<div id="getContSize"></div>
+<div style="width: 70%; height:300px; border: 1px solid;" id="getSearcClist" >
+	
+</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#searchButton").click(function(){
+
+		let formData = $("#searchForm").serialize();
+		
+		searchWriter(formData);
+		searchCont(formData);
+		
+	});
+});
+
+$("#nameSort").click(function(){
+	
+});
+
+
+$("#viewSort").click(function(){
+	
+});
+
+function searchWriter(formData){
+	$.ajax({
+		url:"/getSearchWlist",
+		type:"get",	
+		data: formData,
+		success: function(data){
+		//	alert(data);
+		let addlist = "";
+		let size = Object.keys(data).length;
+			$.each(data, function(i,ser){
+				addlist += "<div style='float:left'><table border='1'><tr><th>"+ser.writerName+"</th></tr>"
+						+"<input type='hidden'id='"+ser.writerSeq+"' value='"+ser.writerSeq+"'>"
+						+"<tr><td>"+ser.intro+"</td></tr>"
+						+"<tr><td>"+ser.fileSystem+"</td></tr>"
+						+"</table></div>";
+				
+			});
+		$("#getWriteSize").empty();
+		$("#getSearchWlist").empty();
+		$("#getWriteSize").append("총"+size+"건의 검색 결과");
+		$("#getSearchWlist").append(addlist);
+		},
+		error:function(){
+			alert('error');
+		}
+	});
+}
+
+function searchCont(formData){
+	$.ajax({
+		url:"/getSearchClist",
+		type:"get",
+		data: formData,
+		success:function(data){
+			let addlist = "";
+			let size = Object.keys(data).length;
+			$.each(data, function(i,ser){
+				addlist += "<div style='float:left'><table border='1'><tr><th>"+ser.title+"</th></tr>"
+						+"<input type='hidden'id='"+ser.articleSeq+"' value='"+ser.articleSeq+"'>"
+						+"<tr><td>"+ser.viewCount+"</td></tr>"
+						+"<tr><td>"+ser.fileSystem+"</td></tr>"
+						+"</table></div>";
+				
+			});
+		$("#getContSize").empty();
+		$("#getSearcClist").empty();	
+		$("#getContSize").append("총"+size+"건의 검색 결과");
+		$("#getSearcClist").append(addlist);
+		},
+		error:function(){
+			alert('error');
+		}
+	});
+	
+}
+
+</script>
+
+
+</body>
+</html>

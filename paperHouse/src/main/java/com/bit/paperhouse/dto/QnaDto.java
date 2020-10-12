@@ -11,12 +11,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class QnaDto implements Serializable {
 	
-	private int user_seq;
-	private int qna_seq;
+	private int userSeq;
+	private int qnaSeq;
 	private String title;
 	private String conts;
-	private String file_original;
-	private String file_system;
+	private String fileOriginal;
+	private String fileSystem;
 	private String reply;
 	private int status;
 }
