@@ -61,13 +61,23 @@ public class UtilEx {
 			//남은 구독일 수 계산 함수
 			int lastcount = UtilEx.Onelastcount(getNamesAndDates.get(i).getEndDate());
 			
-			map.put(getNamesAndDates.get(i).getName(), lastcount);
+			map.put(getNamesAndDates.get(i).getWriterName(), lastcount);
 			
 		}
 		
 		System.out.println("사용자의 구독 리스트 : " + map.toString());
 		return map;
 		
+	}
+	
+	public static List<Integer> getFollowed(String follow) {
+		String followed[] = follow.split("-");
+		List<Integer> list = new ArrayList<Integer>();
+		for (int i = 0; i < followed.length; i++) {
+			int f = Integer.parseInt(followed[i]);
+			list.add(f);
+		}
+		return list;
 	}
 	
 }

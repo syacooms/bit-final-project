@@ -32,9 +32,8 @@ public class SearchController {
 			searchDto.setSearchSort("WRITER_NAME");
 			searchDto.setSort("ASC");
 		}
-		System.out.println(searchDto.toString());
+		System.out.println("getSearchWlist");
 		List<WriterDto> list = searchService.getSearchWriter(searchDto);
-		
 		
 		return list;
 	}
@@ -46,7 +45,7 @@ public class SearchController {
 			searchDto.setSearchSort("VIEWCOUNT");
 			searchDto.setSort("DESC");
 		}
-		System.out.println(searchDto.toString());
+		System.out.println("getSearchClist");
 		List<ArticleDto>list = searchService.getSearchCont(searchDto);
 		
 		return list;
