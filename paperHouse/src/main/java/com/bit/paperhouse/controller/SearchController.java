@@ -1,6 +1,7 @@
 package com.bit.paperhouse.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,21 +34,24 @@ public class SearchController {
 			searchDto.setSort("ASC");
 		}
 		System.out.println("getSearchWlist");
+		System.out.println(searchDto.toString());
 		List<WriterDto> list = searchService.getSearchWriter(searchDto);
-		
+		System.out.println(list);
 		return list;
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/getSearchClist",method = RequestMethod.GET)
-	public List<ArticleDto> getSearchCont(SearchDto searchDto){
+	public Map<String, Object> getSearchCont(SearchDto searchDto){
 		if(searchDto.getSearchSort()==null || searchDto.getSort() ==null) {
 			searchDto.setSearchSort("VIEWCOUNT");
 			searchDto.setSort("DESC");
 		}
 		System.out.println("getSearchClist");
-		List<ArticleDto>list = searchService.getSearchCont(searchDto);
+		System.out.println(searchDto.toString());
+		Map<String, Object> map = searchService.getSearchCont(searchDto);
+		System.out.println(map);
 		
-		return list;
+		return map;
 	}
 }

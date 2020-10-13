@@ -29,8 +29,13 @@ public class MyLibarayController {
 		List<WriterDto> listSubscribe = myLibarayService.getSubscribeW(user_seq);
 		List<WriterDto> listFollow = myLibarayService.getFollow(user_seq);
 		
+		int subScribe = listSubscribe.size();
+		int followed = listFollow.size();
 		model.addAttribute("listSubscribe", listSubscribe);
 		model.addAttribute("listFollow", listFollow);
+		model.addAttribute("subScribe", subScribe);
+		model.addAttribute("followed", followed);
+		
 		return "/myLibaray";
 	}
 

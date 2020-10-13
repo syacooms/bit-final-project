@@ -15,7 +15,6 @@
 		<div id="scFrm">
 			<select name="searchCategory">
 				<option value="writer">작가</option>
-				<option value="category">카테고리</option>
 				<option value="title">글 제목</option>
 			</select>
 			<input type="text" name="searchWord">
@@ -23,16 +22,18 @@
 		</div>
 	</form>
 </div>
-
-<button type="button" id="nameSort">작가 이름 순서</button>
+<div id="getsearchWDiv">
+<!-- <button type="button" id="nameSort">작가 이름 순서</button> -->
 <div id="getWriteSize"></div>
 <div style="width: 70%; height:300px; border: 1px solid;" id="getSearchWlist" >
 	
 </div>
+</div>
+<button type="button" id="categorySort">카테고리별 분류</button>
 <button type="button" id="viewSort">조회수 순서</button>
 <button type="button" id="dateSort">업데이트 순</button>
 <div id="getContSize"></div>
-<div style="width: 70%; height:300px; border: 1px solid;" id="getSearcClist" >
+<div style="width: 70%;" id="getSearcClist" >
 	
 </div>
 
@@ -41,16 +42,24 @@
 let s1 = 1;
 let s2 = 1;
 let s3 = 1;
+let ct = "";
 $(document).ready(function(){
 	$("#searchButton").click(function(){
 
 		let formData = $("#searchForm").serialize();
-		
-		searchWriter(formData);
-		searchCont(formData);
+		//alert($("select[name=searchCategory]").val());
+		if($("select[name=searchCategory]").val()=='writer'){
+			$("#getsearchWDiv").show();
+			searchWriter(formData);
+			searchCont(formData);
+		}
+		else{
+			$("#getsearchWDiv").hide();
+			searchCont(formData);
+		}
 		
 	});
-	$("#nameSort").click(function(){
+	/* $("#nameSort").click(function(){
 		
 		if(s1 == 1){
 			sortingW("DESC");
@@ -60,24 +69,29 @@ $(document).ready(function(){
 			sortingW("ASC");
 			s1 = 1;
 		}
-	});
+	}); */
 	$("#viewSort").click(function(){
 		if(s2 == 1){
-			sortingC("VIEWCOUNT","ASC");
+			sortingC("VIEWCOUNT","ASC",ct);
 			s2 = 0;
 		}else{
-			sortingC("VIEWCOUNT","DESC");
+			sortingC("VIEWCOUNT","DESC",ct);
 			s2 = 1;
 		}
 	});
 	$("#dateSort").click(function(){
 		if(s3 == 1){
-			sortingC("UPLOAD_DATE","DESC");
+			sortingC("UPLOAD_DATE","DESC",ct);
 			s3 = 0;
 		}else{
-			sortingC("UPLOAD_DATE","ASC");
+			sortingC("UPLOAD_DATE","ASC",ct);
 			s3 = 1;
 		}
+	});
+	$("#categorySort").click(function(){
+		$("#getSearcClist").empty();
+		let ct = "cateSort";
+		sortingC("VIEWCOUNT","DESC",ct)
 	});
 });
 
@@ -87,14 +101,14 @@ function sortingW(s){
 	$("#scFrm").append("<input type='hidden' name='searchSort' value='WRITER_NAME'><input type='hidden' name='sort' value='"+s+"'>");
 	let formData = $("#searchForm").serialize();
 	searchWriter(formData);
-	$("input[type='hidden']").remove();
+	$("input[type=hidden]").remove();
 }
 
-function sortingC(st,s){
+function sortingC(st,s,ct){
 	$("#scFrm").append("<input type='hidden' name='searchSort' value='"+st+"'><input type='hidden' name='sort' value='"+s+"'>");
 	let formData = $("#searchForm").serialize();
-	searchCont(formData);
-	$("input[type='hidden']").remove();
+	searchCont(formData,ct);
+	$("input[type=hidden]").remove();
 }
 
 
@@ -115,6 +129,7 @@ function searchWriter(formData){
 						+"</table></div>";
 				
 			});
+		
 		$("#getWriteSize").empty();
 		$("#getSearchWlist").empty();
 		$("#getWriteSize").append("총"+size+"건의 검색 결과");
@@ -126,26 +141,65 @@ function searchWriter(formData){
 	});
 }
 
-function searchCont(formData){
+function searchCont(formData, ct){
 	$.ajax({
 		url:"/getSearchClist",
 		type:"get",
+		dataType: "json",
 		data: formData,
 		success:function(data){
 			let addlist = "";
-			let size = Object.keys(data).length;
-			$.each(data, function(i,ser){
-				addlist += "<div style='float:left'><table border='1'><tr><th>제목:"+ser.title+"</th></tr>"
-						+"<input type='hidden'id='"+ser.articleSeq+"' value='"+ser.articleSeq+"'>"
-						+"<tr><td>조회수:"+ser.viewCount+"</td></tr>"
-						+"<tr><td>"+ser.fileSystem+"</td></tr>"
-						+"</table></div>";
-				
-			});
-		$("#getContSize").empty();
-		$("#getSearcClist").empty();	
-		$("#getContSize").append("총"+size+"건의 검색 결과");
-		$("#getSearcClist").append(addlist);
+			let addlist2 = "";
+			let addlist3 = "";
+			let poem = data.poem;
+			let novel = data.novel;
+			let essay = data.essay;
+			let list = data.list;
+	 		let size = Object.keys(list).length;
+	 		if(ct !='cateSort'){
+	 			$.each(list, function(i,ser){
+					addlist += "<div style='float:left'><table border='1'><tr><th>제목:"+ser.title+"</th></tr>"
+							+"<input type='hidden'id='"+ser.articleSeq+"' value='"+ser.articleSeq+"'>"
+							+"<tr><td>조회수:"+ser.viewCount+"</td></tr>"
+							+"<tr><td>"+ser.fileSystem+"</td></tr>"
+							+"</table></div>";
+					
+				});
+			$("#getContSize").empty();
+			$("#getSearcClist").empty();	
+			$("#getContSize").append("총"+size+"건의 검색 결과");
+			$("#getSearcClist").append(addlist); 
+	 			
+	 		}else{
+	 			$.each(poem, function(i,ser){
+					addlist += "<h1>시</h1><div style='float:left'><table border='1'><tr><th>제목:"+ser.title+"</th></tr>"
+							+"<input type='hidden'id='"+ser.articleSeq+"' value='"+ser.articleSeq+"'>"
+							+"<tr><td>조회수:"+ser.viewCount+"</td></tr>"
+							+"<tr><td>"+ser.fileSystem+"</td></tr>"
+							+"</table></div>";
+					
+				});
+	 			$("#getSearcClist").append(addlist);
+	 			$.each(novel, function(i,ser){
+					addlist2 += "<br><br><br><h1>소설</h1><div style='float:left'><table border='1'><tr><th>제목:"+ser.title+"</th></tr>"
+							+"<input type='hidden'id='"+ser.articleSeq+"' value='"+ser.articleSeq+"'>"
+							+"<tr><td>조회수:"+ser.viewCount+"</td></tr>"
+							+"<tr><td>"+ser.fileSystem+"</td></tr>"
+							+"</table></div>";
+					
+				});
+	 			$("#getSearcClist").append(addlist2);
+	 			$.each(essay, function(i,ser){
+					addlist3 += "<br><br><br><h1>에세이</h1><div style='float:left'><table border='1'><tr><th>제목:"+ser.title+"</th></tr>"
+							+"<input type='hidden'id='"+ser.articleSeq+"' value='"+ser.articleSeq+"'>"
+							+"<tr><td>조회수:"+ser.viewCount+"</td></tr>"
+							+"<tr><td>"+ser.fileSystem+"</td></tr>"
+							+"</table></div>";
+					
+				});
+	 			$("#getSearcClist").append(addlist3);
+	 		}
+			
 		},
 		error:function(){
 			alert('error');

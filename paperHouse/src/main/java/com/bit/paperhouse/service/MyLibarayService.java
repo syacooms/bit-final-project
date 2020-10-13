@@ -27,7 +27,6 @@ public class MyLibarayService {
 		String follow = myLibaray.getFollow(user_seq);
 		List<WriterDto> wlist = new ArrayList<WriterDto>();
 		if(follow != null) {
-			
 			List<Integer> list = UtilEx.getFollowed(follow);
 			for (int i = 0; i < list.size(); i++) {
 				WriterDto dto = myLibaray.tmpGetWriter(list.get(i));

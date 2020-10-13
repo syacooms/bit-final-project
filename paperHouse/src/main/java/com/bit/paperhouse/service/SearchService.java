@@ -1,6 +1,9 @@
 package com.bit.paperhouse.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,9 +27,26 @@ public class SearchService {
 		return list;
 	}
 	
-	public List<ArticleDto> getSearchCont(SearchDto searchDto) {
+	public Map<String, Object> getSearchCont(SearchDto searchDto) {
 		List<ArticleDto> list = searchRepository.getSearchCont(searchDto);
-		return list;
+		List<ArticleDto> poem = new ArrayList<ArticleDto>();
+		List<ArticleDto> novel = new ArrayList<ArticleDto>();
+		List<ArticleDto> essay = new ArrayList<ArticleDto>();
+		Map<String, Object> map = new HashMap<String, Object>();
+		for (ArticleDto arti : list) {
+			if(arti.getCategorys().equals("시")) {
+				poem.add(arti);
+			}else if(arti.getCategorys().equals("소설")) {
+				novel.add(arti);
+			}else if(arti.getCategorys().equals("에세이")) {
+				essay.add(arti);
+			}
+		}
+		map.put("list", list);
+		map.put("poem", poem);
+		map.put("novel", novel);
+		map.put("essay", essay);
+		return map;
 	}
 	
 	
