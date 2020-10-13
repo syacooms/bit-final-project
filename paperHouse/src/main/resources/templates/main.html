@@ -21,8 +21,8 @@
                 </a>
               </h1>
               <ul class="header-menu">
-                <li><a href="#">투데이</a></li>
-                <li><a href="#">검색</a></li>
+                <li class="active"><a href="/main">투데이</a></li>
+                <li><a href="/search">검색</a></li>
                 <li><a href="#">내 서재</a></li>
                 <li><a href="#">마이페이지</a></li>
               </ul>
@@ -37,7 +37,7 @@
         </div>
       </div>
     </header>
-    <main class="main">
+    <main class="main main-common">
       <div class="main-banner">
         <div id="bg-wrap"></div>
         <div class="container">
@@ -80,172 +80,176 @@
           </div>
         </div>
       </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="main-section today-writer">
-              <div class="section-title">오늘의 작가</div>
-              <div class="section-body writer-grid clearfix">
-                <div class="grid-wrap left clearfix">
-                  <div class="writer-pic">프로필사진</div>
-                  <div class="writer-info-wrap">
-                    <div class="writer-name">작가이름</div>
-                    <div class="writer-birth">작가 정보</div>
+      <div class="main-content">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="main-section today-writer">
+                <div class="section-title">오늘의 작가</div>
+                <div class="section-body writer-grid clearfix">
+                  <div class="grid-wrap left clearfix">
+                    <div class="writer-pic">프로필사진</div>
+                    <div class="writer-info-wrap">
+                      <div class="writer-name">작가이름</div>
+                      <div class="writer-birth">작가 정보</div>
+                    </div>
                   </div>
-                </div>
-                <div class="right">
-                  <div class="grid-wrap right-up">
-                    <div class="writer-desc">작가 설명입니당.</div>
-                  </div>
-                  <div class="grid-wrap right-down">
-                    <div class="writer-recommend">
-                      <div class="recommender-id">"추천자 아이디"</div>
-                      <div class="recommender-comment">추천자 추천글내용</div>
+                  <div class="right">
+                    <div class="grid-wrap right-up">
+                      <div class="writer-desc">작가 설명입니당.</div>
+                    </div>
+                    <div class="grid-wrap right-down">
+                      <div class="writer-recommend">
+                        <div class="recommender-id">"추천자 아이디"</div>
+                        <div class="recommender-comment">추천자 추천글내용</div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="main-section monthly-recommend">
-              <div class="section-title">이번 달 추천 작가</div>
-              <div class="section-body">
-                <div class="weekly-grid">
-                  <div class="grid-wrap">
-                    <div class="writer-photo">
-                      <div class="filter"></div>
-                      <img src="/static/asset/d.jpg" alt="" />
-                    </div>
-                    <div class="writer-desc">한국인이 가장 사랑하는 작가</div>
-                    <div class="writer-name">베르나르 베르베르</div>
-                  </div>
-                  <div class="grid-wrap">
-                    <div class="writer-photo">
-                      <div class="filter"></div>
-                      <img src="/static/asset/d.jpg" alt="" />
-                    </div>
-                    <div class="writer-desc">한국인이 가장 사랑하는 작가</div>
-                    <div class="writer-name">베르나르 베르베르</div>
-                  </div>
-                  <div class="grid-wrap">
-                    <div class="writer-photo">
-                      <div class="filter"></div>
-                      <img src="/static/asset/d.jpg" alt="" />
-                    </div>
-                    <div class="writer-desc">한국인이 가장 사랑하는 작가</div>
-                    <div class="writer-name">베르나르 베르베르</div>
-                  </div>
-                  <div class="grid-wrap">
-                    <div class="writer-photo">
-                      <div class="filter"></div>
-                      <img src="/static/asset/d.jpg" alt="" />
-                    </div>
-                    <div class="writer-desc">한국인이 가장 사랑하는 작가</div>
-                    <div class="writer-name">베르나르 베르베르</div>
-                  </div>
-                  <div class="grid-wrap">
-                    <div class="writer-photo">
-                      <div class="filter"></div>
-                      <img src="/static/asset/d.jpg" alt="" />
-                    </div>
-                    <div class="writer-desc">한국인이 가장 사랑하는 작가</div>
-                    <div class="writer-name">베르나르 베르베르</div>
-                  </div>
-                  <div class="grid-wrap">
-                    <div class="writer-photo">
-                      <div class="filter"></div>
-                      <img src="/static/asset/d.jpg" alt="" />
-                    </div>
-                    <div class="writer-desc">한국인이 가장 사랑하는 작가</div>
-                    <div class="writer-name">베르나르 베르베르</div>
-                  </div>
-                  <div class="grid-wrap">
-                    <div class="writer-photo">
-                      <div class="filter"></div>
-                      <img src="/static/asset/d.jpg" alt="" />
-                    </div>
-                    <div class="writer-desc">한국인이 가장 사랑하는 작가</div>
-                    <div class="writer-name">베르나르 베르베르</div>
-                  </div>
-                </div>
-              </div>
-              <div class="section-body">
-                <div class="site-desc">
-                  <div class="inner">
-                    <img src="/static/asset/site-desc-icon.png" alt="" />
-                    <div class="title">처음본 이야기</div>
-                    <div class="desc">세상에 처음 선보이는 작가분들의 이야기를 만나보세요</div>
-                  </div>
-                  <div class="box-wrap">
-                    <div class="box1"></div>
-                    <div class="box2"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <div class="main-section recommend-article">
-              <div class="section-title">취향별 추천글</div>
-              <ul class="section-tap-wrap clearfix">
-                <li class="tab active">카테고리1</li>
-                <li class="tab">카테고리2</li>
-                <li class="tab">카테고리3</li>
-                <li class="tab">카테고리4</li>
-                <li class="tab">카테고리5</li>
-              </ul>
-              <div class="section-body">
-                <div class="article-wrap">
-                  <div class="inner first clearfix">
-                    <div class="articles">
-                      <div class="article-thumb">
-                        <img src="" alt="article thumb" />
+              <div class="main-section monthly-recommend">
+                <div class="section-title">이번 달 추천 작가</div>
+                <div class="section-body">
+                  <div class="weekly-grid">
+                    <div class="grid-wrap">
+                      <div class="writer-photo">
+                        <div class="filter"></div>
+                        <img src="/static/asset/d.jpg" alt="" />
                       </div>
-                      <div class="article-title">article title</div>
+                      <div class="writer-desc">한국인이 가장 사랑하는 작가</div>
+                      <div class="writer-name">베르나르 베르베르</div>
                     </div>
-                    <div class="articles">
-                      <div class="article-thumb">
-                        <img src="" alt="article thumb" />
+                    <div class="grid-wrap">
+                      <div class="writer-photo">
+                        <div class="filter"></div>
+                        <img src="/static/asset/d.jpg" alt="" />
                       </div>
-                      <div class="article-title">article title</div>
+                      <div class="writer-desc">한국인이 가장 사랑하는 작가</div>
+                      <div class="writer-name">베르나르 베르베르</div>
                     </div>
-                    <div class="articles">
-                      <div class="article-thumb">
-                        <img src="" alt="article thumb" />
+                    <div class="grid-wrap">
+                      <div class="writer-photo">
+                        <div class="filter"></div>
+                        <img src="/static/asset/d.jpg" alt="" />
                       </div>
-                      <div class="article-title">article title</div>
+                      <div class="writer-desc">한국인이 가장 사랑하는 작가</div>
+                      <div class="writer-name">베르나르 베르베르</div>
+                    </div>
+                    <div class="grid-wrap">
+                      <div class="writer-photo">
+                        <div class="filter"></div>
+                        <img src="/static/asset/d.jpg" alt="" />
+                      </div>
+                      <div class="writer-desc">한국인이 가장 사랑하는 작가</div>
+                      <div class="writer-name">베르나르 베르베르</div>
+                    </div>
+                    <div class="grid-wrap">
+                      <div class="writer-photo">
+                        <div class="filter"></div>
+                        <img src="/static/asset/d.jpg" alt="" />
+                      </div>
+                      <div class="writer-desc">한국인이 가장 사랑하는 작가</div>
+                      <div class="writer-name">베르나르 베르베르</div>
+                    </div>
+                    <div class="grid-wrap">
+                      <div class="writer-photo">
+                        <div class="filter"></div>
+                        <img src="/static/asset/d.jpg" alt="" />
+                      </div>
+                      <div class="writer-desc">한국인이 가장 사랑하는 작가</div>
+                      <div class="writer-name">베르나르 베르베르</div>
+                    </div>
+                    <div class="grid-wrap">
+                      <div class="writer-photo">
+                        <div class="filter"></div>
+                        <img src="/static/asset/d.jpg" alt="" />
+                      </div>
+                      <div class="writer-desc">한국인이 가장 사랑하는 작가</div>
+                      <div class="writer-name">베르나르 베르베르</div>
                     </div>
                   </div>
-                  <div class="inner second clearfix">
-                    <div class="articles">
-                      <div class="article-thumb">
-                        <img src="" alt="article thumb" />
-                      </div>
-                      <div class="article-title">article title</div>
+                </div>
+                <div class="section-body">
+                  <div class="site-desc">
+                    <div class="inner">
+                      <img src="/static/asset/site-desc-icon.png" alt="" />
+                      <div class="title">처음본 이야기</div>
+                      <div class="desc">세상에 처음 선보이는 작가분들의 이야기를 만나보세요</div>
                     </div>
-                    <div class="articles">
-                      <div class="article-thumb">
-                        <img src="" alt="article thumb" />
-                      </div>
-                      <div class="article-title">article title</div>
-                    </div>
-                    <div class="articles">
-                      <div class="article-thumb">
-                        <img src="" alt="article thumb" />
-                      </div>
-                      <div class="article-title">article title</div>
+                    <div class="box-wrap">
+                      <div class="box1"></div>
+                      <div class="box2"></div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="main-section today-sentence">
-              <div class="section-title">오늘의 문장</div>
-              <div class="section-body">
-                <div class="random-img">
-                  <img src="https://source.unsplash.com/category/experimental/1600x900" alt="" />
-                  <div class="random-text">
-                    <p class="quote quote-top"></p>
-                    <p class="text">우리의 눈은 내부를 비추는 거울이 되어버렸다.</p>
-                    <p class="quote quote-bottom"></p>
+
+              <div class="main-section recommend-article">
+                <div class="section-title">취향별 추천글</div>
+                <ul class="section-tap-wrap clearfix">
+                  <li class="tab active">카테고리1</li>
+                  <li class="tab">카테고리2</li>
+                  <li class="tab">카테고리3</li>
+                  <li class="tab">카테고리4</li>
+                  <li class="tab">카테고리5</li>
+                </ul>
+                <div class="section-body">
+                  <div class="article-wrap">
+                    <div class="inner first clearfix">
+                      <div class="articles">
+                        <div class="article-thumb">
+                          <img src="/static/asset/a.jpg" alt="article thumb" />
+                        </div>
+                        <div class="article-title">article title</div>
+                      </div>
+                      <div class="articles">
+                        <div class="article-thumb">
+                          <img src="/static/asset/a.jpg" alt="article thumb" />
+                        </div>
+                        <div class="article-title">article title</div>
+                      </div>
+                      <div class="articles">
+                        <div class="article-thumb">
+                          <img src="/static/asset/a.jpg" alt="article thumb" />
+                        </div>
+                        <div class="article-title">article title</div>
+                      </div>
+                    </div>
+                    <div class="inner second clearfix">
+                      <div class="articles">
+                        <div class="article-thumb">
+                          <img src="/static/asset/a.jpg" alt="article thumb" />
+                        </div>
+                        <div class="article-title">article title</div>
+                      </div>
+                      <div class="articles">
+                        <div class="article-thumb">
+                          <img src="/static/asset/a.jpg" alt="article thumb" />
+                        </div>
+                        <div class="article-title">article title</div>
+                      </div>
+                      <div class="articles">
+                        <div class="article-thumb">
+                          <img src="/static/asset/a.jpg" alt="article thumb" />
+                        </div>
+                        <div class="article-title">article title</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="main-section today-sentence">
+                <div class="section-title">오늘의 문장</div>
+                <div class="section-body">
+                  <div class="random-img">
+                    <img src="https://source.unsplash.com/category/experimental/1600x900" alt="" />
+                    <div class="random-text">
+                      <p class="quote quote-top"></p>
+                      <p class="text">우리의 눈은 내부를 비추는 거울이 되어버렸다.</p>
+                      <p class="quote quote-bottom"></p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -271,9 +275,6 @@
         </div>
       </div>
     </footer>
-    <div sec:authorize="isAuthenticated()">
-      <span sec:authentication="principal.NICKNAME"></span>
-    </div>
   </body>
   <script>
     const colors = new Array(
