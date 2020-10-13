@@ -1,7 +1,7 @@
 # server
 server:
  port: 8888
- 
+
 # DB
 spring:
  datasource:
@@ -9,14 +9,13 @@ spring:
   username: PAPERHOUSE
   password: PAPERHOUSE
   driver-class-name : oracle.jdbc.OracleDriver
-  
+    
 # resource setting
  mvc:
   static-path-pattern: static/**
  resources:
   static-locations:  - classpath:/static/
   add-mappings: true
-
  
  mail: 
   host: smtp.gmail.com

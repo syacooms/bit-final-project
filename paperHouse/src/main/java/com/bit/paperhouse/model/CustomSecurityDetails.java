@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CustomSecurityDetails implements Serializable, UserDetails, OAuth2User {
 	
-	private int USER_SEQ;
+	private int USERSEQ;
 	private String EMAIL;
 	private String PWD;
 	private String NICKNAME;

@@ -24,6 +24,7 @@ public class UserService {
 	PasswordEncoder bCryptPasswordEncoder;
 
 
+	// 일반 회원가입
 	public void regi( UserDto dto ) {
 		System.out.print("UserService reig()");
 		String rPwd = dto.getPwd();
@@ -37,9 +38,10 @@ public class UserService {
 		 dao.regi(dto);
 	}
 	
+	// 소셜서비스를 이용한 화원가입
 	public void socialRegi( String email ) {
 		UserDto dto = new UserDto();
-		System.out.print("UserService kakaoRegi()");
+		System.out.print("UserService socialRegi()");
 		dto.setEmail(email);
 		String rPwd = (int)((Math.random()*899999) +100000) +"";
 		String securityPwd = bCryptPasswordEncoder.encode(rPwd);
@@ -53,11 +55,24 @@ public class UserService {
 	
 	}
 	
+	// 소셜로그인 시 체크
 	public UserDto findByEmail(String email) {
 		
 		return dao.findByEmail(email);
 	}
+
+	// 임시 비밀번호 설정
+	public void resetPassword(UserDto dto) {
+		
+		String rPwd = dto.getPwd();
+		String securityPwd = bCryptPasswordEncoder.encode(rPwd);
+		dto.setPwd(securityPwd);
+		
+		dao.resetPassword(dto);
+	}
 	
+	
+	// 닉네임 생성기
 	public String nickname() {
 		
 		List<String> name3 = Arrays.asList("김", "이", "박", "최", "정", "강", "조", "윤", "장", "임", "한", "오", "서", "신", "권", "황", "안", "송", "류", 

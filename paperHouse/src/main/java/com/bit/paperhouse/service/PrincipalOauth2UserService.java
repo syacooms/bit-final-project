@@ -18,6 +18,8 @@ import com.bit.paperhouse.provider.KakaoUserInfo;
 import com.bit.paperhouse.provider.NaverUserInfo;
 import com.bit.paperhouse.provider.OAuth2UserInfo;
 
+//소셜 로그인 
+
 @Service
 public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 

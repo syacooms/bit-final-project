@@ -16,15 +16,24 @@
           <div class="col-12">
             <div class="logo"><img src="/static/asset/P.H-logo.png"></div>
             <div class="util btns">
+            
+            
               <a
+              href="/user/login"
                 class="btn line"
                 sec:authorize="isAnonymous()"
                 th:href="@{/user/login}"
                 >로그인</a
               >
-              <a sec:authorize="isAuthenticated()" th:href="@{/user/logout}"
-                >로그아웃</a
-              >
+              <form id="logoutFrm" action="/user/logout" method="post">
+		<input type="hidden" th:name="${_csrf.parameterName}"
+						th:value="${_csrf.token}" />
+		       <a 
+		       class="btn line"
+		       sec:authorize="isAuthenticated()" 
+                onclick="logout()">로그아웃</a>
+              </form>
+             
 
               <a sec:authorize="hasRole('ROLE_MEMBER')" th:href="@{/user/info}"
                 >내정보</a
@@ -166,5 +175,9 @@
     $(window).on("beforeunload", function () {
       $(window).scrollTop(0);
     });
+    
+    function logout(){
+    	$("#logoutFrm").submit();
+    }
   </script>
 </html>

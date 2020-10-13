@@ -13,7 +13,7 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@MapperScan(basePackages="com.bit.paperhouse.dao")
+/* @MapperScan(basePackages="com.bit.paperhouse.dao") */
 @EnableTransactionManagement
 public class DatabaseConfig {
 	
