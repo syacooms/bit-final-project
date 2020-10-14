@@ -14,6 +14,8 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
 
+
+// 로그인 실패시 메시지 뿌려주는 곳
 @Component
 public class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler {
 

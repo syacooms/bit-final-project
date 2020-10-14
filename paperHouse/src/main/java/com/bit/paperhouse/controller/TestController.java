@@ -29,9 +29,12 @@ public class TestController {
 
 	@Autowired
 	UserService svc;
+	
+	
 	  // 메인 페이지
     @GetMapping("/")
     public String index() {
+    	System.out.println("index()");
         return "/index";
     }
     
@@ -51,26 +54,13 @@ public class TestController {
         return "/login";
     }
    
-    /*
-    @GetMapping("/user")
-    public @ResponseBody String user( @AuthenticationPrincipal CustomSecurityDetails customSecurityDetails) {
-    	System.out.println("CustomSecurityDetails : " + customSecurityDetails.getEMAIL());
-    	
-    	return "/loginAf";
-    }
-    */
-   
-    @GetMapping("/main")
-    public String socialLoginAf() {
-    	//CustomSecurityDetails user = (CustomSecurityDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    	//System.out.println("seq : " + user.getUSERSEQ());
-    	return "/main";
-    }
     
  // 소셜 로그인 결과 페이지
     @GetMapping("/user/login/oauth2/result")
-    public String oauth2Login() {
-    	System.out.println("oauth2Login result");
+    public String socialLoginAf() {
+    	//CustomSecurityDetails user = (CustomSecurityDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	//System.out.println("seq : " + user.getUSERSEQ());
+    	System.out.println("oauth2-socialLoginAf()");
     	
         return "/loginAf";
     }
@@ -78,12 +68,14 @@ public class TestController {
 	// 회원가입 페이지
 	@GetMapping("/user/join")
 	public String dispJoin() {
+		System.out.println("join()");
 		return "/join";
 	}
 
 	// 회원가입 처리
 	@PostMapping("/user/join")
 	public void execSignup(UserDto UserDto) {
+		System.out.println("joinAf()");
 		svc.regi(UserDto);
 		
 	}
@@ -98,21 +90,22 @@ public class TestController {
 	// 로그아웃 결과 페이지
 	@GetMapping("/user/logout/result")
 	public String dispLogout() {
+		System.out.println("logout");
 		return "redirect:/";
 	}
 	
 	// 임시 비밀번호 설정 페이지
 	@GetMapping("/user/passwordReset")
 	public String resetPasswordView() {
+		System.out.println("resetPasswordView()");
 		return "/passwordReset";
 	}
 	
 	// 임시 비밀번호 설정
 	@RequestMapping( value = "/user/resetPassword/result" , method = RequestMethod.POST)
 	public @ResponseBody void resetPassword( UserDto dto ) {
-		
-		
-		System.out.println("비밀번호 재설정");
+				
+		System.out.println("resetPassword()");
 		svc.resetPassword(dto);
 	}
 	

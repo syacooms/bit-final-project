@@ -33,8 +33,8 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 	// 함수 종료시 @AuthenticationPrincipal 어노테이션이 만들어진다.
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-		System.out.println("getClientRegistration:" + userRequest.getClientRegistration());
-		System.out.println("getAccessToken:" + userRequest.getAccessToken());
+	//	System.out.println("getClientRegistration:" + userRequest.getClientRegistration());
+	//	System.out.println("getAccessToken:" + userRequest.getAccessToken());
 		
 		OAuth2User oauth2User = super.loadUser(userRequest);
 		// 구글 로그인 버튼 클릭 -> 구글로그인창 -> 로그인을 완료 -> code를 리턴(OAuth-client라이브러리) -> AccessToken요청

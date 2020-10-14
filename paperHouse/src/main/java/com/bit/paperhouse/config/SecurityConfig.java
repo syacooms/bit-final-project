@@ -1,5 +1,6 @@
 package com.bit.paperhouse.config;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -7,13 +8,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.bit.paperhouse.service.CustomAuthenticationFailureHandler;
 import com.bit.paperhouse.service.PrincipalOauth2UserService;
@@ -26,6 +29,7 @@ import com.bit.paperhouse.service.PrincipalOauth2UserService;
 
 @Configuration
 @EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
+@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	
@@ -58,15 +62,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	        .logoutSuccessUrl("/")
 	        .deleteCookies("JSESSIONID")
 	        .permitAll()
-	        .and()
+	    .and()
 	        .oauth2Login()
 	        .defaultSuccessUrl("/user/login/oauth2/result")
 	        .loginPage("/user/login") 
 		    .userInfoEndpoint()
 		    .userService(principalOauth2UserService);  //구글 로그인 된 뒤 후처리가 필요함  Tip.코드x (엑세스토큰+사용자프로필정보 O)
 		
-		http.sessionManagement().maximumSessions(1).maxSessionsPreventsLogin(true).expiredUrl("/"); // 동시 로그인 불가
-		
+		http.sessionManagement()
+		    .invalidSessionUrl("/")
+		    .maximumSessions(1)
+		    .maxSessionsPreventsLogin(true)
+		    .expiredUrl("/")
+		    .sessionRegistry(sessionRegistry()); // 동시 로그인 불가	
 		
 	}
 
@@ -95,7 +103,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	    }
 	
 	
-	
+	@Bean
+	public SessionRegistry sessionRegistry() {
+		
+		return new SessionRegistryImpl(); 
+	}
 	
 	
 

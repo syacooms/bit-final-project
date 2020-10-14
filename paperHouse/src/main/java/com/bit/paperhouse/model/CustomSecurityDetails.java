@@ -10,15 +10,15 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
-import com.bit.paperhouse.dto.UserDto;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.EqualsAndHashCode;
+
 
 
 @Data
 @AllArgsConstructor
+@EqualsAndHashCode(of = "EMAIL")
 public class CustomSecurityDetails implements Serializable, UserDetails, OAuth2User {
 	
 	private int USERSEQ;
