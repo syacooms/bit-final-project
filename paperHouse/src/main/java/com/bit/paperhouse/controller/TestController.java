@@ -38,6 +38,13 @@ public class TestController {
         return "/index";
     }
     
+    // 메인 페이지
+    @GetMapping("/main")
+    public String main() {
+    	System.out.println("main()");
+        return "/main";
+    }
+    
     
     // 로그인 페이지
     @RequestMapping(value="/user/login", method = {RequestMethod.POST, RequestMethod.GET})
