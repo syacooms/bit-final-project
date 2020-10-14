@@ -36,7 +36,7 @@ public class MyLibarayController {
 		model.addAttribute("subScribe", subScribe);
 		model.addAttribute("followed", followed);
 		
-		return "/myLibaray";
+		return "/myLibarayTest";
 	}
 
 }

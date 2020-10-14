@@ -17,13 +17,15 @@ import com.bit.paperhouse.service.SearchService;
 @Controller
 public class SearchController {
 
+	final int VIEW_TOTAL_PAGE = 6;
+	
 	@Autowired
 	SearchService searchService;
 	
 	@RequestMapping(value = "/search")
 	public String search() {
 		System.out.println("SearchController search");
-		return "/search";
+		return "/searchTest";
 	}
 	
 	@ResponseBody
@@ -34,9 +36,14 @@ public class SearchController {
 			searchDto.setSort("ASC");
 		}
 		System.out.println("getSearchWlist");
-		System.out.println(searchDto.toString());
+		int np = searchDto.getNowPage();
+		int start = np*VIEW_TOTAL_PAGE+1;
+		int end = start+VIEW_TOTAL_PAGE-1;
+		
+		searchDto.setStart(start);
+		searchDto.setEnd(end);
+		
 		List<WriterDto> list = searchService.getSearchWriter(searchDto);
-		System.out.println(list);
 		return list;
 	}
 	
@@ -48,9 +55,13 @@ public class SearchController {
 			searchDto.setSort("DESC");
 		}
 		System.out.println("getSearchClist");
-		System.out.println(searchDto.toString());
+		int np = searchDto.getNowPage();
+		int start = np*VIEW_TOTAL_PAGE+1;
+		int end = start+VIEW_TOTAL_PAGE-1;
+		
+		searchDto.setStart(start);
+		searchDto.setEnd(end);
 		Map<String, Object> map = searchService.getSearchCont(searchDto);
-		System.out.println(map);
 		
 		return map;
 	}

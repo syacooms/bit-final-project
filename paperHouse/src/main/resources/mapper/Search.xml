@@ -3,33 +3,30 @@
 
 <mapper namespace="com.bit.paperhouse.dao.SearchRepository">
 <select id="getSearchWriter" parameterType="com.bit.paperhouse.dto.SearchDto" resultType="com.bit.paperhouse.dto.WriterDto">
-	SELECT * 
-	FROM WRITER 
-	WHERE 1=1 
+	SELECT ROW_NUMBER()OVER(ORDER BY WRITER_NAME ASC)AS RNUM, WRITER_SEQ, WRITER_NAME, INTRO, STATUS, HISTORY, PROFILE_FILE_ORIGINAL,PUBLIC_RELATIONS  
+	FROM (SELECT ROW_NUMBER()OVER(ORDER BY WRITER_NAME ASC)AS RNUM, WRITER_SEQ, WRITER_NAME, INTRO, STATUS, HISTORY, PROFILE_FILE_ORIGINAL,PUBLIC_RELATIONS 
+			FROM WRITER WHERE 1=1 
+		<if test="searchCategory != null and searchCategory != '' and searchCategory == 'writer'">
+		AND WRITER_NAME LIKE '%'||#{searchWord}||'%'
+		</if>)
 	
-	<!-- 1. 작가로 검색했을 경우 -->
-	<if test="searchCategory != null and searchCategory != '' and searchCategory == 'writer'">
-	AND WRITER_NAME LIKE '%'||#{searchWord}||'%'
-	ORDER BY ${searchSort} ${sort}
-	</if>
+	WHERE RNUM BETWEEN #{start} AND #{end}
 </select>
 
 <select id="getSearchCont" parameterType="com.bit.paperhouse.dto.SearchDto" resultType="com.bit.paperhouse.dto.ArticleDto">
-	SELECT *
-	FROM ARTICLE 
-	WHERE 1=1
+	SELECT ROW_NUMBER()OVER(ORDER BY ARTICLE_SEQ)AS RNUM, WRITER_SEQ, ARTICLE_SEQ, TITLE, CONT, UPLOAD_DATE, VIEWCOUNT, LIKES, CATEGORYS, FILE_ORIGINAL
+	FROM (SELECT ROW_NUMBER()OVER(ORDER BY ARTICLE_SEQ)AS RNUM, WRITER_SEQ, ARTICLE_SEQ, TITLE, CONT, UPLOAD_DATE, VIEWCOUNT, LIKES, CATEGORYS, FILE_ORIGINAL 
+			FROM ARTICLE 
+			WHERE 1=1
+			<if test="searchCategory != null and searchCategory != '' and searchCategory == 'writer'">
+			AND WRITER_SEQ IN (SELECT WRITER_SEQ FROM WRITER WHERE WRITER_NAME LIKE '%'||#{searchWord}||'%')
+			</if>
 	
-	<if test="searchCategory != null and searchCategory != '' and searchCategory == 'writer'">
-	AND WRITER_SEQ = (SELECT WRITER_SEQ FROM WRITER WHERE WRITER_NAME LIKE '%'||#{searchWord}||'%')
-	</if>
+			<if test="searchCategory != null and searchCategory != '' and searchCategory == 'title'">
+			AND TITLE LIKE '%'||#{searchWord}||'%'
+			</if>) 
 	
-	<!-- <if test="searchCategory != null and searchCategory != '' and searchCategory == 'category'">
-	AND CATEGORYS = #{searchWord}
-	</if> -->
-	
-	<if test="searchCategory != null and searchCategory != '' and searchCategory == 'title'">
-	AND TITLE LIKE '%'||#{searchWord}||'%'
-	</if>
+	WHERE RNUM BETWEEN #{start} AND #{end}
 	ORDER BY ${searchSort} ${sort}
 </select>
 </mapper>

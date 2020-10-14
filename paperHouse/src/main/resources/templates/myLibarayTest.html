@@ -23,7 +23,7 @@
 		</table>
 		<button type="button" id="subBtn">구독중</button>
 		<button type="button" id="folBtn">팔로우</button>
-		<div style="border: 1px solid;" id="divlib">
+		<div style="border: 1px solid;" id="divlibs">
 			<th:block th:each='sub:${listSubscribe}'>
 				<div style='display: inline-block;'>
 					<table border='1'>
@@ -43,7 +43,7 @@
 				</div>
 			</th:block>
 		</div>
-		<div style="border: 1px solid;" id="divlib">
+		<div style="border: 1px solid; display: none;" id="divlibf">
 			<th:block th:each='fol:${listFollow}'>
 				<div style='display: inline-block;'>
 					<table border='1'>
@@ -55,8 +55,8 @@
 							<td th:text='${fol.writerName}'></td>
 						</tr>
 						<tr>
-							<th>구독 만료일</th>
-							<td th:text='${sub.intro}'></td>
+							<th>작가 소개</th>
+							<td th:text='${fol.intro}'></td>
 						</tr>
 
 					</table>
@@ -67,10 +67,12 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#subBtn").click(function(){
-		
+		$("#divlibf").hide();
+		$("#divlibs").show();
 	});
 	$("#folBtn").click(function(){
-		
+		$("#divlibs").hide();
+		$("#divlibf").show();
 	});
 });
 
