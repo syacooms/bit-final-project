@@ -91,7 +91,7 @@ public class TestController {
 	@RequestMapping(value="/user/login/result", method = {RequestMethod.POST, RequestMethod.GET})
 	public String dispLoginResult() {
 		System.out.println("Login result");
-		return "/main";
+		return "redirect:/main";
 	}
 
 	// 로그아웃 결과 페이지
