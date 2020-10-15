@@ -25,7 +25,7 @@ public class SearchController {
 	@RequestMapping(value = "/search")
 	public String search() {
 		System.out.println("SearchController search");
-		return "/searchTest";
+		return "/search";
 	}
 	
 	@ResponseBody

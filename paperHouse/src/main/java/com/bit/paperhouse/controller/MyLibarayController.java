@@ -24,7 +24,7 @@ public class MyLibarayController {
 	public String getSubscribeW(Model model) {
 		System.out.println("MyLibarayController getSubscribeW");
 		CustomSecurityDetails user = (CustomSecurityDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
-		int user_seq = user.getUSER_SEQ();
+		int user_seq = user.getUSERSEQ();
 		
 		List<WriterDto> listSubscribe = myLibarayService.getSubscribeW(user_seq);
 		List<WriterDto> listFollow = myLibarayService.getFollow(user_seq);

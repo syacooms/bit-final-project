@@ -81,7 +81,7 @@ public class WriterController {
 		//user info
 		CustomSecurityDetails user = (CustomSecurityDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String nickname = user.getNICKNAME();
-		int userSeq = user.getUSER_SEQ();
+		int userSeq = user.getUSERSEQ();
 		
 		//작가상세페이지 data 조회
 		WriterDto dto = service.getWriterDetail(writerSeq);
