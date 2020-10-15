@@ -24,6 +24,7 @@ public class UserService {
 	PasswordEncoder bCryptPasswordEncoder;
 
 
+	// 일반 회원가입
 	public void regi( UserDto dto ) {
 		System.out.print("UserService reig()");
 		String rPwd = dto.getPwd();
@@ -37,9 +38,10 @@ public class UserService {
 		 dao.regi(dto);
 	}
 	
+	// 소셜서비스를 이용한 화원가입
 	public void socialRegi( String email ) {
 		UserDto dto = new UserDto();
-		System.out.print("UserService kakaoRegi()");
+		System.out.print("UserService socialRegi()");
 		dto.setEmail(email);
 		String rPwd = (int)((Math.random()*899999) +100000) +"";
 		String securityPwd = bCryptPasswordEncoder.encode(rPwd);
@@ -53,11 +55,23 @@ public class UserService {
 	
 	}
 	
+	// 소셜로그인 시 체크
 	public UserDto findByEmail(String email) {
-		
+		System.out.print("findByEmail()");
 		return dao.findByEmail(email);
 	}
+
+	// 임시 비밀번호 설정
+	public void resetPassword(UserDto dto) {
+		System.out.print("resetPassword()");
+		String rPwd = dto.getPwd();
+		String securityPwd = bCryptPasswordEncoder.encode(rPwd);
+		dto.setPwd(securityPwd);
+		
+		dao.resetPassword(dto);
+	}
 	
+	// 닉네임 생성기
 	public String nickname() {
 		
 		List<String> name3 = Arrays.asList("김", "이", "박", "최", "정", "강", "조", "윤", "장", "임", "한", "오", "서", "신", "권", "황", "안", "송", "류", 
@@ -74,7 +88,7 @@ public class UserService {
 				"려", "균", "묵", "송", "욱", "휴", "언", "령", "섬", "들", "견", "추", "걸", "삼", "열", "웅", "분", "변", "양", "출", "타", "흥", "겸", "곤", "번", "식", "란", "더", "손", "술", "훔", "반", "빈", 
 				"실", "직", "흠", "흔", "악", "람", "뜸", "권", "복", "심", "헌", "엽", "학", "개", "롱", "평", "늘", "늬", "랑", "얀", "향", "울", "련"); 
 		
-		List<String> name5 = Arrays.asList("달리는","날개달린","기분나쁜","기분좋은","신바람나는","상쾌한","짜릿한","그리운","자유로운","서운한","다그닥다그닥","꿀꿀","드르렁","뿡","멍멍","야옹야옹","삐약삐약", "와장창","목소리 큰","친구 한명인",
+		List<String> name5 = Arrays.asList("행복한","원빈동생","역시","달리는","날개달린","기분나쁜","기분좋은","신바람나는","상쾌한","짜릿한","그리운","자유로운","서운한","다그닥다그닥","꿀꿀","드르렁","뿡","멍멍","야옹야옹","삐약삐약", "와장창","목소리 큰","친구 한명인",
 				"킹카","퀸카","냉정한","부정적인","독서왕","출석왕", "우쭈쭈","으라차차","파닥파닥","울적한","비참한","조용한","말이없는","위축되는","긴장되는","두려운","당당한","배부른","수줍은","말많은","창피한","멋있는", "열받은","심심한","잘생긴","이쁜","시끄러운");
        String num = (int)((Math.random()*899999) +100000) +"";
 		Collections.shuffle(name3); Collections.shuffle(name4); Collections.shuffle(name5);//return name.get(0) + name2.get(0) + name2.get(1);

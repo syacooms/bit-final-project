@@ -1,34 +1,49 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	>
+<html
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
   <head>
-  	<title>종이의 집</title>
-  	<th:block th:replace="fragment/head"></th:block>
+    <title>종이의 집</title>
+    <th:block th:replace="fragment/head"></th:block>
   </head>
   <body class="landing">
     <!-- header -->
-    <header class="fixed">
+    <header class="index-header">
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <div class="logo"><img src="/static/asset/P.H-logo.png"></div>
+            <div class="logo"><img src="/static/asset/P.H-logo.png" /></div>
             <div class="util btns">
+<<<<<<< HEAD
+            
+            
               <a
+              href="/user/login"
                 class="btn line"
                 sec:authorize="isAnonymous()"
                 th:href="@{/user/login}"
                 >로그인</a
               >
-              <a sec:authorize="isAuthenticated()" th:href="@{/user/logout}"
-                >로그아웃</a
-              >
+              <form id="logoutFrm" action="/user/logout" method="post">
+		<input type="hidden" th:name="${_csrf.parameterName}"
+						th:value="${_csrf.token}" />
+		       <a 
+		       class="btn line"
+		       sec:authorize="isAuthenticated()" 
+                onclick="logout()">로그아웃</a>
+              </form>
+             
 
               <a sec:authorize="hasRole('ROLE_MEMBER')" th:href="@{/user/info}"
                 >내정보</a
               >
+=======
+              <a class="btn line" sec:authorize="isAnonymous()" th:href="@{/user/login}">로그인</a>
+              <a sec:authorize="hasRole('ROLE_MEMBER')" th:href="@{/user/info}">내정보</a>
+>>>>>>> 62606ae1a38c589391399c484d40c680fc2ef9e5
               <a class="btn color" href="#">"종이의 집" 제작자들</a>
             </div>
           </div>
@@ -161,10 +176,18 @@
       </section>
     </main>
   </body>
+<<<<<<< HEAD
   <script src="/static/js/util.js"></script>
   <script>
     $(window).on("beforeunload", function () {
       $(window).scrollTop(0);
     });
+    
+    function logout(){
+    	$("#logoutFrm").submit();
+    }
   </script>
+=======
+  <script src="/static/js/index.js"></script>
+>>>>>>> 62606ae1a38c589391399c484d40c680fc2ef9e5
 </html>

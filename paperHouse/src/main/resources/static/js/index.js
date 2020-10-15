@@ -1,4 +1,7 @@
 $(function () {
+	$(window).on("beforeunload", function () {
+	  $(window).scrollTop(0);
+	});
   if ($("body").hasClass("landing")) {
     $(window).scroll(function () {
       var windowScroll = $(window).scrollTop();

@@ -17,5 +17,7 @@ public interface UserRepository {
 	public CustomSecurityDetails findByid( String username );
 	
 	public UserDto findByEmail( String email );
+	
+	public void resetPassword(UserDto dto);
 
 }

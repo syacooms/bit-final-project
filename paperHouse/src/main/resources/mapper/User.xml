@@ -20,4 +20,12 @@
    WHERE EMAIL = #{email}
 </select>
 
+<select id="resetPassword" parameterType="com.bit.paperhouse.dto.UserDto">
+  UPDATE MEMBER
+  SET PWD = #{pwd}
+  WHERE EMAIL = #{email}
+</select> 
+
+
+
 </mapper>
