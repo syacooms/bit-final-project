@@ -51,8 +51,6 @@ public class WriterController {
 			HttpServletRequest req
 			) {
 		
-		//String cc = new HttpServletRequestWrapper(req).getRealPath("/");
-		//uploadFileDir = cc + uploadFileDir;
 		
 		String profileOriginalname = profile.getOriginalFilename();
 		dto.setProfileFileSystem(profileOriginalname);
@@ -71,7 +69,6 @@ public class WriterController {
 		String newsaveTextFile = UtilEx.saveFile(newWriting,UPLOADPATH);
 		dto.setFileOriginal(newsaveTextFile);
 		
-		
 		System.out.println(dto);
 		service.addWriterApply(dto);
 		
@@ -81,22 +78,17 @@ public class WriterController {
 	@GetMapping("/writer/detail")
 	public String writerDetail(HttpServletRequest req, int writerSeq, Model model) throws IOException {
 		
+		//user info
 		CustomSecurityDetails user = (CustomSecurityDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String nickname = user.getNICKNAME();
 		int userSeq = user.getUSER_SEQ();
 		
-		//상세페이지 조회...
+		//작가상세페이지 data 조회
 		WriterDto dto = service.getWriterDetail(writerSeq);
-		
-		
 		
 		//경로
 		String path = req.getSession().getServletContext().getRealPath("/");
 		String realPath = path + uploadFileDir;
-		
-		
-		
-		
 		
 		//인코딩할 이미지
 		String imageEncoding = realPath + dto.getProfileFileOriginal();
@@ -107,29 +99,17 @@ public class WriterController {
 		String extension = dto.getProfileFileOriginal().substring(index+1);
 		
 		//이미지 인코딩
-		//String incoding = UtilEx.incoding("");
-
-		
 		String encodedUrl = Base64.getUrlEncoder().encodeToString(imageEncoding.getBytes());
-		//System.out.println("11111111111111" + encodedUrl);
 		
-		//인코딩
-		//byte[] imageBytes = UtilEx.extractBytes(imageEncoding);
-		//byte[] baseIncodingBytes = UtilEx.encodingBase64(imageBytes);
 		
-		//String gggggg = "file:///C:/Users/bxoo/Desktop/bit-final-project/paperHouse/src/main/webapp/upload/10e53b0a-ee4e-4df2-83ad-f68d0872d32a-profileDefault.png";
-		
-		//StringBuffer img = new StringBuffer("data:image/" + extension + ";base64," + encodedUrl);
+		//base64 인코딩 이미지
+		StringBuffer img = new StringBuffer("data:image/" + extension + ";base64," + encodedUrl);
 		System.out.println("반환된 img 값" + encodedUrl);
-		
-		//System.out.println("반환된 img 값 : " + gggggg);
-		
 		
 		model.addAttribute("nickname", nickname);	
 		model.addAttribute("userSeq", userSeq);
 		model.addAttribute("img", encodedUrl);	
 		model.addAttribute("list", dto);	
-		
 		
 		return "/writerDetail";
 	}

@@ -12,7 +12,6 @@ import com.bit.paperhouse.dto.WriterDto;
 public interface MyPageRepository {
 	
     public List<WriterDto> getWriterNames(int userSeq);
-    public int selectStatus(WriterDto dto);
-    public void updateEndSub(int userSeq , String endDate);
+    public int selectStatus(int userSeq);
  
 }

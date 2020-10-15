@@ -19,17 +19,8 @@ public class MypageService {
 		return list;
 	}
 
-	public int selectStatus(WriterDto dto) {
-		int status = dao.selectStatus(dto);
+	public int selectStatus(int userSeq) {
+		int status = dao.selectStatus(userSeq);
 		return status;
 	}
-	
-	public void updateEndSub(int userSeq , String endDate) {
-		dao.updateEndSub(userSeq,endDate);
-	}
-
-	
-	
-	
-
 }
