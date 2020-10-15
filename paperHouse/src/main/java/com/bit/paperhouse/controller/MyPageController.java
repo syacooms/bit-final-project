@@ -31,7 +31,7 @@ public class MyPageController {
 	public String mypage(Model model) {
 		CustomSecurityDetails user = (CustomSecurityDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String nickname = user.getNICKNAME();
-		int userSeq = user.getUSER_SEQ();
+		int userSeq = user.getUSERSEQ();
 		
 		//DB NAME,DATE 조회
 		List<WriterDto> getNamesAndDates = service.getWriterNames(userSeq);
