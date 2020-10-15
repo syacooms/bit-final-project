@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-</head>
-<body>
+<html
+  lang="ko"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorator="layout/layout"
+>
+<main class="main main-common" layout:fragment="content">
 
 <input type="hidden" id="nickname" th:value="${nickname}"/>
 <input type="hidden" id="userSeq" th:value="${userSeq}"/>
@@ -57,11 +58,12 @@
 <button id="purchase">결제하기</button>
 
 
-<!--결제 -->
-<script type="text/javascript">
+<th:block layout:fragment="script">
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
+<script type="text/javascript">
 let id=$("#nickname").val();
-console.log(id);
+console.log(fff);
 let userSeq=$("#userSeq").val();
 let writerSeq=$("#writerSeq").val();
 
@@ -127,7 +129,14 @@ $("#purchase").click(function(){
 	    //alert(msg);
 	});
 });
-</script>
 
-</body>
+</script>
+</th:block>
+
+</main>
+
+
+
+
+
 </html>
