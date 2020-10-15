@@ -20,7 +20,7 @@ public class MyLibarayController {
 	@Autowired
 	MyLibarayService myLibarayService;
 	
-	@GetMapping("/myLibaray")
+	@GetMapping("/myLibrary")
 	public String getSubscribeW(Model model) {
 		System.out.println("MyLibarayController getSubscribeW");
 		CustomSecurityDetails user = (CustomSecurityDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
@@ -36,7 +36,7 @@ public class MyLibarayController {
 		model.addAttribute("subScribe", subScribe);
 		model.addAttribute("followed", followed);
 		
-		return "/myLibarayTest";
+		return "/myLibrary";
 	}
 
 }
