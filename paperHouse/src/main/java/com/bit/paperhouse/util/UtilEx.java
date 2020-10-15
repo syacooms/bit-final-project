@@ -90,7 +90,6 @@ public class UtilEx {
 		
 	}
 	
-<<<<<<< HEAD
 	public static List<Integer> getFollowed(String follow) {
 		String followed[] = follow.split("-");
 		List<Integer> list = new ArrayList<Integer>();
@@ -101,7 +100,6 @@ public class UtilEx {
 		return list;
 	}
 	
-=======
 	public static String saveFile(MultipartFile file,String path) {
 		
 		UUID uuid = UUID.randomUUID();
@@ -126,5 +124,4 @@ public class UtilEx {
 	    
 	    return saveName;
 	}
->>>>>>> writer-fnc
 }

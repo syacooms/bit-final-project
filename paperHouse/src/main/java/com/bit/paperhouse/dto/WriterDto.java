@@ -17,10 +17,7 @@ public class WriterDto implements Serializable {
 	private int userSeq;
 	private int writerSeq;
 	private String writerName;
-<<<<<<< HEAD
 	private String email;
-=======
->>>>>>> writer-fnc
 	private String intro;
 	private String history;
 	private String profileFileOriginal;
