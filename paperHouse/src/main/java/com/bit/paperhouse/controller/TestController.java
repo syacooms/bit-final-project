@@ -62,7 +62,11 @@ public class TestController {
     }
    
     
+<<<<<<< HEAD
  // 소셜 로그인 결과 페이지
+=======
+    // 로그인 결과 페이지
+>>>>>>> 62606ae1a38c589391399c484d40c680fc2ef9e5
     @GetMapping("/user/login/oauth2/result")
     public String socialLoginAf() {
     	//CustomSecurityDetails user = (CustomSecurityDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
