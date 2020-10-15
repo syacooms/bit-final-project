@@ -1,20 +1,11 @@
 # server
 server:
-<<<<<<< HEAD
  port: 8888 
  servlet:   session:     timeout: 7200
-
-=======
-  port: 8888
-  
-
-
 
 file:
  upload: 
   directory: upload\
- 
->>>>>>> writer-fnc
 # DB
 spring:
  datasource:
