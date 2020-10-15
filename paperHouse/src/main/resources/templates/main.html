@@ -8,9 +8,6 @@
 >
   <head>
     <title>종이의 집</title>
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="http://lab.alexcican.com/set_cookies/cookie.js"></script>
-      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </head>
   <body>
    
@@ -18,8 +15,7 @@
   </head>
   <body>
   <form id="logout" action="/user/logout" method="POST">
-  		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-	   <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
+  		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>	   
 	</form>
     <header class="main-header">
       <div class="container">
@@ -287,6 +283,7 @@
       </div>
     </footer>
   </body>
+  
   <script>
     const colors = new Array(
       (color01 = new Array([213, 223, 233], [217, 207, 228])),
@@ -348,5 +345,7 @@
         slidesToShow: 4,
       });
     });
+
+    
   </script>
 </html>

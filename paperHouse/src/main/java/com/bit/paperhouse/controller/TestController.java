@@ -1,27 +1,20 @@
 package com.bit.paperhouse.controller;
 
-import java.util.HashMap;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+
 
 import com.bit.paperhouse.dto.UserDto;
-import com.bit.paperhouse.model.CustomSecurityDetails;
+
 import com.bit.paperhouse.service.UserService;
 
 @Controller
@@ -35,7 +28,9 @@ public class TestController {
     @GetMapping("/")
     public String index() {
     	System.out.println("index()");
-        return "/index";
+
+   
+       return "/index";
     }
     
     // 메인 페이지
@@ -115,6 +110,7 @@ public class TestController {
 		System.out.println("resetPassword()");
 		svc.resetPassword(dto);
 	}
+
 	
 
 	
