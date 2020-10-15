@@ -66,7 +66,20 @@
                 <div class="best-writer">
                   <div class="writer-title">종이의 집 베스트 작가</div>
                   <div class="writer-grid clearfix">
+                  
+                  <th:block th:each="bestWriter:${bestWriters}">
                     <div class="writer">
+                      <div class="writer-photo">
+                      <a href='#' onclick='writerDetail(${bestWriter.writerSeq})'>
+                        <img src="/static/asset/mush.jpg" alt="" />
+                      </a>
+                      </div>
+                      <div class="writer-desc" th:text='${bestWriter.intro}'></div>
+                      <div class="writer-name" th:text='${bestWriter.writerName}'></div>
+                    </div>
+                  </th:block>
+                  
+                    <!-- <div class="writer">
                       <div class="writer-photo">
                         <img src="/static/asset/mush.jpg" alt="" />
                       </div>
@@ -93,24 +106,32 @@
                       </div>
                       <div class="writer-desc">알려좀주쇼 내가 어디로</div>
                       <div class="writer-name">머쉬베놈~</div>
-                    </div>
-                    <div class="writer">
-                      <div class="writer-photo">
-                        <img src="/static/asset/mush.jpg" alt="" />
-                      </div>
-                      <div class="writer-desc">알려좀주쇼 내가 어디로</div>
-                      <div class="writer-name">머쉬베놈~</div>
-                    </div>
+                    </div> -->
                   </div>
                   <div class="more-btn writer-more">
-                    <span>더 보기</span>
+                    <span id="write-more">더 보기</span>
                   </div>
                 </div>
 
                 <div class="best-article">
                   <div class="article-title">종이의 집 베스트 글</div>
                   <div class="article-grid clearfix">
+                  
+                  <th:block th:each='bestArticle:${bestArticles}'>
                     <div class="article">
+                      <div class="article-photo">
+                      <a href='#' onclick='writerDetail(${bestArticle.writerSeq})'>
+                        <img src="/static/asset/a.jpg" alt="" />
+                      </a>
+                      </div>
+                      <div class="article-name" th:text="${bestArticle.title}"></div>
+                      <div class="article-desc" th:text='|조회수  ${bestArticle.viewCount}|'></div>
+                      <div class="article-desc" th:text='|등록일   ${bestArticle.uploadDate}|'></div>
+                      <div class="article-desc" th:text='${bestArticle.categorys}'></div>
+                    </div>
+                  </th:block> 
+                    
+                    <!-- <div class="article">
                       <div class="article-photo">
                         <img src="/static/asset/a.jpg" alt="" />
                       </div>
@@ -151,17 +172,10 @@
                       </div>
                       <div class="article-name">주식개미</div>
                       <div class="article-desc">베르나르 베르베르</div>
-                    </div>
-                    <div class="article">
-                      <div class="article-photo">
-                        <img src="/static/asset/a.jpg" alt="" />
-                      </div>
-                      <div class="article-name">주식개미</div>
-                      <div class="article-desc">베르나르 베르베르</div>
-                    </div>
+                    </div> -->
                   </div>
                   <div class="more-btn article-more">
-                    <span>더 보기</span>
+                    <span id="article-more">더 보기</span>
                   </div>
                 </div>
               </div>
@@ -202,7 +216,73 @@
     </footer>
   </body>
   <script type="text/javascript">
+  let nowPage1 = 0;
+  let nowPage2 = 0;
     $(document).ready(function () {
+     $("#write-more").click(function(){
+    	 nowPage1 = nowPage1 + 1;
+    	$.ajax({
+    		url:'/moreWriter',
+    		type:'get',
+    		data:{'nowPage':nowPage1},
+    		success:function(data){
+    			let addlist="";
+    			if(data != ""){
+    				$.each(data,function(i, writer){
+        				addlist +="<div class='writer'>"
+                          		+"<div class='writer-photo'>"
+                          		+"<a href='#' onclick='writerDetail("+writer.writerSeq+")'>"
+                            	+"<img src='/static/asset/mush.jpg' alt='' /></a></div>"
+                          		+"<div class='writer-desc'>"+writer.intro+"</div>"
+                          		+"<div class='writer-name'>"+writer.writerName+"</div></div>";
+        			});
+    				$(".writer-grid clearfix").after(addlist);
+    			}else{
+    				alert('더이상 결과가 없습니다');
+    				$("#write-more").hide();
+    			}
+    			
+    		},
+    		error:function(){
+    			alert('error');
+    		}
+    	}); 
+     });
+    	
+     $("#article-more").click(function(){
+    	 nowPage2 = nowPage2 + 1;
+    	$.ajax({
+    		url:'/moreArticle',
+    		type:'get',
+    		data:{'nowPage':nowPage2},
+    		success:function(data){
+    			let addlist="";
+    			if(data != ""){
+    				$.each(data,function(i, article){
+        				addlist +="<div class='article'>"
+                          		+"<div class='article-photo'>"
+                          		+"<a href='#' onclick='writerDetail("+article.writerSeq+")'>"
+                            	+"<img src='/static/asset/a.jpg' alt='' /></a></div>"
+                          		+"<div class='article-name'>"+article.title+"</div>"
+                          		+"<div class='article-desc'>조회수  "+article.viewCount+"</div>"
+                          		+"<div class='article-desc'>등록일  "+article.uploadDate+"</div>"
+                          		+"<div class='article-desc'>"+article.categorys+"</div>"
+                          		+"</div>";
+        			});
+    				$(".article-grid").append(addlist);
+    			}else{
+    				alert('더이상 결과가 없습니다');
+    				$("#article-more").hide();
+    			}
+    			
+    		},
+    		error:function(){
+    			alert('error');
+    		}
+    	}); 
+     });
+    	
+    	
       $("#searchButton").click(function () {
         let formData = $("#searchForm").serialize();
 

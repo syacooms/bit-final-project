@@ -49,5 +49,12 @@ public class SearchService {
 		return map;
 	}
 	
+	public List<WriterDto> getBestWriter(SearchDto searchDto) {
+		return searchRepository.getBestWriter(searchDto);
+	}
+	
+	public List<ArticleDto> getBestArticle(SearchDto searchDto) {
+		return searchRepository.getBestArticle(searchDto);
+	}
 	
 }

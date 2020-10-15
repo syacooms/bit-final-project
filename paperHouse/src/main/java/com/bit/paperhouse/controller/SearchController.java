@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,13 +19,29 @@ import com.bit.paperhouse.service.SearchService;
 public class SearchController {
 
 	final int VIEW_TOTAL_PAGE = 6;
+	final int VIEW_MORE_WRITER = 5;
+	final int VIEW_MORE_ARTICLE = 7;
 	
 	@Autowired
 	SearchService searchService;
 	
 	@RequestMapping(value = "/search")
-	public String search() {
+	public String search(SearchDto searchDto, Model model) {
 		System.out.println("SearchController search");
+		if(searchDto.getNowPage() == 0) {
+			SearchDto sd = new SearchDto();
+			sd.setStart(1);
+			sd.setEnd(5);
+			List<WriterDto> bestWriters = searchService.getBestWriter(sd);
+			
+			sd.setStart(1);
+			sd.setEnd(7);
+			List<ArticleDto> bestArticles = searchService.getBestArticle(sd);
+			
+			model.addAttribute("bestWriters", bestWriters);
+			model.addAttribute("bestArticles", bestArticles);
+		}
+		
 		return "/search";
 	}
 	
@@ -64,5 +81,32 @@ public class SearchController {
 		Map<String, Object> map = searchService.getSearchCont(searchDto);
 		
 		return map;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/moreWriter", method = RequestMethod.GET)
+	public List<WriterDto> moreWriter(SearchDto searchDto){
+		int np = searchDto.getNowPage();
+		System.out.println("wirter:"+np);
+		int start = np * VIEW_MORE_WRITER+1;
+		int end = start + VIEW_MORE_WRITER -1;
+		searchDto.setStart(start);
+		searchDto.setEnd(end);
+		
+		return searchService.getBestWriter(searchDto);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/moreArticle", method = RequestMethod.GET)
+	public List<ArticleDto> moreArticle(SearchDto searchDto){
+		int np = searchDto.getNowPage();
+		System.out.println("Article:"+np);
+		int start = np * VIEW_MORE_ARTICLE+1;
+		int end = start + VIEW_MORE_ARTICLE -1;
+		searchDto.setStart(start);
+		searchDto.setEnd(end);
+		List<ArticleDto> list = searchService.getBestArticle(searchDto);
+		System.out.println(list);
+		return searchService.getBestArticle(searchDto);
 	}
 }

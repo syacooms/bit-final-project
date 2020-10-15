@@ -15,5 +15,6 @@ public interface SearchRepository {
 
 	public List<WriterDto> getSearchWriter(SearchDto searchDto);
 	public List<ArticleDto> getSearchCont(SearchDto searchDto);
-	
+	public List<WriterDto> getBestWriter(SearchDto searchDto);
+	public List<ArticleDto> getBestArticle(SearchDto searchDto);
 }
