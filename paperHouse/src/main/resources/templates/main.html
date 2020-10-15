@@ -17,6 +17,10 @@
     <th:block th:replace="fragment/head"></th:block>
   </head>
   <body>
+  <form id="logout" action="/user/logout" method="POST">
+  		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+	   <input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
+	</form>
     <header class="main-header">
       <div class="container">
         <div class="row">
@@ -37,7 +41,7 @@
                 <a class="alert" href="#">
                   <span class="iconify" data-icon="codicon:bell" data-inline="false"></span>
                 </a>
-                <a class="logout" sec:authorize="isAuthenticated()" th:href="@{/user/logout}">로그아웃</a>
+                <a class="logout" onclick="document.getElementById('logout').submit();">로그아웃</a>
               </div>
             </div>
           </div>
