@@ -1,41 +1,53 @@
 package com.bit.paperhouse.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.bit.paperhouse.dto.WriterDto;
+import com.bit.paperhouse.model.CustomSecurityDetails;
 import com.bit.paperhouse.service.MypageService;
 import com.bit.paperhouse.util.UtilEx;
+
+
 
 
 @Controller
 public class MyPageController {
 
+	
 	@Autowired
 	MypageService service;
 	
 	//mypage 메인
 	@GetMapping("/mypage")
 	public String mypage(Model model) {
+		CustomSecurityDetails user = (CustomSecurityDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String nickname = user.getNICKNAME();
+		int userSeq = user.getUSER_SEQ();
 		
-		//session -> seq 대입..
 		//DB NAME,DATE 조회
-		List<WriterDto> getNamesAndDates = service.getWriterNames(new WriterDto(1, 0, null, null, null, null, null, 0, null, null));
+		List<WriterDto> getNamesAndDates = service.getWriterNames(userSeq);
+		
+		//독자,작가 구분
+		int status = service.selectStatus(userSeq);
 		
 		System.out.println("리스트:" + getNamesAndDates.toString());
 		
 		//남은 구독일 수 조회하는 함수
 		HashMap<String, Integer> map = UtilEx.getSubscribes(getNamesAndDates);
 		
-		model.addAttribute("map" , map);
+		model.addAttribute("status",status);
+		model.addAttribute("map",map);
+		model.addAttribute("userSeq",userSeq);
+		model.addAttribute("nickname",nickname);
 		
         return "mypage";
     }
@@ -69,4 +81,5 @@ public class MyPageController {
 	public String logout() {
         return "logout";
     }
+	
 }

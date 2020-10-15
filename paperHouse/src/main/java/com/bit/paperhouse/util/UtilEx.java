@@ -1,19 +1,39 @@
 package com.bit.paperhouse.util;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Base64;
+import java.util.Base64.Decoder;
+import java.util.Base64.Encoder;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
+import java.util.UUID;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.bit.paperhouse.dto.WriterDto;
 import com.bit.paperhouse.service.MypageService;
+
+import lombok.experimental.SuperBuilder;
+
 
 public class UtilEx {
 	
@@ -70,6 +90,7 @@ public class UtilEx {
 		
 	}
 	
+<<<<<<< HEAD
 	public static List<Integer> getFollowed(String follow) {
 		String followed[] = follow.split("-");
 		List<Integer> list = new ArrayList<Integer>();
@@ -80,4 +101,30 @@ public class UtilEx {
 		return list;
 	}
 	
+=======
+	public static String saveFile(MultipartFile file,String path) {
+		
+		UUID uuid = UUID.randomUUID();
+	    String saveName = uuid + "-" + file.getOriginalFilename();
+	    
+	    //절대 경로
+	    //String UPLOAD_PATH = "C:\\Users\\bxoo\\Desktop\\bit-final-project\\paperHouse\\src\\main\\resources\\static\\upload";
+	   
+	    System.out.println("업로드패쓰 : " + path);
+	    
+	    //UPLOAD_PATH
+	    File saveFile = new File(path + saveName);
+	    
+	    
+	    try {
+			file.transferTo(saveFile);
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	    
+	    return saveName;
+	}
+>>>>>>> writer-fnc
 }
