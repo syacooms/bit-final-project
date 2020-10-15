@@ -5,10 +5,7 @@
   xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 >
-  <head>
-    <title>종이의 집</title>
-    <th:block th:replace="fragment/head"></th:block>
-  </head>
+  <head th:replace="fragments/config :: configFragment"></head>
   <body class="landing">
     <!-- header -->
     <header class="index-header">
@@ -17,7 +14,6 @@
           <div class="col-12">
             <div class="logo"><img src="/static/asset/P.H-logo.png" /></div>
             <div class="util btns">
-
               <a class="btn line" sec:authorize="isAnonymous()" th:href="@{/user/login}">로그인</a>
               <a sec:authorize="hasRole('ROLE_MEMBER')" th:href="@{/user/info}">내정보</a>
               <a class="btn color" href="#">"종이의 집" 제작자들</a>
@@ -151,12 +147,10 @@
       </section>
     </main>
   </body>
-  <script src="/static/js/util.js"></script>
   <script>
     $(window).on("beforeunload", function () {
       $(window).scrollTop(0);
     });
-    
   </script>
   <script src="/static/js/index.js"></script>
 </html>
