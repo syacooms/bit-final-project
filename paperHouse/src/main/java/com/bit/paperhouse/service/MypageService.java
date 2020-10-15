@@ -9,24 +9,21 @@ import com.bit.paperhouse.dao.MyPageRepository;
 import com.bit.paperhouse.dto.WriterDto;
 
 @Service
-public class MypageService implements MyPageRepository {
+public class MypageService {
 
 	@Autowired
 	MyPageRepository dao;
 	
-	@Override
-	public List<WriterDto> getWriterNames(WriterDto dto) {
-		List<WriterDto> list = dao.getWriterNames(dto);
+	public List<WriterDto> getWriterNames(int userSeq) {
+		List<WriterDto> list = dao.getWriterNames(userSeq);
 		return list;
 	}
 
-	@Override
 	public int selectStatus(WriterDto dto) {
 		int status = dao.selectStatus(dto);
 		return status;
 	}
 	
-	@Override
 	public void updateEndSub(int userSeq , String endDate) {
 		dao.updateEndSub(userSeq,endDate);
 	}

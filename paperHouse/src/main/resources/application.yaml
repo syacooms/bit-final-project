@@ -1,6 +1,13 @@
 # server
 server:
- port: 8888
+  port: 8888
+  
+
+
+
+file:
+ upload: 
+  directory: upload\
  
 # DB
 spring:

@@ -16,11 +16,14 @@ public class WriterDto implements Serializable {
 
 	private int userSeq;
 	private int writerSeq;
-	private String name;
-	private String email;
+	private String writerName;
 	private String intro;
-	private String fileOriginalName;
+	private String history;
+	private String profileFileOriginal;
+	private String profileFileSystem;
+	private String fileOriginal;
 	private String fileSystem;
+	private String publicRelations;
 	private int status;
 	
 	//user subscribe dto 대신 writerDto 사용
