@@ -8,20 +8,6 @@
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
   layout:decorator="layout/layout"
 >
-<<<<<<< HEAD
-  <head>
-    <title>종이의 집</title>
-  </head>
-  <body>
-   
-    <th:block th:replace="fragment/head"></th:block>
-  </head>
-  <body>
-  <form id="logout" action="/user/logout" method="POST">
-  		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>	   
-	</form>
-    <header class="main-header">
-=======
   <main class="main main-common" layout:fragment="content">
     <form id="logout" action="/user/logout" method="POST">
       <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
@@ -29,7 +15,6 @@
     </form>
     <div class="main-banner">
       <div id="bg-wrap"></div>
->>>>>>> e4fe0938bc8f8e7bd5d293a5c258b72815e9a49c
       <div class="container">
         <div class="row">
           <div class="col-12">
@@ -246,47 +231,6 @@
           </div>
         </div>
       </div>
-<<<<<<< HEAD
-    </main>
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="title">종이의 집</div>
-            <ul class="footer-menu clearfix">
-              <li><a href="#">고객센터</a></li>
-              <li><a href="#">이용약관</a></li>
-              <li><a href="#">개인정보처리방침</a></li>
-              <li><a href="#">작가신청방법</a></li>
-              <li><a href="#">만든이들</a></li>
-            </ul>
-            <p class="copyright">Copyright © 2020 종이의 집 All Rights Reserved.</p>
-          </div>
-        </div>
-      </div>
-    </footer>
-  </body>
-  
-  <script>
-    const colors = new Array(
-      (color01 = new Array([213, 223, 233], [217, 207, 228])),
-      (color02 = new Array([217, 207, 228], [233, 213, 228])),
-      (color03 = new Array([233, 213, 228], [221, 228, 207])),
-      (color04 = new Array([221, 228, 207], [235, 219, 209])),
-      (color05 = new Array([235, 219, 209], [222, 202, 210])),
-      (color06 = new Array([222, 202, 210], [221, 216, 231])),
-      (color07 = new Array([221, 216, 231], [237, 233, 194]))
-    );
-    function bannerBg() {
-      $(".banner-wrap").on("init", function (event, slick, currentSlide, nextSlide) {
-        slick.$slides.each(function (e) {
-          // bg div create
-          var div = document.createElement("div");
-          div.classList.add("gradient" + e);
-          var bgWrap = document.getElementById("bg-wrap");
-          div.style.background = "linear-gradient(90deg, rgb(" + colors[e][0] + ") 0%, rgb(" + colors[e][1] + ") 100%)";
-          bgWrap.appendChild(div);
-=======
     </div>
   </main>
   <th:block layout:fragment="script">
@@ -317,7 +261,6 @@
             touchMove: false,
             draggable: false,
           });
->>>>>>> e4fe0938bc8f8e7bd5d293a5c258b72815e9a49c
         });
       }
       $(document).ready(function () {
@@ -352,20 +295,6 @@
           slidesToShow: 4,
         });
       });
-<<<<<<< HEAD
-      // grid slick
-      $(".main .main-section.monthly-recommend .weekly-grid").slick({
-        infinite: false,
-        arrows: false,
-        dots: false,
-        slidesToShow: 4,
-      });
-    });
-
-    
-  </script>
-=======
     </script>
   </th:block>
->>>>>>> e4fe0938bc8f8e7bd5d293a5c258b72815e9a49c
 </html>
