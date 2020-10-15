@@ -76,6 +76,7 @@ header.main-header .utils .alert {
   margin-right: 10px;
 }
 header.main-header .utils .logout {
+  cursor: pointer;
   width: 80px;
   border-radius: 5px;
   color: #fff;
@@ -960,7 +961,7 @@ footer .copyright {
 }
 .myLibrary-page .writerList .listWrap .list .writerImg {
   min-height: 218px;
-  background-color: #e0e0e0;
+  margin-bottom: 8px;
 }
 .myLibrary-page .writerList .listWrap .list .writerImg img {
   width: 100%;
