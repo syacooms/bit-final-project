@@ -15,9 +15,11 @@
 
 <h1>작가 이미지</h1>
 
+<p>업로드 예정</p>
 
  <br>
 
+<h3>작가이름</h3>
 <h1 th:text="${list.writerName}"></h1>
   <div>
   <button>좋아요</button>
@@ -37,7 +39,7 @@
  
 <table border="1">
 <tr>
-	<th>구독중인 사람</th><th>좋아요 개수</th><th>작가가 쓴 글</th>
+	<th>구독중인 사람</th><th>리뷰 수</th><th>작가가 쓴 글</th>
 </tr>
 <tr>
 	<td>select user_subcribe</td><td>select follow</td><td>select article</td>
@@ -73,7 +75,7 @@ $("#purchase").click(function(){
 	    pg : 'imp61961074', // version 1.1.0부터 지원.
 	    pay_method : 'card',
 	    merchant_uid : 'merchant_' + new Date().getTime(),
-	    name : '주문명:종이의집 작가구독',
+	    name : '주문명:종이의집 작가구독서비스 30일',
 	    amount : 9900, //판매 가격
 	    buyer_email : email,
 	    buyer_name : id,
@@ -89,8 +91,8 @@ $("#purchase").click(function(){
 	        	"paymentDetail":rsp.paid_amount
 	        };
 	        $.ajax({
-	        	url:"pay",
-	        	type:"post",
+	        	url:"/pay",
+	        	type:"get",
 	        	contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 	        	datatye:'json',
 	        	data:data,
@@ -99,8 +101,8 @@ $("#purchase").click(function(){
 	    			alert( resp );
 	    			
 	    			$.ajax({
-	    				url:"sub",
-	    				type:"post",
+	    				url:"/sub",
+	    				type:"get",
 	    				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 	    				datatype:'json',
 	    				data:data,
@@ -109,12 +111,12 @@ $("#purchase").click(function(){
 	    					alert( resp );
 	    				},
 	    				error:function(){
-	    					alert('error');
+	    					alert('구독error');
 	    				}
 	    			});
 	    		},
 	    		error:function(){
-	    			alert('error');
+	    			alert('결제error');
 	    		}
 	        });
 	    } else {
