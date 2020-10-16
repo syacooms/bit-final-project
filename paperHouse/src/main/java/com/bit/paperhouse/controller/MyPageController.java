@@ -27,7 +27,7 @@ public class MyPageController {
 	MypageService service;
 	
 	//mypage 메인
-	@GetMapping("/mypage")
+	@GetMapping("/myPage")
 	public String mypage(Model model) {
 		CustomSecurityDetails user = (CustomSecurityDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String nickname = user.getNICKNAME();
@@ -53,9 +53,9 @@ public class MyPageController {
     }
 	
 	//내 정보 관리
-	@GetMapping("/mypage/mypageInfo")
+	@GetMapping("/myPage/mypageInfo")
 	public String mypageInfo() {
-        return "mypageInfo";
+        return "passwordReset";
     }
 	
 	//작가 신청하기
