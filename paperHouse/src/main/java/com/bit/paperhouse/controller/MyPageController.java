@@ -34,18 +34,22 @@ public class MyPageController {
 		int userSeq = user.getUSERSEQ();
 		
 		//DB NAME,DATE 조회
-		List<WriterDto> getNamesAndDates = service.getWriterNames(userSeq);
-		
-		//독자,작가 구분
-		int status = service.selectStatus(userSeq);
-		
-		System.out.println("리스트:" + getNamesAndDates.toString());
+		//List<WriterDto> getNamesAndDates = service.getWriterNames(userSeq);
 		
 		//남은 구독일 수 조회하는 함수
-		HashMap<String, Integer> map = UtilEx.getSubscribes(getNamesAndDates);
+		//HashMap<String, Integer> map = UtilEx.getSubscribes(getNamesAndDates);
+	
+		//독자,작가 구분
+		String status = service.selectStatus(userSeq);
+		String writer = service.selectWriterSeq(userSeq);
+		
+		
+		System.out.println("스테이터스: " + status);
+		System.out.println("라이터: " + writer);
+		
 		
 		model.addAttribute("status",status);
-		model.addAttribute("map", map);
+		model.addAttribute("writer",writer);
 		model.addAttribute("userSeq",userSeq);
 		model.addAttribute("nickname",nickname);
 		
@@ -55,7 +59,7 @@ public class MyPageController {
 	//작가 글 쓰기
 	@GetMapping("/article/write")
 	public String ariticleWrite() {
-        return "ariticleWrite";
+        return "articleWrite";
     }
 	
 	//내 정보 관리
