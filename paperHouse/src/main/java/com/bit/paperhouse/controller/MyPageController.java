@@ -45,11 +45,17 @@ public class MyPageController {
 		HashMap<String, Integer> map = UtilEx.getSubscribes(getNamesAndDates);
 		
 		model.addAttribute("status",status);
-		model.addAttribute("map",map);
+		model.addAttribute("map", map);
 		model.addAttribute("userSeq",userSeq);
 		model.addAttribute("nickname",nickname);
 		
-        return "mypage";
+        return "myPage";
+    }
+	
+	//작가 글 쓰기
+	@GetMapping("/article/write")
+	public String ariticleWrite() {
+        return "ariticleWrite";
     }
 	
 	//내 정보 관리
