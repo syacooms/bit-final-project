@@ -12,7 +12,7 @@ WHERE U.USER_SEQ=#{userSeq}
 </select>
 
 <select id="selectStatus" parameterType="java.lang.Integer" resultType="java.lang.Integer">
-SELECT STATUS
+SELECT W.STATUS AS STATUS
 FROM MEMBER M INNER JOIN WRITER W ON M.USER_SEQ=W.USER_SEQ
 WHERE M.USER_SEQ=#{userSeq}
 </select>
