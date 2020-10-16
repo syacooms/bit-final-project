@@ -13,11 +13,12 @@ public interface UserRepository {
 	
     public void regi( UserDto dto );
 	
-	
 	public CustomSecurityDetails findByid( String username );
 	
 	public UserDto findByEmail( String email );
 	
 	public void resetPassword(UserDto dto);
+	
+	public void emailCheckAf( UserDto dto );
 
 }

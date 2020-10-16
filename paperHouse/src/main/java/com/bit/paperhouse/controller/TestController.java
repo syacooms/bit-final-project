@@ -1,9 +1,12 @@
 package com.bit.paperhouse.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import java.net.URLEncoder;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,9 +37,12 @@ public class TestController {
     }
     
     // 메인 페이지
+    //@Secured("ROLE_USER")
+    
     @GetMapping("/main")
     public String main() {
     	System.out.println("main()");
+
         return "/main";
     }
     
@@ -75,10 +81,15 @@ public class TestController {
 	}
 
 	// 회원가입 처리
-	@PostMapping("/user/join")
-	public void execSignup(UserDto UserDto) {
-		System.out.println("joinAf()");
-		svc.regi(UserDto);
+	@GetMapping("/user/join/emailCheck")
+	public String emailCheck(String email, String num, HttpServletResponse res) throws Exception {
+		System.out.println("emailCheck()");
+		System.out.println(email);
+		UserDto dto = new UserDto(0, email, num, "", "", 0);
+		//System.out.println(result);
+		svc.regi(dto);
+		
+		return "redirect:/";
 		
 	}
 
