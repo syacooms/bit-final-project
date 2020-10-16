@@ -18,7 +18,7 @@ public class PaymentController {
 	
 	
 	@ResponseBody
-	@PostMapping("/payment")
+	@PostMapping("/pay")
 	public String cash(PaymentDto vo) {
 		
 		payservice.infoPayment(vo);
@@ -28,7 +28,7 @@ public class PaymentController {
 	}
 	
 	@ResponseBody
-	@PostMapping("/subscribe")
+	@PostMapping("/sub")
 	public String subscribe(UserSubscribeDto vo) {
 		
 		payservice.insertSubscribe(vo);
