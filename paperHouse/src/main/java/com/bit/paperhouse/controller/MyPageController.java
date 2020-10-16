@@ -10,7 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bit.paperhouse.dto.UserSubscribeDto;
 import com.bit.paperhouse.dto.WriterDto;
 import com.bit.paperhouse.model.CustomSecurityDetails;
 import com.bit.paperhouse.service.MypageService;
@@ -64,8 +68,12 @@ public class MyPageController {
 	
 	//내 정보 관리
 	@GetMapping("/myPage/mypageInfo")
-	public String mypageInfo() {
-        return "passwordReset";
+	public String mypageInfo(Model model) {
+		CustomSecurityDetails user = (CustomSecurityDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		int userSeq = user.getUSERSEQ();
+		
+		model.addAttribute(userSeq);
+        return "myPageInfo";
     }
 	
 	//작가 신청하기
@@ -91,5 +99,25 @@ public class MyPageController {
 	public String logout() {
         return "logout";
     }
+	
+	
+	@ResponseBody
+	@PostMapping("/mypage/getNickName")
+	public String getNickName(String nickname) {
+		
+		String getnick = service.getNickName(nickname);
+		String ajax = "";
+		
+		if(getnick == null) {
+			ajax = "";
+			
+			return ajax;
+		}
+		else {
+			ajax = "find";
+			
+			return ajax;
+		}
+	}
 	
 }

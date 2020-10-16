@@ -7,6 +7,27 @@
 >
   <head th:replace="fragments/config :: configFragment"></head>
   <body>
+  
+  <br>
+  
+  <div>
+  	변경할 닉네임을 적어주세요.
+  </div>
+  
+  <br>
+  <div>
+  <input type="text" id="nickname" name="nickname" placeholder="닉네임" />
+  <button id="nicknamechk">중복확인</button>
+  </div>
+  <br>
+  
+   <div id="nickselect"></div>
+   
+  <div id="nickUpdateButtonView">
+ 	
+  </div>
+  <br>
+  
     <div>
       <p>가입하실 때 입력하신 이메일을 입력해주세요</p>
       <br />
@@ -18,7 +39,27 @@
       <input type="email" id="num" name="num" placeholder="인증번호" />&nbsp;<button type="button" id="numCheck">인증번호 확인</button>
       <p id="remain" style="color: blue; font-size: 5px"></p>
     </div>
-
+    
+    <br>
+    
+	<input type="checkbox"> 개인 정보 수집 및 동의
+	<br><br>
+	<p>ㆍ개인정보 수집목적</p>	
+	<br>
+	<p>ㆍ개인정보 수집기간</p>	
+	<br>
+	<p>ㆍ개인정보 이용기간</p>	
+	
+	<br><br>
+	
+	<button>회원 정보 변경</button>
+	
+	<br>
+	<br>
+	
+	<button>회원 탈퇴</button>
+	
+	
     <script type="application/javascript" th:inline="javascript">
       $(function () {
         var csrfToken = /*[[${_csrf.token}]]*/ null;
@@ -35,6 +76,7 @@
 
       $(document).ready(function () {
         $("#checkView").hide();
+        $("#nickUpdateButtonView").hide();
       });
 
       // 인증번호 발송
@@ -111,42 +153,41 @@
           setTimeout(countdown, 1000);
         }
       }
-      
-      $("#_btnGetId").click(function(){
+$("#nicknamechk").click(function(){
+	if($("#nickname").val().trim() == ""){
+		$("#nickname").val("");
+		$("#nickname").focus();
+		 swal("","닉네임을 작성해주세요.","error");
+	}
+	else{
+		$.ajax({
+			url:"/mypage/getNickName",
+			type:"POST",
+			data:{ nickname:$("#nickname").val()},
+			success:function( msg ){
+				if(msg == 'find'){
+					swal("","사용할 수 없는 ID입니다.","error");
+					$("#nickselect").html("이 ID는 사용할 수 없습니다");
+					$("#nickselect").css("color", "#ff0000");
+					$("#nickname").val();
+					$("#nickUpdateButtonView").hide();
+				}
+				else{
+					swal("","사용할 수 있는 ID입니다.","success");
+					$("#nickselect").html("이 ID는 사용할 수 있습니다");
+					$("#nickselect").css("color", "#0000ff");
+					$("#nickUpdateButtonView").show();
+				}
+			},
+			error:function(){
+				alert("error");
+			}			
+		});
+	}	
+});
 
-    		if($("#_id").val().trim() == ""){
-    			// alert("id를 입력해 주십시오");
-    			$("#_id").val("");
-    			$("#_id").focus();
-    			$("#_userid").val("");
-    			$("#_rgetid").html("아이디를 입력해 주십시오");		
-    		}
-    		else{
 
-    			$.ajax({
-    				url:"getId.do",
-    				type:"post",
-    				data:{ id:$("#_id").val() },
-    				success:function( msg ){
-    					if(msg == 'YES'){
-    					//	alert("이 ID를 사용할 수 없습니다");
-    						$("#_rgetid").html("사용할 수 없는 ID입니다");
-    						$("#_rgetid").css("background-color", "#ff0000");
-    						$("#_id").val();
-    						$("#_userid").val();
-    					}
-    					else{
-    						$("#_rgetid").html("이 ID는 사용할 수 있습니다");
-    						$("#_rgetid").css("background-color", "#0000ff");
-    						$("#_userid").val(  $("#_id").val().trim()  );
-    					}
-    				},
-    				error:function(){
-    					alert("error");
-    				}			
-    			});
-    		}	
-    	});
+
     </script>
   </body>
 </html>
