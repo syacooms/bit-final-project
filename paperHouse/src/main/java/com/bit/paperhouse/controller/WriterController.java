@@ -72,7 +72,7 @@ public class WriterController {
 		System.out.println(dto);
 		service.addWriterApply(dto);
 		
-		return "redirect:/mypage";
+		return "redirect:/myPage";
 	}
 	
 	@GetMapping("/writer/detail")

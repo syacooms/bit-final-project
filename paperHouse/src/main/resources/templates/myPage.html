@@ -26,7 +26,7 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td><a th:if="${status} == '1'" th:href="@{'article/write'}">글쓰기</a></td>
+			<td><a th:if="${status} == '1'" th:href="@{'article/write?writerSeq='+${writerSeq}'}">글쓰기</a></td>
 		<tr>
 		<tr>
 			<td><a th:href="@{'myPage/mypageInfo'}">내정보관리</a></td>
