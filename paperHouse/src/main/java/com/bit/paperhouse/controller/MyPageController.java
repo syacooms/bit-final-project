@@ -43,9 +43,8 @@ public class MyPageController {
 		String status = service.selectStatus(userSeq);
 		String writer = service.selectWriterSeq(userSeq);
 		
-		int iStatus = Integer.parseInt(status);
 		
-		System.out.println("스테이터스: " + iStatus);
+		System.out.println("스테이터스: " + status);
 		System.out.println("라이터: " + writer);
 		
 		
