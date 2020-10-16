@@ -114,7 +114,7 @@ public class TestController {
 		return "/passwordReset";
 	}
 	
-	// 임시 비밀번호 설정
+	//  비밀번호 설정
 	@RequestMapping( value = "/user/resetPassword/result" , method = RequestMethod.POST)
 	public @ResponseBody void resetPassword( UserDto dto ) {
 				

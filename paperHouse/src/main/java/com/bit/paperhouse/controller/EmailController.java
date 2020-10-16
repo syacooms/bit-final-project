@@ -44,7 +44,7 @@ public class EmailController {
 	
 	// 회원가입 이메일 인증
 	@ResponseBody
-	@RequestMapping(value="/searchPw", method=RequestMethod.GET)
+	@RequestMapping(value="/emailCheck", method=RequestMethod.GET)
     public String sendEmailAction (@RequestParam Map<String, Object> paramMap, ModelMap model, ModelAndView mv, String email, String pwd) throws Exception {
 		
        // String USERNAME = (String) paramMap.get("username");
@@ -137,9 +137,7 @@ public class EmailController {
             idx = (int) (charSet.length * Math.random());
             str += charSet[idx];
         }
-        
-       
-          
+               
         PASSWORD = str;
              
         try {
