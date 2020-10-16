@@ -53,6 +53,7 @@
 
            <div class="best-article">
              <div class="article-title">종이의 집 베스트 글</div>
+             <div class="select-wrap"></div>
              <div class="article-grid clearfix">
                <th:block th:each='bestArticle:${bestArticles}'>
                  <div class="article">
@@ -83,6 +84,13 @@
  <script type="text/javascript">
     
     let ct = "";
+    let sort_select = "<select onchange='articleSort()' id='artSort'>"
+     	+"<option value='viewCount'>조회수 순</option>"
+     	+"<option value='upload_date'>등록일 순</option>"
+     	+"<option value='poem'>시</option>"
+     	+"<option value='novel'>소설</option>"
+     	+"<option value='essay'>에세이</option>"
+     	+"</select>";
     $(document).ready(function () {
       $("#write-more").click(function () {
     	  let np =  $("input[name=wNowPage]").val();
@@ -91,10 +99,6 @@
       	let formData = $("#searchForm").serialize();
         
       	searchWriter(formData);
-      	
-      	if($(".writer").length%6 == 0){
-      		$("#write-more").hide();
-      	}
       });
 
       $("#article-more").click(function () {
@@ -105,9 +109,6 @@
       
       	searchCont(formData,ct);
       	
-      	if($(".article").length%7 == 0){
-      		$("#article-more").hide();
-      	}
       });
 
 
@@ -116,12 +117,14 @@
     		  alert("검색어를 입력하세요");
     	  }else{
     		  $("input[name=wNowPage]").val(0);
-    	    	$("input[name=cNowPage]").val(0);
+    	      $("input[name=cNowPage]").val(0);
     	    	 let formData = $("#searchForm").serialize();
     	    	if($("select[name=searchCategory]").val()=='writer'){
     	    		$(".best-writer").show();
     	    		$(".writer-title").text("검색 결과");
     	           	$(".article-title").text("검색 결과와 관련된 글");
+    	           	$(".article-title select-wrap").empty();
+    	          	$(".article-title").after(sort_select);
     	           	$(".writer-grid").empty();
     	            searchWriter(formData);
     	            $(".article-grid").empty();
@@ -135,6 +138,8 @@
     	    	}else{
     	    		$(".best-writer").hide();
     	    		$(".article-title").text("검색 결과");
+    	    		$(".best-article select").remove();
+    	    		$(".article-title").after(sort_select);
     	    		$(".article-grid").empty();
     	    		searchCont(formData,ct);
     	    		
@@ -144,10 +149,29 @@
       });
     });
 
-    $("#nameSort").click(function () { });
+   	
+    function articleSort(){
+    	let sel = $("#artSort").val();
+   		let formData = $("#searchForm").serialize();
+   		$(".article-grid").empty();
+   		if(sel == "viewCount"){
+   			sortingC("VIEWCOUNT","DESC",ct);
+   		}else if(sel == "upload_date"){
+   			sortingC("UPLOAD_DATE","DESC",ct);	
+   		}else{
+   			sortingC("VIEWCOUNT","DESC",sel);
+   		}
+    }
+    
 
-    $("#viewSort").click(function () { });
-
+    function sortingC(st,s,ct){
+    	$("#searchButton").after("<input type='hidden' name='searchSort' value='"+st+"'><input type='hidden' name='sort' value='"+s+"'>");
+    	$("input[name=cNowPage]").val(0);
+    	let formData = $("#searchForm").serialize();
+    	searchCont(formData,ct);
+    	$("input[name=searchSort]").remove();
+    	$("input[name=sort]").remove();
+    }
     function searchWriter(formData) {
       $.ajax({
         url: "/getSearchWlist",
@@ -156,7 +180,6 @@
         success: function (data) {
          
           let addlist = "";
-          let size = Object.keys(data).length;
           if(data != ""){
           $.each(data, function (i, ser) {
         	  addlist += "<div class='writer'>"
@@ -167,7 +190,9 @@
                   + "<div class='writer-name'>" + ser.writerName + "</div></div>";
           });
           $(".writer-grid").append(addlist);
+          $("#article-more").show();
          }else{
+        	 alert("더 이상 결과가 없습니다");
         	 $("#write-more").hide();
          }
         },
@@ -186,19 +211,14 @@
     		success:function(data){
     			let addlist = "";
     			let list;
-    	 		let size;
     	 		if(ct =='poem'){
     	 			list = data.poem;
-    	 			size = Object.keys(list).length;
     	 		}else if(ct == 'novel'){
     	 			list = data.novel;
-    	 			size = Object.keys(list).length;
     	 		}else if(ct == 'essay'){
     	 			list = data.essay;
-    	 			size = Object.keys(list).length;
     	 		}else{
     	 			list = data.list;
-    	 			size = Object.keys(list).length;
     	 		}
     	 		if(list != ""){
     	 		
@@ -215,7 +235,9 @@
     					
     				});
     				$(".article-grid").append(addlist); 
+    				$("#article-more").show();
     	 		}else{
+    	 			 alert("더 이상 결과가 없습니다");
     	 			$("#article-more").hide();
     	 		}
     	 			
@@ -226,6 +248,12 @@
     	});
     	
     }
+    
+ 
+	             	
+	             	
+	             	
+	             
   </script>
 </th:block>
 </html>
