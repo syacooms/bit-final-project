@@ -41,8 +41,8 @@
             </th:block>
             </div>
           <!-- followWriterList -->
-          <th:block th:each='sub:${listFollow}'>
-            <div id="followWriterList" class="listWrap clearfix">
+          <th:block th:each='fol:${listFollow}'>
+            <div id="followWriterList" class="listWrap">
               <div class="list">
                 <div class="writerImg">
                   <img alt='writerImg' th:src='#{fol.file_system}'>
