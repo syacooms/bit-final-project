@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bit.paperhouse.dto.UserDto;
 import com.bit.paperhouse.dto.UserSubscribeDto;
 import com.bit.paperhouse.dto.WriterDto;
 import com.bit.paperhouse.model.CustomSecurityDetails;
@@ -72,7 +73,8 @@ public class MyPageController {
 		CustomSecurityDetails user = (CustomSecurityDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		int userSeq = user.getUSERSEQ();
 		
-		model.addAttribute(userSeq);
+		model.addAttribute("userSeq",userSeq);
+		
         return "myPageInfo";
     }
 	
@@ -118,6 +120,17 @@ public class MyPageController {
 			
 			return ajax;
 		}
+	}
+	
+	@ResponseBody
+	@PostMapping("/mypage/updateNickName")
+	public String updateNickName(UserDto dto) {
+		System.out.println(dto);
+		
+		service.updateNickName(dto);
+		String ajax = "ok";
+			
+			return ajax;
 	}
 	
 }
