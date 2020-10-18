@@ -5,10 +5,12 @@ import com.bit.paperhouse.dao.NoticeRepository;
 import com.bit.paperhouse.dto.NoticeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class NoticeService {
 
     @Autowired

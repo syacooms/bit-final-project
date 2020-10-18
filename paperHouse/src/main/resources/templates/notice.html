@@ -9,23 +9,20 @@
 <body>
 <th:form name="noticeList" id="noticeList" >
     <div class="toggle">
-        <div th:if="${notice} == null">
-            <tr>
+        <div >
+            <tr th:if="${notice} == 'null'">
                 <td> 작성된 글이 없습니다</td>
             </tr>
         </div>
         <div th:each="list : ${notice}">
            <tr >
-               <td th:if="${list.del == 0}">
-               <td> <input</td>
-                                           <span th:field="${list.noticeSeq}">
-                   <input id="titleClick" th:value="${list.title}" onclick="cont()">
-                   <span id="cont" th:type="hidden" th:text="${list.cont}">   </span>
+               <td th:if="${list.del} == 0">
+                   <span th:field="${list.noticeSeq}">
+                       <input id="titleClick" th:value="${list.title}" onclick="cont()">
+                   <input id="cont" th:type="hidden" th:value="${list.cont}">
                                          </span>
                 </td>
-
-
-              <td th:if="${list.del == 1}">
+              <td th:if="${list.del } == 1">
                    ********** 관리자에 의해 글이 삭제 되었습니다 **********
               </td>
             </tr>
@@ -40,7 +37,7 @@
 
     </table>
 
-    <a th:href="@{'noticeWrite'}">글작성</a>
+    <a th:href="@{'/notice/write'}">글작성</a>
     <a th:href="@{'notice/delete?noticeSeq='+${noticeSeq}}" id="noticeDelete">글삭제</a>
     </div>
 </th:form>
@@ -58,11 +55,11 @@
                 alert(data);
 
                 if(data == "1"){
-                    $("#titleClick").find("#cont").show();
+                    $("#titleClick").find("#cont").hide();
 
                 }
                 else{
-                    $("#titleClick").find("#cont").hide();
+                    $("#titleClick").find("#cont").show();
                 }
             }
         })

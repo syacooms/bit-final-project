@@ -25,18 +25,18 @@ public class NoticeController {
 
             return "notice";
         }
-        @GetMapping("/noticeWrite")
+        @GetMapping("/notice/write")
     public String noticeWrite(){
 
             return"noticeWrite";
         }
-        @PostMapping("/notice/writeEnd")
+        @PostMapping("/notice/writeAf")
     public String writeNoticeAf(NoticeDto dto){
             System.out.println("writeNoticeAf");
             System.out.println(dto.toString());
           service.writeNoticeAf(dto);
 
-            return "redirect:/notice";
+            return "redirect:/notice/main";
 
         }
 
