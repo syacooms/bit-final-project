@@ -39,7 +39,7 @@
         </div>
         <div class="else-wrap">
           <a class="join-btn" sec:authorize="isAnonymous()" th:href="@{/user/join}">회원가입</a>
-          <a href="#" onclick="location.href = '/user/passwordReset'">비밀번호 재설정</a>
+          <a href="/user/passwordReset">비밀번호 재설정</a>
         </div>
       </div>
     </main>
