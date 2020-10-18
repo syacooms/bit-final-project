@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bit.paperhouse.dao.QnaRepository">
+
+<select id="qnaList" resultType="com.bit.paperhouse.dto.QnaDto">
+    SELECT * FROM QNA
+
+    ORDER BY QNA_SEQ DESC
+
+</select>
+
+<insert id="writeQnaAf" parameterType="com.bit.paperhouse.dto.QnaDto">
+    INSERT INTO QNA(USER_SEQ, QNA_SEQ, TITLE, CONTS, FILE_ORIGINAL, FILE_SYSTEM, REPLY, STATUS,  QDATE)
+    VALUES(#{userSeq}, QNA_SEQ.NEXTVAL, #{title}, #{conts}, #{fileOriginal,jdbcType=VARCHAR}, #{fileSystem,jdbcType=VARCHAR}, #{reply,jdbcType=VARCHAR}, 0, SYSDATE)
+
+</insert>
+</mapper>

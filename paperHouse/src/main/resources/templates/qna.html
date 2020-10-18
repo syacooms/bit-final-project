@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<th:form id="qna" name="qna">
+        <table>
+
+            <col width="200">  <col width="100"> <col width="70"> <col width="70">
+        <tbody>
+            <tr >
+                <th style="text-align: center">제목</th><th style="text-align: center">답변상태</th><th style="text-align: center">작성자</th><th style="text-align: center">작성일</th>
+            </tr>
+
+            <tr th:if="${not #lists.isEmpty(qna)}" th:each="row: ${qna}">
+                <td align="left">
+                        <a th:href="@{/qna/detail(idx=${row.qnaSeq})}" th:text="${row.title}" ></a>
+                </td>
+                <td th:text="${row.status}"></td>
+                <td th:text="${row.userSeq}"></td>
+                <td th:text="${row.qdate}"></td>
+            </tr>
+            <tr th:unless="${not #lists.isEmpty(qna)}">
+                <td colspan="4"> 작성한 글이 없습니다.</td>
+            </tr>
+
+        </tbody>
+
+
+        </table>
+
+    <a th:href="@{'/qna/write'}">글작성</a>
+</th:form>
+
+
+
+</body>
+</html>
