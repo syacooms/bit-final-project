@@ -145,8 +145,7 @@ public class EmailController {
             MimeMessageHelper messageHelper = new MimeMessageHelper(msg, true, "UTF-8");
              
             messageHelper.setSubject("PaperHouse 비밀번호 재설정 ");
-            messageHelper.setText("인증번호는 "+PASSWORD+" 입니다.  "
-            		+ "\n인증완료 시 해당 인증번호가 임시비밀번호로 설정됩니다.");
+            messageHelper.setText("인증번호는 "+PASSWORD+" 입니다.  ");
             
             messageHelper.setTo(EMAIL);
             msg.setRecipients(MimeMessage.RecipientType.TO , InternetAddress.parse(EMAIL));

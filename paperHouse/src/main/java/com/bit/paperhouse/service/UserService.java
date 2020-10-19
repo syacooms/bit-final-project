@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bit.paperhouse.dao.UserRepository;
+import com.bit.paperhouse.dto.ArticleDto;
 import com.bit.paperhouse.dto.UserDto;
 
 import oracle.security.pki.Cipher;
@@ -84,6 +85,24 @@ public class UserService {
 		
 		dao.resetPassword(dto);
 	}
+	
+	public List<ArticleDto> getArticleList(String category){
+		
+		List<ArticleDto> list = dao.getArticleList(category);
+		
+		return list;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	// 닉네임 생성기
 	public String nickname() {
