@@ -82,18 +82,8 @@ public class MyPageController {
         return "writerApplication";
     }
 	
-	//공지사항
-	@GetMapping("/notice")
-	public String notice() {
-        return "notice";
-    }
-	
-	//1:1문의
-	@GetMapping("/qna")
-	public String qna() {
-        return "qna";
-    }
-	
+
+
 	//로그아웃
 	@PostMapping("/user/logout")
 	public String logout() {

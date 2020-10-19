@@ -9,8 +9,10 @@ import java.util.List;
 @Mapper
 @Repository
 public interface QnaRepository {
-
-    List<QnaDto>  qnaList();
+    //리턴 타입 List<>  리스트로 된 리턴타입
+    List<QnaDto> qnaList(QnaDto dto);
 
     void writeQnaAf(QnaDto dto);
+
+    void qnaCount(QnaDto dto);
 }

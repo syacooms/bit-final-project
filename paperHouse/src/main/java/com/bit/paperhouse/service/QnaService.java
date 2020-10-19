@@ -13,10 +13,17 @@ public class QnaService {
     @Autowired
     QnaRepository dao;
 
-    public List<QnaDto> qnaList() {return  dao.qnaList();}
+    public List<QnaDto> qnaList(QnaDto dto) {  //받는곳
+        return  dao.qnaList(dto);
+    }
 
     public void writeQnaAf(QnaDto dto){
 
         dao.writeQnaAf(dto);
+    }
+    public int qnaCount(QnaDto dto){
+
+        dao.qnaCount(dto);
+        return dto.getQnaSeq();
     }
 }
