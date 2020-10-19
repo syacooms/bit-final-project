@@ -22,7 +22,7 @@
               <div class="defaultSetting settings">
                 <div class="wrapName">계정 설정</div>
                 <ul class="wrapList">
-                  <li class="list"><a th:href="@{'myPage/mypageInfo'}">내정보관리</a></li>
+                  <li class="list"><a th:href="@{'myPage/mypageInfo'}">내 정보 관리</a></li>
                   <li class="list"><a th:if="${status}== '1'" th:href="@{'article/write?writerSeq=' + ${writer}}">글쓰기</a></li>
                   <li class="list"><a th:if="${status} != '1'" th:href="@{'writer/application?userSeq=' + ${userSeq}}">작가 신청하기</a></li>
                   <li class="list"></li>
@@ -41,16 +41,4 @@
       </div>
     </div>
   </main>
-  <th:block layout:fragment="script">
-    <script>
-      $(document).ready(function () {
-        var headerHeight = $("header").outerHeight();
-        var footerHeight = $("footer").outerHeight();
-        console.log(headerHeight);
-        console.log(footerHeight);
-        $(".myPage").css("min-height", "calc(100vh - " + (headerHeight + footerHeight) + "px)");
-        console.log($(".myPage"));
-      });
-    </script>
-  </th:block>
 </html>
