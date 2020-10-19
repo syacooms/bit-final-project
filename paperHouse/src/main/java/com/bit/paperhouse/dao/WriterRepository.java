@@ -16,5 +16,6 @@ public interface WriterRepository {
 	public List<WriterDto> getWriterlist();
 	public int getArticleAllSubCount(int writerSeq);
 	public int getWriterAllSubCount(int writerSeq);
+	public String selectWriterApply(int userSeq);
 	
 }

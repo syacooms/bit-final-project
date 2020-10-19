@@ -64,6 +64,7 @@ public class MyPageController {
 	//작가 글 쓰기
 	@GetMapping("/article/write")
 	public String ariticleWrite() {
+		
         return "articleWrite";
     }
 	
@@ -82,18 +83,6 @@ public class MyPageController {
 	@GetMapping("/writer/application")
 	public String writerRegi() {
         return "writerApplication";
-    }
-	
-	//공지사항
-	@GetMapping("/notice")
-	public String notice() {
-        return "notice";
-    }
-	
-	//1:1문의
-	@GetMapping("/qna")
-	public String qna() {
-        return "qna";
     }
 	
 	//로그아웃

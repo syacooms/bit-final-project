@@ -26,7 +26,7 @@ public class MypageService {
 	}
 	
 	public String selectWriterSeq(int userSeq) {
-		String writerSeq = dao.selectStatus(userSeq);
+		String writerSeq = dao.selectWriterSeq(userSeq);
 		return writerSeq;
 	}
 	

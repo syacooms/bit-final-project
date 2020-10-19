@@ -37,8 +37,8 @@ import com.bit.paperhouse.util.UtilEx;
 @Controller
 public class WriterController {
 	
-	@Value("${file.upload.directory}")
-	String uploadFileDir;
+	//@Value("${file.upload.directory}")
+	//String uploadFileDir;
 	 
 	
 	@Autowired
@@ -46,8 +46,8 @@ public class WriterController {
 
 	@PostMapping("/writer/application/appComplete")
 	public String appComplete(WriterDto dto,
-			MultipartFile profile,
-			MultipartFile newWriting,
+			@RequestParam("profile")MultipartFile profile,
+			@RequestParam("newWriting")MultipartFile newWriting,
 			HttpServletRequest req
 			) {
 		
@@ -58,16 +58,15 @@ public class WriterController {
 		String non = newWriting.getOriginalFilename();
 		dto.setFileOriginal(non);
 		
-																					
-		String UPLOADPATH = req.getSession().getServletContext().getRealPath("/") + uploadFileDir;
+		String profileUploadPath = "C:/bit-final-project/paperHouse/src/main/resources/static/upload/profile";
+		String WriterUploadPath = "C:/bit-final-project/paperHouse/src/main/resources/static/upload/writerapply";
 		
-		System.out.println(" 컨트롤러 업로드 패쓰: " + UPLOADPATH);
-		
-		String newsaveProfileFile = UtilEx.saveFile(profile,UPLOADPATH);
+		String newsaveProfileFile = UtilEx.saveFile(profile,profileUploadPath);
 		dto.setProfileFileSystem(newsaveProfileFile);
-
-		String newsaveTextFile = UtilEx.saveFile(newWriting,UPLOADPATH);
+		
+		String newsaveTextFile = UtilEx.saveFile(newWriting,WriterUploadPath);
 		dto.setFileSystem(newsaveTextFile);
+		
 		
 		System.out.println(dto);
 		service.addWriterApply(dto);
@@ -77,8 +76,6 @@ public class WriterController {
 	
 	@GetMapping("/writer/detail")
 	public String writerDetail(HttpServletRequest req, int writerSeq, Model model) throws IOException {
-		
-		 
 		
 		//user info
 		CustomSecurityDetails user = (CustomSecurityDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -98,13 +95,13 @@ public class WriterController {
 		
 		//경로
 		String path = req.getSession().getServletContext().getRealPath("/");
-		String realPath = path + uploadFileDir;
-		System.out.println(realPath);
+		//String realPath = path + uploadFileDir;
+		//System.out.println(realPath);
 		
-		InputStream in = getClass().getResourceAsStream(realPath + "ca467837-0089-4b4a-815f-0729a2d2debf-test-profile.png");
+		//InputStream in = getClass().getResourceAsStream(realPath + "ca467837-0089-4b4a-815f-0729a2d2debf-test-profile.png");
 		
 		
-		System.out.println(in);
+		//System.out.println(in);
 		
 		//인코딩할 이미지
 		//String imageEncoding = realPath + dto.getProfileFileOriginal();
@@ -133,6 +130,21 @@ public class WriterController {
 		return "/writerDetail";
 	}
 	
+	
+	@ResponseBody
+	@PostMapping("/writer/apply")
+	public String articleDelete(int userSeq) {
+		
+		String seq = service.selectWriterApply(userSeq);
+		String str = "";
+		if(seq == null) {
+			str = "ok";
+		} else {
+			str = "no";
+		}
+		
+		return str;
+	}
 	
 	
 	

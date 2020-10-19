@@ -40,4 +40,9 @@ public class WriterService {
 		return count;
 	}
 	
+	public String selectWriterApply(int userSeq) {
+		String seq = dao.selectWriterApply(userSeq);
+		return seq;
+	}
+	
 }
