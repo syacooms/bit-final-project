@@ -3,9 +3,7 @@ server:
  port: 8888 
  servlet:   session:     timeout: 7200
 
-file:
- upload: 
-  directory: upload\
+
 # DB
 spring:
  datasource:
@@ -20,6 +18,14 @@ spring:
  resources:
   static-locations:  - classpath:/static/
   add-mappings: true
+
+ servlet:
+    multipart:
+      file-size-threshold: 1MB
+      location: C:/bit-final-project/paperHouse/src/main/resources/static/upload
+      max-file-size: 100MB
+      max-request-size: 100MB
+   
  
  mail: 
   host: smtp.gmail.com
