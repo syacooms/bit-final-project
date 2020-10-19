@@ -84,7 +84,7 @@ public class MyPageController {
 	public String writerRegi() {
         return "writerApplication";
     }
-	
+
 	//로그아웃
 	@PostMapping("/user/logout")
 	public String logout() {
