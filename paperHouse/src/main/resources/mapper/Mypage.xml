@@ -23,4 +23,10 @@ FROM MEMBER M INNER JOIN WRITER W ON M.USER_SEQ=W.USER_SEQ
 WHERE M.USER_SEQ=#{userSeq}
 </select>
 
+<select id="getNickName" parameterType="java.lang.String" resultType="java.lang.String">
+SELECT NICKNAME
+FROM MEMBER
+WHERE NICKNAME=#{nickname}
+</select>
+
 </mapper>

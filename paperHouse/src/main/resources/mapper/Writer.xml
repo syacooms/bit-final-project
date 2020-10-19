@@ -23,4 +23,10 @@
 	WHERE WRITER_SEQ = #{writerSeq}
 </select>
 
+<select id="getWriterlist" resultType="com.bit.paperhouse.dto.WriterDto"> 
+	SELECT *
+	FROM WRITER
+	WHERE STATUS = 1
+</select>
+
 </mapper>

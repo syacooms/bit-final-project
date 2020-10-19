@@ -14,5 +14,6 @@ public interface MyPageRepository {
     public List<WriterDto> getWriterNames(int userSeq);
     public String selectStatus(int userSeq);
     public String selectWriterSeq(int userSeq);
+    public String getNickName(String nickname);
  
 }

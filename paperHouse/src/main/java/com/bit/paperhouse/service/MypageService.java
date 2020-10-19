@@ -29,4 +29,9 @@ public class MypageService {
 		return writerSeq;
 	}
 	
+	public String getNickName(String nickname) {
+		String nick = dao.getNickName(nickname);
+		return nick;
+	}
+	
 }
