@@ -59,7 +59,9 @@
               <div class="section-title">오늘의 작가</div>
               <div class="section-body writer-grid clearfix">
                 <div class="grid-wrap left clearfix">
-                  <div class="writer-pic">프로필사진</div>
+                  <div class="writer-pic">
+                    <img src="" alt="" />
+                  </div>
                   <div class="writer-info-wrap">
                     <div class="writer-name">작가이름</div>
                     <div class="writer-birth">작가 정보</div>
@@ -238,6 +240,8 @@
         // main banner
         bannerBg();
         $(".banner-wrap").slick({
+          touchMove: false,
+          draggable: false,
           dots: false,
           appendArrows: $(".banner-arrows"),
           prevArrow: '<div class="arrow prev-arrow"><span class="iconify" data-icon="bi:chevron-left" data-inline="false"></span></div>',
