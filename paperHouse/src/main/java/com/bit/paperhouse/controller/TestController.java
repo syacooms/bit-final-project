@@ -1,6 +1,8 @@
 package com.bit.paperhouse.controller;
 
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
@@ -40,6 +42,13 @@ public class TestController {
 
    
        return "/index";
+    }
+    @GetMapping("/a")
+    public String NewFile() {
+    	System.out.println("index()");
+
+   
+       return "/NewFile";
     }
     
     // 메인 페이지
@@ -161,7 +170,9 @@ public class TestController {
 			                                 "망각 또한<br>신의 배려입니다", "추억은 가슴에 묻고<br>지나간 버스는 미련을 버려", "다른 사람을 지나치게 걱정하고 있는것<br> 나는 그걸<br>'사랑'이라고 불러", "가난하다고 해서<br>꿈마저 가난한게 아니다",
 			                                 "당신이<br>할 수 있다고 믿든<br>할 수 없다고 믿든<br>믿는대로 될 것이다", "길을 아는 것과<br>그 길을 걷는 것은<br>분명히 다르다", "내가 좋아하는 사람이<br>나를 좋아해 주는 건 기적이야", "어제와 똑같이 살면서<br>다른 미래를 <br>기대하는 것은<br>정신병 초기 증세이다.");
 		String todaySentence = sentence.get(day);
-		return todaySentence;
+	
+      return todaySentence;
+		
 	}
 	
 	
