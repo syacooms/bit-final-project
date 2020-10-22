@@ -194,7 +194,6 @@ public class TestController {
 		
 		for(int i=0;i<pstr2.length;i++) {
 			pstr2[i] = pstr2[i].replace("<", "<br><");
-			 System.out.println(pstr2[i]);
 		}
 		
       return pstr2;
