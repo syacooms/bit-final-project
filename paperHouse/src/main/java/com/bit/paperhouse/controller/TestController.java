@@ -12,7 +12,7 @@ import java.util.StringTokenizer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -69,12 +69,12 @@ public class TestController {
     	List<WriterDto> writerList = writerSvc.getWriterlist();
     	model.addAttribute("writerList", writerList);
     	
-    	ArrayList<String> today = todaySentence();
-    	String todaySentence = today.get(0);
-    	String todaySentenceWriter = today.get(1);
+    	Calendar cal = Calendar.getInstance();
+    	String[] today = todaySentence();
+    	String todaySentence = today[cal.get(Calendar.DAY_OF_MONTH)];
+    	
     	//todaySentence = todaySentence + "<br>-" + todaySentenceWriter +"-";
         model.addAttribute("todaySentence", todaySentence);
-       // model.addAttribute("todaySentenceWriter", todaySentenceWriter);
         
         List<ArticleDto> articleList = userSvc.getArticleList(category);
         model.addAttribute("articleList", articleList); 
@@ -169,34 +169,36 @@ public class TestController {
 		userSvc.resetPassword(dto);
 	}
 	
+
 	
-	public ArrayList<String> todaySentence() throws Exception{
 	
-		String url = "https://www.hackers.co.kr/?c=s_eng/eng_contents/B_others_wisesay&uid=19&p=1#;";
+	
+	
+	public String[] todaySentence() throws Exception{
+	
+		String url = "https://www.millie.co.kr/viewfinder/more_quot.html?post_seq=293247";
 		System.out.println("=-------------------");
 		
-		Document doc = Jsoup.connect(url).get();
+	//	Document doc = Jsoup.connect(url).get();	//	System.out.println(doc.toString());
 		
-		//System.out.println(doc.toString());
+		Connection.Response response = Jsoup.connect(url)
+                .method(Connection.Method.GET)
+                .execute();
 		
-		Elements element = doc.select("div.text_ko");
-		String todaySentence = element.select("p").text();
-		String token = ".";
-		StringTokenizer st1 = new StringTokenizer(todaySentence, token);
-		ArrayList<String> pstr = new ArrayList<String>();
+		Document ddo = response.parse();
 		
-		while(st1.hasMoreTokens()){
-		    pstr.add(st1.nextToken());
+	//	Elements element = doc.select("ul #contents");  //	String todaySentence = element.select("p").text(); // System.out.println("ㅌㅅㅌ : "+todaySentence);
+		String todaySentence = ddo.text();
+	
+		String[] pstr2 = todaySentence.split("상세보기");
+		
+		for(int i=0;i<pstr2.length;i++) {
+			pstr2[i] = pstr2[i].replace("<", "<br><");
+			 System.out.println(pstr2[i]);
 		}
 		
-		todaySentence = pstr.get(0);
-		
-	    System.out.println(todaySentence);
-		
-      return pstr;
-     
-		
-		
+      return pstr2;
+     	
 	}
 	
 	
