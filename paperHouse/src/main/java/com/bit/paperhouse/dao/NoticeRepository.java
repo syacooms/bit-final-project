@@ -9,11 +9,8 @@ import java.util.List;
 @Mapper
 @Repository
 public interface NoticeRepository {
-
 	List<NoticeDto> allList();
 	NoticeDto getNotice(int noticeSeq);
 	void insertNotice(NoticeDto dto);
-	void writeNoticeAf(NoticeDto dto);
 	void deleteNotice(int noticeSeq);
-
 }

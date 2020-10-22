@@ -27,8 +27,11 @@
                   </span>
                 </div>
               </div>
-              <div class="notice-body" th:text="${notice.cont}">
-                <div th:text="${notice.fileSystem}"></div>
+              <div class="notice-body">
+                <div class="img-wrap">
+                  <img th:src="@{/static/upload/noticeFile/}+${notice.fileSystem}" alt="" />
+                </div>
+                <div th:text="${notice.cont}"></div>
               </div>
               <div class="notice-footer">
                 <a href="/notice" class="goList">목록으로</a>

@@ -45,6 +45,7 @@ public class NoticeController {
 	
 	@PostMapping("/notice/write/done")
 	public String noticeWriteDone(NoticeDto notice, @RequestParam("file")MultipartFile file) {
+		System.out.println("notice post come");
 		String newFile = file.getOriginalFilename();
 		notice.setFileOriginal(newFile);
 		
@@ -55,7 +56,7 @@ public class NoticeController {
 		System.out.println(notice.toString());
 		service.insertNotice(notice);
 		
-		return "redirect: /notice";
+		return "redirect:/notice";
 	}
 	
 

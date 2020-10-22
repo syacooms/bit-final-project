@@ -1607,6 +1607,9 @@ footer .copyright {
   font-weight: 700;
   color: #333;
   margin-bottom: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .myPageSub.notice .listWrap .list .infos {
   color: #777;
@@ -1630,8 +1633,11 @@ footer .copyright {
 }
 .myPageSub.notice-detail .notice-header .title {
   float: left;
+  width: 100%;
   font-size: 20px;
   line-height: 24px;
+  word-break: break-all;
+  margin-bottom: 16px;
 }
 .myPageSub.notice-detail .notice-header .infos {
   float: right;
@@ -1650,6 +1656,12 @@ footer .copyright {
   border: 1px solid #eee;
   padding: 16px;
   margin-bottom: 24px;
+}
+.myPageSub.notice-detail .notice-body .img-wrap {
+  margin-bottom: 16px;
+}
+.myPageSub.notice-detail .notice-body .img-wrap img {
+  width: 100%;
 }
 .myPageSub.notice-detail .notice-footer {
   text-align: center;

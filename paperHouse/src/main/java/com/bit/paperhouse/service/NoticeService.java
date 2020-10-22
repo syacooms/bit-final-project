@@ -27,7 +27,6 @@ public class NoticeService {
         dao.insertNotice(notice);
     }
     
-    
     public void deleteNotice(int noticeSeq){
 
         dao.deleteNotice(noticeSeq);
