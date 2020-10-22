@@ -28,7 +28,6 @@ public class NoticeService {
     }
     
     public void deleteNotice(int noticeSeq){
-
         dao.deleteNotice(noticeSeq);
     }
 

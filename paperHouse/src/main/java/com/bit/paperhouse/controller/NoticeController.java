@@ -59,6 +59,15 @@ public class NoticeController {
 		return "redirect:/notice";
 	}
 	
+	@GetMapping("/notice/delete")
+	public String noticeDelete(@RequestParam(value = "i")String seq) {
+		System.out.println("seq = "+seq);
+		service.deleteNotice(Integer.parseInt(seq));
+		System.out.println("delete done");
+		
+		return "redirect:/notice";
+	}
+	
 
 
 }

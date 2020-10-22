@@ -17,7 +17,7 @@
             <div th:if="${notice} == null">공지사항 글이 없습니다.</div>
             <!-- listWrap -->
             <div class="listWrap">
-              <div class="list clearfix" th:each="list : ${notice}">
+              <div class="list clearfix" th:each="list : ${notice}" th:if="${list.del == 0}">
                 <a th:href="@{'notice/detail?i='}+${list.noticeSeq}">
                   <div class="title" th:text="${list.title}"></div>
                   <div class="infos">
