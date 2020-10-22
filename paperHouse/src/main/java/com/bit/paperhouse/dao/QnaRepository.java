@@ -3,7 +3,6 @@ package com.bit.paperhouse.dao;
 import com.bit.paperhouse.dto.QnaDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
-import sun.jvm.hotspot.debugger.Page;
 
 import java.util.List;
 
