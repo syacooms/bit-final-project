@@ -1,4 +1,7 @@
 /* responsive pc, tb, mb */
+.hidden {
+  display: none;
+}
 .pc-hide {
   display: none;
 }
@@ -1214,8 +1217,7 @@ footer .copyright {
 }
 .myPageSub .inner-wrap {
   max-width: 800px;
-  margin: 0 auto;
-  margin-top: 34px;
+  margin: 34px auto;
 }
 .myPageSub .subRow {
   margin-bottom: 16px;
@@ -1283,21 +1285,98 @@ footer .copyright {
 
 /* mypage writer apply */
 .myPageSub .applyRow {
+  margin-bottom: 24px;
+}
+.myPageSub .applyRow:last-child {
+  margin-bottom: 0;
 }
 .myPageSub .applyRow .left {
   float: left;
-  width: 35%;
+  width: 242px;
   padding-right: 18px;
 }
 .myPageSub .applyRow .left img {
   width: 100%;
 }
+.myPageSub .applyRow .left label {
+  position: relative;
+  cursor: pointer;
+  display: block;
+}
+.myPageSub .applyRow .left input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
 .myPageSub .applyRow .right {
   float: left;
-  width: calc(65% - 36px);
+  width: calc(100% - 242px);
 }
 .myPageSub .applyRow .applyWrap {
   margin-bottom: 16px;
+}
+.myPageSub .applyRow .applyWrap.portfolio {
+}
+.myPageSub .applyRow .applyWrap.portfolio .apply-title {
+  float: left;
+  width: 105px;
+  padding-right: 18px;
+  margin-bottom: 0;
+  line-height: 40px;
+}
+.myPageSub .applyRow .applyWrap.portfolio .apply-input {
+  float: left;
+  width: calc(100% - 105px);
+}
+.myPageSub .applyRow .applyWrap.portfolio .apply-input .writingName {
+  float: left;
+  color: #ccc;
+  font-size: 14px;
+  line-height: 16px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  width: calc(100% - 96px);
+  padding: 11px 12px;
+  margin-right: 16px;
+  transition: all 0.25s ease;
+}
+.myPageSub .applyRow .applyWrap.portfolio .apply-input .writingName.active {
+  color: #333;
+}
+.myPageSub .applyRow .applyWrap.portfolio .apply-input label {
+  cursor: pointer;
+  display: block;
+  position: relative;
+  float: left;
+  width: 80px;
+
+  padding: 11px 12px;
+  border-radius: 2px;
+  background: #ffeb60;
+  font-size: 14px;
+  color: #333;
+  height: 40px;
+  text-align: center;
+  font-weight: 700;
+}
+.myPageSub .applyRow .applyWrap.portfolio .apply-input label input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 .myPageSub .applyRow .applyWrap:last-child {
   margin-bottom: 0;
@@ -1326,7 +1405,38 @@ footer .copyright {
 }
 .myPageSub .applyRow .applyWrap .apply-input input[type="file"] {
 }
+
 .myPageSub .applyRow .applyWrap .apply-input textarea {
+  resize: none;
+  font-family: "Noto Sans KR";
+  color: #333;
+  font-size: 14px;
+  line-height: 16px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  width: 100%;
+  padding: 11px 12px;
+}
+.myPageSub .btnWrap {
+  text-align: center;
+}
+.myPageSub .btnWrap .btn {
+  cursor: pointer;
+  font-family: "Noto Sans KR";
+  margin-top: 0;
+  display: inline-block;
+  margin-right: 12px;
+  padding: 11px 12px;
+  border-radius: 2px;
+  background: #ffeb60;
+  font-size: 14px;
+  color: #333;
+  height: 40px;
+  text-align: center;
+  font-weight: 700;
+}
+.myPageSub .btnWrap .btn:last-child {
+  margin-right: 0;
 }
 /* responsive */
 @media all and (max-width: 1023px) {
