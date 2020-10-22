@@ -1,129 +1,66 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-<input type="hidden" name="userSeq" id="userSeq" th:value="${userSeq}">
-<input type="hidden" name="qnaSeq" id="qnaSeq" th:value="${qnaDetail}">
-
-
-<th:form id="qnaDetail" name="qnaDetailn" method="post">
-        <table>
-            <tr>
-            <col width="100"> <col width="200">
-         </tr>
-            <div>
-                <tr>
-                    <th>작성자</th>
-                    <td>
-                        <input type="text"   th:value="${qnaDetail.userSeq}">
-                    </td>
-                </tr>
-            <tr>
-                <th>제목</th>
-                <td>
-                    <input type="text" th:value="${qnaDetail.title}">
-                </td>
-            </tr>
-            <tr>
-                <th>내용</th>
-                <td>
-                <textarea th:text="${qnaDetail.conts}"></textarea>
-            </td>
-            </tr>
-                <tr>
-                    <th>작성일</th>
-                    <td>
-                        <input type="text" th:value="${qnaDetail.qdate}">
-                    </td>
-                </tr>
-            </div>
-
-        </table>
-</th:form>
-<!--<a href="" id="updateBtn" >수정</a>-->
-<div th:if="${qnaDetail.userSeq} == ${userSeq}">
-    <a th:href="@{'/qna/update?qnaSeq='+ ${qnaDetail.qnaSeq}}">
-        <button id="updateBtn">수정</button>
-    </a>
-</div>
-
-<hr/>
-<h3 align="center" id="answer">답글달기를 누르세요 </h3>
-
-<th:form id="qnaReply" name="qnaReply" method="post" th:action="@{/qna/replyAf}">
-   <table>
-
-        <tr>
-            <th>작성자</th>
-            <td th:text="${userSeq}"></td>
-        </tr>
-
-        <tr>
-            <th>답변 제목</th>
-            <td>
-                <input type="text" >
-            </td>
-        </tr>
-
-        <tr>
-            <th>답변 내용</th>
-            <td><textarea id="answerConts" name="answerConts" placeholder="답변을 입력하세요"></textarea></td>
-        </tr>
-    <tr>
-        <td>
-            <a th:href="@{'/qna/replyAf?qnaSeq='+ ${qnaDetail.qnaSeq}}">
-        <button type="button" id="answerBtn">답글달기</button>
+<html
+  lang="ko"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorator="layout/layout"
+>
+  <main class="myPageSub qna main-common" layout:fragment="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <input type="hidden" name="userSeq" id="userSeq" th:value="${userSeq}" />
+          <input type="hidden" name="qnaSeq" id="qnaSeq" th:value="${qnaDetail}" />
+          <div>작성자</div>
+          <div th:text="${qnaDetail.userSeq}"></div>
+          <div>제목</div>
+          <div th:text="${qnaDetail.title}"></div>
+          <div>내용</div>
+          <div th:text="${qnaDetail.conts}"></div>
+          <div>작성일</div>
+          <div th:text="${qnaDetail.qdate}"></div>
+          <div th:if="${qnaDetail.userSeq} == ${userSeq}">
+            <a th:href="@{'/qna/update?qnaSeq='+ ${qnaDetail.qnaSeq}}">
+              <button id="updateBtn">수정</button>
             </a>
-        </td>
-    </tr>
-   </table>
-
-</th:form>
-
-
-
-
-
-</body>
-<script type="application/javascript" th:inline="javascript">
-    $(function () {
+          </div>
+          <div><a id="answerBtn" th:href="@{'/qna/replyAf?qnaSeq='+ ${qnaDetail.qnaSeq}}">답변달기</a></div>
+          <th:form id="qnaReply" name="qnaReply" method="post" th:action="@{/qna/replyAf}">
+            <div>작성자</div>
+            <div th:text="${userSeq}"></div>
+            <div>답변 제목</div>
+            <div><textarea id="answerConts" name="answerConts" placeholder="답변을 입력하세요"></textarea></div>
+            <div></div>
+            <div></div>
+            <div></div
+          ></th:form>
+        </div>
+      </div>
+    </div>
+  </main>
+  <th:block layout:fragment="script">
+    <script type="application/javascript" th:inline="javascript">
+      $(function () {
         var csrfToken = /*[[${_csrf.token}]]*/ null;
         var csrfHeader = /*[[${_csrf.headerName}]]*/ null;
         $(document).ajaxSend(function (e, xhr, options) {
-            xhr.setRequestHeader(csrfHeader, csrfToken);
+          xhr.setRequestHeader(csrfHeader, csrfToken);
         });
-    });
-</script>
-
-<script type="text/javascript">
-//답변 입력 버튼
-$('#qnaReply').hide();
-$(document).ready(function () {
-        $("#answer").click(function (){
-            $('#qnaReply').toggle();
-        });
-});
-
-
-
-$(document).ready(function (){
-
-    $("#answerBtn").click(function (){
-        if($('#answerConts').val().trim() == ""){
-
+      });
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $("#answerBtn").click(function () {
+          if ($("#answerConts").val().trim() == "") {
             alert("답변을 입력해주세요");
-            $('#answerConts').focus();
-        }
-        else{
-            $('#qnaReply').submit();
-        }
-    });
-});
-
-</script>
+            $("#answerConts").focus();
+          } else {
+            $("#qnaReply").submit();
+          }
+        });
+      });
+    </script>
+  </th:block>
 </html>
