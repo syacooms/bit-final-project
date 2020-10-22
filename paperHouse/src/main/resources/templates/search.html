@@ -57,7 +57,7 @@
               </div>
               <div class="best-article">
                 <div class="article-title">종이의 집 베스트 글</div>
-                <div class="select-wrap"></div>
+                <div class="article-select"></div>
                 <div class="article-grid clearfix">
                   <th:block th:each="bestArticle:${bestArticles}">
                     <div class="article">
@@ -102,17 +102,17 @@
           $("input[name=wNowPage]").val(np);
           let formData = $("#searchForm").serialize();
 
-          searchWriter(formData);
+          getBestWriters(formData);
         });
 
         $("#article-more").click(function () {
           let np = $("input[name=cNowPage]").val();
           np = Number(np) + 1;
           $("input[name=cNowPage]").val(np);
-          let formData = $("#searchForm").serialize();
+        
           let sel = $("#artSort").val();
           if (sel == null || sel == "") {
-            searchCont(formData);
+        	  sortingC("VIEWCOUNT", "DESC", ct);
           } else if (sel == "upload_date") {
             sortingC("UPLOAD_DATE", "DESC", ct);
           } else if (sel == "viewCount") {
@@ -133,19 +133,19 @@
               $(".best-writer").show();
               $(".writer-title").text("검색 결과");
               $(".article-title").text("검색 결과와 관련된 글");
-              $(".article-title select-wrap").empty();
-              $(".article-title").after(sort_select);
+              $(".article-select").empty();
+              $(".article-select").append(sort_select);
               $(".writer-grid").empty();
               $(".article-grid").empty();
               searchWriter(formData);
-              searchCont(formData);
+              sortingC("VIEWCOUNT", "DESC", ct);
             } else {
               $(".best-writer").hide();
               $(".article-title").text("검색 결과");
-              $(".best-article select").remove();
-              $(".article-title").after(sort_select);
+              $(".article-select").empty();
+              $(".article-select").append(sort_select);
               $(".article-grid").empty();
-              searchCont(formData);
+              sortingC("VIEWCOUNT", "DESC", ct);
             }
           }
         });
@@ -271,6 +271,48 @@
           },
         });
       }
+      function getBestWriters(formData) {
+          $.ajax({
+            url: "/getBestWriters",
+            type: "get",
+            dataType: "json",
+            data: formData,
+            success: function (data) {
+              let addlist = "";
+              let list = data.list;
+              let more = data.more;
+
+              $.each(list, function (i, ser) {
+                addlist +=
+                  "<div class='writer'>" +
+                  "<div class='writer-photo'>" +
+                  "<a href='#' onclick='writerDetail(" +
+                  ser.writerSeq +
+                  ")'>" +
+                  "<img src='/static/asset/mush.jpg' alt='' /></a></div>" +
+                  "<div class='writer-desc'>" +
+                  ser.intro +
+                  "</div>" +
+                  "<div class='writer-name'>" +
+                  ser.writerName +
+                  "</div></div>";
+              });
+              $(".writer-grid").append(addlist);
+
+              if (more == true) {
+                $("#write-more").show();
+              } else {
+                $("#write-more").hide();
+                if (list == "") {
+                  alert("더 이상 결과가 없습니다");
+                }
+              }
+            },
+            error: function () {
+              alert("error");
+            },
+          });
+        }
     </script>
   </th:block>
 </html>
