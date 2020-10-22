@@ -38,7 +38,7 @@
                  <div class="writer">
                    <div class="writer-photo">
                      <a href='#' onclick='writerDetail(${bestWriter.writerSeq})'>
-                       <img src="/static/asset/mush.jpg" alt="" />
+                       <img src="/static/asset/mush.jpg" alt="" /><!-- <img th:src='@{/upload/profile/bestWriter.profileFileOriginal}' alt='' /> -->
                      </a>
                    </div>
                    <div class="writer-desc" th:text='${bestWriter.intro}'></div>
@@ -59,7 +59,7 @@
                  <div class="article">
                    <div class="article-photo">
                      <a href='#' onclick='writerDetail(${bestArticle.writerSeq})'>
-                       <img src="/static/asset/a.jpg" alt="" />
+                       <img src="/static/asset/a.jpg" alt="" /><!-- <img th:src='@{/upload/cover/bestArticle.fileOriginal}' alt='' /> -->
                      </a>
                    </div>
                    <div class="article-name" th:text="${bestArticle.title}"></div>
