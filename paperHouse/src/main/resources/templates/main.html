@@ -60,16 +60,21 @@
               <div class="section-body writer-grid clearfix">
                 <div class="grid-wrap left clearfix">
                   <div class="writer-pic">
+<<<<<<< HEAD
                     <img src="" alt="" />
                   </div>
+=======
+                 <img alt="" src="/static/asset/ccc.jpg" height="150">
+                 </div>
+>>>>>>> regi-fnc
                   <div class="writer-info-wrap">
-                    <div class="writer-name">작가이름</div>
-                    <div class="writer-birth">작가 정보</div>
+                    <div class="writer-name" th:text="${todayWriter.writerName}"></div>
+                    <div class="writer-birth" >작가 정보</div>
                   </div>
                 </div>
                 <div class="right">
                   <div class="grid-wrap right-up">
-                    <div class="writer-desc">작가 설명입니당.</div>
+                    <div class="writer-desc"  th:text="${todayWriter.intro}"></div>
                   </div>
                   <div class="grid-wrap right-down">
                     <div class="writer-recommend">
@@ -93,7 +98,7 @@
                           <div class="filter"></div>
                           <img src="/static/asset/c.jpg" alt="" />
                         </div>
-                        <div class="writer-desc">한국인이 가장 사랑하는 작가</div>
+                        <div class="writer-desc" th:text="${writer.intro}" ></div>
                         <div class="writer-name" th:text="${writer.writerName}"></div>
                       </div>
                     </th:block>
