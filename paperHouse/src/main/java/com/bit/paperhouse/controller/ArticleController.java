@@ -52,10 +52,12 @@ public class ArticleController {
     }
 	
 	//작가 디테일
+	
 	@GetMapping("/article/detail")
-	public String ariticleDetail(Model model, @RequestParam("articleSeq") int articleSeq) {
+	public String articleDetail(Model model, @RequestParam("articleSeq") int articleSeq) {
 		CustomSecurityDetails user = (CustomSecurityDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		int userSeq = user.getUSERSEQ();
+		String userNickName = user.getNICKNAME();
 		
 		//detail
 		ArticleDto list = service.getArticleDetail(articleSeq);
@@ -133,6 +135,7 @@ public class ArticleController {
 		
 		System.out.println("팔로우 체크: " + followChk);
 		
+		model.addAttribute("userNickName", userNickName);
 		model.addAttribute("userSeq", userSeq);
 		model.addAttribute("articleSeq", articleSeq);
 		
