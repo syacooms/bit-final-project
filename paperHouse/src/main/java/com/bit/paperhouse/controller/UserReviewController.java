@@ -35,10 +35,8 @@ public class UserReviewController {
 	
 	
 	
-	@RequestMapping(value="/review/list2", method = RequestMethod.POST)
+	@RequestMapping(value="/review/list", method = RequestMethod.POST)
 	public @ResponseBody List<UserReviewDto> getUserReviewList(UserReviewDto dto) {
-		
-		System.out.println("dddddddddddddddddddddddddddddd");
 		
 		int sn = dto.getPageNumber();
 		int start = sn * dto.getRecordCountPerPage() + 1;
