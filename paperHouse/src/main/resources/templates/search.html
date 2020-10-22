@@ -43,6 +43,7 @@
                       <div class="writer-photo">
                         <a href="#" onclick="writerDetail(${bestWriter.writerSeq})">
                           <img src="/static/asset/mush.jpg" alt="" />
+                          <!-- <img th:src='@{/upload/profile/bestWriter.profileFileOriginal}' alt='' /> -->
                         </a>
                       </div>
                       <div class="writer-desc" th:text="${bestWriter.intro}"></div>
@@ -54,7 +55,6 @@
                   <span id="write-more">더 보기</span>
                 </div>
               </div>
-
               <div class="best-article">
                 <div class="article-title">종이의 집 베스트 글</div>
                 <div class="select-wrap"></div>
@@ -64,6 +64,7 @@
                       <div class="article-photo">
                         <a href="#" onclick="writerDetail(${bestArticle.writerSeq})">
                           <img src="/static/asset/a.jpg" alt="" />
+                          <!-- <img th:src='@{/upload/cover/bestArticle.fileOriginal}' alt='' /> -->
                         </a>
                       </div>
                       <div class="article-name" th:text="${bestArticle.title}"></div>
