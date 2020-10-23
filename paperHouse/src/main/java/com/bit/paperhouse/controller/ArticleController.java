@@ -1,5 +1,7 @@
 package com.bit.paperhouse.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +39,11 @@ public class ArticleController {
 	public String ariticleWriteAf(ArticleDto dto, 
 			@RequestParam("bookcover")MultipartFile bookcover,
 			@RequestParam("novel")MultipartFile novel
-			) {
+			) throws IOException {
         
+		String novelByte = UtilEx.fileToString(novel);
+		System.out.println(novelByte);
+		dto.setCont(novelByte);
 		
 		String cover = bookcover.getOriginalFilename();
 		dto.setFileOriginal(cover);
