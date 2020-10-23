@@ -219,7 +219,7 @@ function getReviewListCount(){
 		url:"/review/count",
 		type:"post",
 		contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-		data:{"pageNumber":0, "recordCountPerPage":10},
+		data:{"pageNumber":0, "recordCountPerPage":10, "articleSeq":$("#articleSeq").val()},
 		success:function( count ){
 			//alert("sucess");
 			//alert(count);	
