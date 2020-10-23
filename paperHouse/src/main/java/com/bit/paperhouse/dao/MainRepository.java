@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.bit.paperhouse.dto.ArticleDto;
+import com.bit.paperhouse.dto.NoticeDto;
+import com.bit.paperhouse.dto.UserReviewDto;
 import com.bit.paperhouse.dto.WriterDto;
 
 @Mapper
@@ -20,5 +22,8 @@ public interface MainRepository {
 	
 	// 이번 달 추천 작가
 	public List<WriterDto> getWriterlist();
+	
+	
+	public UserReviewDto getTodayWriterRecommend( int writerSeq );
 
 }
