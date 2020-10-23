@@ -14,6 +14,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
+import java.util.Base64.Decoder;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.web.multipart.MultipartFile;
@@ -159,7 +160,7 @@ public class UtilEx {
 		        }
 
 		        byte[] fileArray = byteOutStream.toByteArray();
-		        fileString = new String(Base64.encodeBase64(fileArray));
+		        fileString = new String(Base64.encodeBase64(fileArray),"UTF-8");
 
 		    } catch (IOException e) {
 		        e.printStackTrace();
@@ -168,6 +169,15 @@ public class UtilEx {
 		        byteOutStream.close();
 		    }
 		return fileString;
+	}
+	
+	public static String decode(String cont) {
+
+		Decoder decoder = java.util.Base64.getDecoder(); 
+		byte[] decodedBytes = decoder.decode(cont);
+		String novel = new String(decodedBytes);
+		
+		return novel;
 	}
 	
 }

@@ -15,6 +15,9 @@
 
 <form th:action="@{/article/writeAf}" id="form" method="POST" enctype="multipart/form-data">
 <input type="hidden" class="apply" id="writerSeq" name="writerSeq" th:value="${param.writerSeq}"> 
+
+<br><br>
+
 <select id="categorys" name="categorys">
 	<option>소설</option>
 	<option>에세이</option>
