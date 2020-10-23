@@ -117,6 +117,12 @@ public class QnaController {
         model.addAttribute("qnaDetail", qna);
         model.addAttribute("qnaSeq" ,  qnaSeq);
 
+        //이미지 불러오기
+        String qnafileUploadPath = "/static/upload/qnaFile/";
+        String img = qnafileUploadPath + qna.getFileSystem();
+
+        model.addAttribute("img" , img);
+
 
         return "qnaDetail";
     }

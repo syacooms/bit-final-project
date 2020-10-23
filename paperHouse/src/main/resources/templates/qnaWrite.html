@@ -40,13 +40,14 @@
         <tr>
             <td colspan="2" style="height:50px; text-align:center;">
                <button type="button" id="writeBtn">글작성</button>
+                <button type="button" id="returnBtn">돌아가기</button>
             </td>
         </tr>
         <tr>
             <th>첨부파일</th>
-            <td> 파일선택 <input type="file" name="file" onchange="validateFile(this)" accept="image/jpeg , image/png , image/jpg" /> </td>
+            <td> <input type="file" name="file" onchange="validateFile(this)" accept="image/jpeg , image/png , image/jpg" /> </td>
         </tr>
-        <a href="/qna" class="btn"> 돌아가기</a>
+
         </tbody>
 
     </table>
@@ -79,6 +80,9 @@
                 $("#qnaForm").submit();
             }
         })
+    })
+    $(document).ready(function(){
+
     })
 
     function validateFile(file){
