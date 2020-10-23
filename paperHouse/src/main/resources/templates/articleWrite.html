@@ -32,7 +32,7 @@
 <br><br>
 
 <h3>소설</h3>
-<input type="file" id="Novel" name="Novel"  accept=".txt">
+<input type="file" id="novel" name="novel"  accept=".txt">
 
 <br><br>
 
@@ -94,22 +94,22 @@ $(document).ready(function(){
 	$("#submitbtn").click(function (e) { 
 		e.preventDefault();
 		
-		if($("#title").val().trim() == ""){
+		if($("#title").val() == ""){
 			$("#title").val("");
 			$("#title").focus();
 			 swal("","제목을 입력 해주세요.","error");
 			 return false;
-		} else if($("#bookcover").val().trim() == "") {
+		} else if($("#bookcover").val() == "") {
 			$("#bookcover").val("");
 			$("#bookcover").focus();
 			 swal("","책 표지를 업로드 해주세요.","error");
 			 return false;
-		} else if($("#Novel").val().trim() == "") {
-			$("#Novel").val("");
-			$("#Novel").focus();
+		} else if($("#novel").val() == "") {
+			$("#novel").val("");
+			$("#novel").focus();
 			 swal("","소설을 업로드 해주세요.","error");
 			 return false;
-		} else if($("#cont").val().trim() == "") {
+		} else if($("#cont").val() == "") {
 			$("#cont").val("");
 			$("#cont").focus();
 			 swal("","내용을 작성 해주세요.","error");
