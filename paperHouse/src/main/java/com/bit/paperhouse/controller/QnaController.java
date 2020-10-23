@@ -3,6 +3,7 @@ package com.bit.paperhouse.controller;
 import com.bit.paperhouse.dto.QnaDto;
 import com.bit.paperhouse.model.CustomSecurityDetails;
 import com.bit.paperhouse.service.QnaService;
+import com.bit.paperhouse.util.UtilEx;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -84,10 +86,22 @@ public class QnaController {
     }
 
     @PostMapping("/qna/writeAf")
-    public String writeQnaAf(QnaDto dto, Authentication auth) {
+    public String writeQnaAf(QnaDto dto, Authentication auth, @RequestParam("file") MultipartFile file) {
         CustomSecurityDetails user = (CustomSecurityDetails) auth.getPrincipal();
         dto.setUserSeq(user.getUSERSEQ());
+
+
+
+        String newFile = file.getOriginalFilename();
+        dto.setFileOriginal(newFile);
+
+        String qnaUploadPath = "C:/bit-final-project/paperHouse/src/main/resources/static/upload/qnaFile/";
+
+        String qnaFile = UtilEx.saveFile(file , qnaUploadPath);
+        dto.setFileSystem(qnaFile);
+        System.out.println(dto.toString());
         service.writeQnaAf(dto);
+
         return "redirect:/qna";
     }
 
@@ -150,6 +164,7 @@ public class QnaController {
         dto.setUserSeq(user.getUSERSEQ());
         service.qnaReplyInsert(dto);
         service.qnaReplyUpdate(qnaSeq);
+
 
         return "redirect:/qna";
     }
