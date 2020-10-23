@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html
+  lang="ko"
   xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:th="http://www.thymeleaf.org"
   xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+  xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorator="layout/layout"
 >
   <head th:replace="fragments/config :: configFragment"></head>
-<body>
+ <div layout:fragment="content">
 
 <input type="hidden" id="nickname" th:value="${nickname}"/>
 <input type="hidden" id="userSeq" th:value="${userSeq}"/>
@@ -52,15 +54,37 @@
  <h3>작가 pr</h3>
  <textarea rows="20" cols="40" readonly="readonly" th:text="${list.publicRelations}"></textarea>
  
- <h3>작가가쓴 글</h3>
- 
- <h3>한 줄 리뷰</h3>
-
+ <h3>작가가 쓴 글 ArticleList</h3>
+	<table>
+		<tr th:if="${not #lists.isEmpty( ArticleList )}" th:each="list : ${ArticleList}">
+			<td><img alt="" th:src="'/static/upload/cover/' + ${list.fileSystem}"></td>	
+			<td class="text-left">
+				<a th:href="@{'/article/detail?articleSeq=' + ${list.articleSeq}}" th:text=${list.title}></a>
+			</td>
+		</tr>
+		<tr th:unless="${not #lists.isEmpty( ArticleList )}">
+			<td>조회된 결과가 없습니다.</td>
+		</tr>
+	</table>
+	
+ <h3>한 줄 리뷰 UserReviewList</h3>
+	<table>
+		<tr th:if="${not #lists.isEmpty( UserReviewList )}" th:each="list : ${UserReviewList}">
+			<td th:text="${list.nickName}"></td>
+			<td th:text="${list.reviewDate}"></td>
+			<td th:text="${list.cont}"></td>
+		</tr>
+		<tr th:unless="${not #lists.isEmpty( UserReviewList )}">
+			<td>조회된 결과가 없습니다.</td>
+		</tr>
+	</table>
 <br><br>
 
 <button id="purchase">결제하기</button>
 
 <br><br>
+
+
 
 <button onclick="location.href = '/search'">검색으로 돌아가기</button>
 
@@ -77,6 +101,7 @@
 
 <!--결제 -->
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<th:block layout:fragment="script">
 <script type="text/javascript">
 
 
@@ -142,6 +167,6 @@ $("#purchase").click(function(){
 	});
 });
 </script>
-
-</body>
+<th:block>
+</div>
 </html>
