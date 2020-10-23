@@ -1,9 +1,13 @@
-<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:th="http://www.thymeleaf.org"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/layout">
-
-<body>
-
+<!DOCTYPE html>
+<html
+        lang="ko"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+>
+<div layout:fragment="content">
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <input type="hidden" name="userSeq" id="userSeq" th:value="${userSeq}">
     <input type="hidden" name="qnaSeq" id="qnaSeq" th:value="${qnaSeq}">
 
@@ -36,7 +40,7 @@
                 </tr>
                 <tr>
                     <th>파일</th>
-                    <img th:src="@{/static/upload/qnaFile/}+${qnaDetail.fileSystem}" alt=""/>
+<!--                    <img th:src="@{/static/upload/qnaFile/}+${qnaDetail.fileSystem}" alt=""/>-->
                 </tr>
                 <tr>
                     <th>작성일</th>
@@ -69,6 +73,7 @@
     <button id="qnaList" type="button">목록으로</button>
 
     <hr />
+
     <h3 align="center" id="answer">답글달기를 누르세요 </h3>
 
     <th:form id="qnaReply" name="qnaReply" method="post" th:action="@{/qna/replyWrite}">
@@ -104,7 +109,9 @@
 
 
 
-</body>
+</div>
+
+<th:block layout:fragment="script">
 <script type="application/javascript" th:inline="javascript">
     $(function () {
         var csrfToken = /*[[${_csrf.token}]]*/ null;
@@ -118,6 +125,7 @@
 <script type="text/javascript">
 
     $("#updateBtn").click(function () {
+
         $.ajax({
             url: "/qna/updateAf",
             type: 'post',
@@ -201,7 +209,6 @@
 
     $(document).ready(function () {
 
-
         $("#answerBtn").click(function () {
             $.ajax({
                 url: "/qna/replyInsert",
@@ -219,5 +226,5 @@
     });
 
 </script>
-
+</th:block>
 </html>

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <h2 align="center"> QNA 글작성</h2>
 <form name="qnaForm" id="qnaForm" method="post"  th:action="@{'/qna/writeAf'}" enctype="multipart/form-data">
 
@@ -56,6 +58,7 @@
 
 
 </body>
+
 <script type="application/javascript" th:inline="javascript">
     $(function () {
         var csrfToken = /*[[${_csrf.token}]]*/ null;
@@ -66,6 +69,7 @@
     });
 </script>
 
+<th:block layout:fragment="script">
 <script type="text/javascript">
     $(document).ready(function (){
         $("#writeBtn").click(function (){
@@ -81,8 +85,8 @@
             }
         })
     })
-    $(document).ready(function(){
-
+    $("#returnBtn").click(function () {
+        window.location = "/qna";
     })
 
     function validateFile(file){
@@ -110,4 +114,5 @@
      }
     }
 </script>
+</th:block>
 </html>
