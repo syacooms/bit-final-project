@@ -21,19 +21,22 @@ import com.bit.paperhouse.model.CustomSecurityDetails;
 import com.bit.paperhouse.service.ArticleService;
 import com.bit.paperhouse.service.UserFollowService;
 import com.bit.paperhouse.service.UserLikesService;
+import com.bit.paperhouse.service.UserReviewService;
 import com.bit.paperhouse.util.UtilEx;
 
 @Controller
 public class ArticleController {
 
-	@Autowired
 	ArticleService service;
-	
-	@Autowired
 	UserFollowService followService;
-	
-	@Autowired
 	UserLikesService likeService;
+	
+	public ArticleController(ArticleService service, UserFollowService followService, UserLikesService likeService) {
+		// TODO Auto-generated constructor stub
+		this.service = service;
+		this.followService = followService;
+		this.likeService = likeService;
+	}
 	
 	@PostMapping("/article/writeAf")
 	public String ariticleWriteAf(ArticleDto dto, 

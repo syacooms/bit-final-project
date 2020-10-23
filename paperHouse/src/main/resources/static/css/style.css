@@ -1186,6 +1186,245 @@ footer .copyright {
   width: 300px;
 }
 
+/* articleDetail */
+.articleDetail {
+}
+.articleDetail .detail-top {
+  text-align: center;
+  height: 40px;
+  background-color: #ffeb60;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+.articleDetail .detail-top a {
+  line-height: 40px;
+  font-size: 16px;
+  font-weight: 700;
+}
+.articleDetail .noResult {
+}
+.articleDetail .articleRow {
+  margin-bottom: 24px;
+}
+.articleDetail .articleRow .row-title {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+.articleDetail .dots-wrap {
+  margin-top: 24px;
+}
+.articleDetail .dots-wrap ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.articleDetail .dots-wrap ul li {
+  margin: 0 4px;
+  transition: all 0.25s ease;
+}
+.articleDetail .dots-wrap ul li button {
+  cursor: pointer;
+  background-color: #ccc;
+  font-size: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.articleDetail .dots-wrap ul li.slick-active button {
+  background-color: #333;
+}
+.articleDetail .articleInfo {
+  display: flex;
+}
+.articleDetail .articleInfo .left {
+  float: left;
+  width: 400px;
+  padding-right: 26px;
+}
+.articleDetail .articleInfo .left .imgWrap {
+  min-height: 374px;
+}
+.articleDetail .articleInfo .left .imgWrap img {
+  width: 100%;
+  box-shadow: 12px 8px 24px rgba(0, 0, 0, 0.2), 4px 8px 8px rgba(0, 0, 0, 0.1), 0 0 2px rgba(0, 0, 0, 0.24);
+}
+.articleDetail .articleInfo .right {
+  float: left;
+  width: calc(100% - 400px);
+  -ms-flex: 1;
+  flex: 1;
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 16px;
+}
+.articleDetail .articleInfo .right .info {
+  margin-bottom: 16px;
+}
+.articleDetail .articleInfo .right .info .title {
+  font-size: 18px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.articleDetail .articleInfo .right .info .value {
+  font-size: 16px;
+  padding-left: 10px;
+  color: #555;
+
+  line-height: 20px;
+  max-height: 140px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+}
+.articleDetail .articleInfo .right .info.name-wrap {
+}
+.articleDetail .articleInfo .right .info.name-wrap strong {
+  font-size: 28px;
+}
+.articleDetail .articleInfo .right .info.name-wrap small {
+  color: #8b8b8b;
+}
+.articleDetail .articleInfo .right .info02 {
+  background: #fafaf6;
+  border-radius: 12px;
+  height: 88px;
+  margin-top: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.articleDetail .articleInfo .right .info02 .info {
+  position: relative;
+  float: left;
+  width: calc(100% / 3);
+  text-align: center;
+  margin-bottom: 0;
+}
+.articleDetail .articleInfo .right .info02 .info:before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 80%;
+  background-color: #dfdfdf;
+}
+.articleDetail .articleInfo .right .info02 .info:last-child:before {
+  display: none;
+}
+.articleDetail .articleInfo .right .info02 .info .title {
+  color: #8b8b8b;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.articleDetail .articleInfo .right .info02 .info .title svg {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 8px;
+}
+.articleDetail .articleInfo .right .info02 .info .value {
+  padding-left: 0;
+  color: #555;
+}
+.articleDetail .articleCont {
+}
+
+.articleDetail .articleCont .preview {
+  border: 1px solid #ccc;
+  padding: 24px;
+  font-size: 16px;
+  line-height: 20px;
+  word-break: break-word;
+}
+.articleDetail .articleReview {
+}
+.articleDetail .articleReview .insertReview {
+  margin-bottom: 24px;
+}
+.articleDetail .articleReview .insertReview input {
+  display: block;
+  width: 100%;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+.articleDetail .articleReview .insertReview textarea {
+  font-family: "Noto Sans KR";
+  resize: none;
+  float: left;
+  width: calc(100% - 100px);
+
+  border: 1px solid #dfdfdf;
+  border-radius: 12px;
+  padding: 8px;
+  height: 40px;
+}
+.articleDetail .articleReview .insertReview button {
+  float: left;
+  width: 80px;
+  margin-left: 20px;
+
+  cursor: pointer;
+  font-family: "Noto Sans KR";
+  padding: 11px 12px;
+  border-radius: 2px;
+  background: #ffeb60;
+  font-size: 14px;
+  color: #333;
+  height: 40px;
+  text-align: center;
+  font-weight: 700;
+}
+.articleDetail .articleReview .reviewWrap {
+}
+.articleDetail .articleReview .reviewWrap .review {
+  margin-bottom: 16px;
+  padding: 12px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1), 0 0 2px rgba(0, 0, 0, 0.2);
+}
+.articleDetail .articleReview .reviewWrap .review:last-child {
+  margin-bottom: 0;
+}
+.articleDetail .articleReview .reviewWrap .review .nickname {
+  color: #555;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+.articleDetail .articleReview .reviewWrap .review .date {
+  font-size: 12px;
+  color: #a5a5a5;
+  margin-bottom: 8px;
+}
+.articleDetail .articleReview .reviewWrap .review .cont {
+  color: #555;
+  font-size: 20px;
+}
+.articleDetail .pagination {
+  text-align: center;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.articleDetail .pagination li {
+  padding: 0 8px;
+}
+.articleDetail .pagination li a {
+  color: #ccc;
+}
+.articleDetail .pagination li.active a {
+  color: #333;
+}
+
 /* myLibrary */
 .myLibrary-page {
 }
@@ -2242,6 +2481,22 @@ footer .copyright {
     min-height: 290px;
   }
   .writerDetail .writerInfo .right {
+    display: block;
+    float: none;
+    width: 100%;
+  }
+  .articleDetail .articleInfo {
+    display: block;
+  }
+  .articleDetail .articleInfo .left {
+    float: none;
+    width: 100%;
+    padding-right: 0;
+  }
+  .articleDetail .articleInfo .left .imgWrap {
+    min-height: 290px;
+  }
+  .articleDetail .articleInfo .right {
     display: block;
     float: none;
     width: 100%;
