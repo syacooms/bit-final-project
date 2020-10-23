@@ -3,7 +3,7 @@ package com.bit.paperhouse.dao;
 import com.bit.paperhouse.dto.QnaDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
-import sun.jvm.hotspot.debugger.Page;
+
 
 import java.util.List;
 
@@ -31,6 +31,8 @@ public interface QnaRepository {
 
     boolean qnaReplyInsert(QnaDto dto);
 
-    boolean qnaReplyUpdate(QnaDto dto);
+    boolean qnaReplyUpdate(int qnaSeq);
+
+    void qnaStaus(int qnaSeq);
 
 }

@@ -13,7 +13,7 @@
 <input type="hidden" th:value="${qna}">
 
     <br>
-    <form th:action="@{'/qna/search'}" method="get">
+
         <table>
         <tr>
         <div align="center" >
@@ -39,7 +39,7 @@
         </div>
         </tr>
         </table>
-    </form>
+
 
     <table class="list_table" style="width: 85%" id="_list_table" border="1 solid" >
         <colgroup>
@@ -98,15 +98,25 @@ function getBbsListData( pNumber){
             $(".list_col").remove();
             console.log(list);
             let status = "";
+
             if(list.length > 0) {
                 $.each(list, function (i, val) {
+                    if(val.status ==1){
+                        status="<font color='blue'>답변완료</font>";
+                    }
+                    else{
+                       status = "<font color='#ff6600'>답변대기</font>";
+                    }
+
                     let app =
                           "<tr class='list_col'>"
                         // +  "<td>" + (i + 1) + "</td>"
                         + "<td style='text-align: center'>"
                         + "<a href='/qna/detail?qnaSeq=" + val.qnaSeq + "'>" + val.title+"</a>"
                         + "</td>"
-                        +"<td style='text-align: center'>" + val.status+ "</td>"
+                        + "<div>"
+                        +"<td style='text-align: center'>" + status+ "</td>"
+                        + "</div>"
                         +"<td style='text-align: center'>" + val.userSeq + "</td>"
                         +"<td style='text-align: center'>" + val.qdate + "</td>"
                         +"</tr>";
@@ -146,7 +156,7 @@ function getBbsListData( pNumber){
     //paging 처리
 
     function loadPage(totalCount){
-        let pageSize = 5;
+        let pageSize = 10;
         let nowPage =1;
 
         let totalPages = totalCount / pageSize;
@@ -176,16 +186,16 @@ function getBbsListData( pNumber){
 
 
     // 댓글 이미지 처리
-    // function getArrow( depth ) {
-    //     let rs = "<img src='./image/arrow.png' width='20px' height='20px'/>";
+    // function getArrow( reply ) {
+    //     let rs = "<img src='/static/asset/quote.png' width='20px'/>";
     //     let nbsp = "&nbsp;&nbsp;&nbsp;&nbsp;";
     //
     //     let ts = "";
-    //     for(i = 0;i < depth; i++) {
+    //     for(i = 0;i < reply; i++) {
     //         ts += nbsp;
     //     }
     //
-    //     return depth==0?"":ts + rs;
+    //     return reply==0?"":ts + rs;
     // }
 </script>
 </body>

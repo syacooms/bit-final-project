@@ -17,7 +17,7 @@
         <div th:each="list : ${notice}">
            <tr >
                <td th:if="${list.del == 0}">
-               <td> <input</td>
+               <td> <input> </td>
                                            <span th:field="${list.noticeSeq}">
                    <input id="titleClick" th:value="${list.title}" onclick="cont()">
                    <span id="cont" th:type="hidden" th:text="${list.cont}">   </span>
