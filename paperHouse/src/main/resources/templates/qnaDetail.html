@@ -35,6 +35,10 @@
                     </td>
                 </tr>
                 <tr>
+                    <th>파일</th>
+                    <img th:src="@{/static/upload/qnaFile/}+${qnaDetail.fileSystem}" alt=""/>
+                </tr>
+                <tr>
                     <th>작성일</th>
                     <td>
                         <input type="text" th:value="${qnaDetail.qdate}">
