@@ -34,15 +34,18 @@ public class ArticleController {
 	UserLikesService likeService;
 	
 	@PostMapping("/article/writeAf")
-	public String ariticleWriteAf(ArticleDto dto, @RequestParam("file")MultipartFile file) {
+	public String ariticleWriteAf(ArticleDto dto, 
+			@RequestParam("bookcover")MultipartFile bookcover,
+			@RequestParam("novel")MultipartFile novel
+			) {
         
 		
-		String cover = file.getOriginalFilename();
+		String cover = bookcover.getOriginalFilename();
 		dto.setFileOriginal(cover);
 		
 		String CoverUploadPath = "C:/bit-final-project/paperHouse/src/main/resources/static/upload/cover/";
 		
-		String bookCoverFile = UtilEx.saveFile(file,CoverUploadPath);
+		String bookCoverFile = UtilEx.saveFile(bookcover,CoverUploadPath);
 		dto.setFileSystem(bookCoverFile);
 		
 		
