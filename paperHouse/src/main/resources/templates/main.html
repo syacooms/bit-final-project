@@ -75,13 +75,16 @@
                   </div>
                   <div class="grid-wrap right-down">
                     <div class="writer-recommend">
-                      <div class="recommender-id">"추천자 아이디"</div>
-                      <div class="recommender-comment">추천자 추천글내용</div>
+                      <div class="recommender-id" th:text="${review.nickName}"></div>
+                      <div class="recommender-comment" th:text="${review.cont}">추천자 추천글내용</div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            
+
+
             <!-- //today-writer -->
             <!-- monthly-recommend -->
             <div class="main-section monthly-recommend">
@@ -213,7 +216,9 @@
           });
         });
       }
-      
+
+
+   
       
       // article category
       function articleWrap(tab) {

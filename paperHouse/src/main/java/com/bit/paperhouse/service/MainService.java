@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.bit.paperhouse.dao.MainRepository;
 import com.bit.paperhouse.dto.ArticleDto;
+import com.bit.paperhouse.dto.NoticeDto;
+import com.bit.paperhouse.dto.UserReviewDto;
 import com.bit.paperhouse.dto.WriterDto;
 
 @Service
@@ -40,5 +42,10 @@ public class MainService {
 		List<WriterDto> list =  dao.getWriterlist();
 		return list;
 	}
+	
+    public UserReviewDto getTodayWriterRecommend( int writerSeq ) {
+    	
+    	return dao.getTodayWriterRecommend(writerSeq);
+    }
 
 }

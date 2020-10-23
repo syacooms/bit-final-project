@@ -1,5 +1,6 @@
 package com.bit.paperhouse.controller;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -13,10 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bit.paperhouse.dto.ArticleDto;
+import com.bit.paperhouse.dto.UserReviewDto;
 import com.bit.paperhouse.dto.WriterDto;
 import com.bit.paperhouse.service.MainService;
-import com.bit.paperhouse.service.UserService;
-import com.bit.paperhouse.service.WriterService;
 
 @Controller
 public class MainController {
@@ -46,8 +46,8 @@ public class MainController {
     	model.addAttribute("writerList", writerList);
     	
     	Calendar cal = Calendar.getInstance();
-    	String[] today = todaySentence();
-    	String todaySentence = today[cal.get(Calendar.DAY_OF_MONTH)];
+    	List<String> today = todaySentence();
+    	String todaySentence = today.get(cal.get(Calendar.DAY_OF_MONTH));
     	
         model.addAttribute("todaySentence", todaySentence);
         
@@ -59,6 +59,11 @@ public class MainController {
         dto.setIntro('"'+dto.getIntro()+'"');
        
         model.addAttribute("todayWriter", dto); 
+        
+        UserReviewDto review = mainSvc.getTodayWriterRecommend(dto.getWriterSeq());
+        review.setCont("'"+ review.getCont() +"'");
+        model.addAttribute("review", review);
+        
         return "/main";
     }
     
@@ -71,14 +76,14 @@ public class MainController {
         return articleList;
     }
     
-    
+
      
     
     
     
     
     // 오늘의 문장
-	public String[] todaySentence() throws Exception{
+	public List<String> todaySentence() throws Exception{
 		
 		String url = "https://www.millie.co.kr/viewfinder/more_quot.html?post_seq=293247";
 		
@@ -89,15 +94,17 @@ public class MainController {
 		Document ddo = response.parse();
 		
 		String todaySentence = ddo.text();
-	
-		String[] pstr2 = todaySentence.split("상세보기");
 		
-		for(int i=0;i<pstr2.length;i++) {
-			pstr2[i] = pstr2[i].replace("<", "<p class='text' style='font-size: 12px; margin-top: 75px' ><");
-		}
+		String[] pstr2 = todaySentence.split("상세보기|<");
 		
-      return pstr2;
-     	
+		List<String> list =  new ArrayList<String>();
+		
+		for(int i = 0; i < pstr2.length; i++) {
+	     	if(i%2 == 0 && i != 0 && i != pstr2.length-1) {
+	     		list.add(pstr2[i]);
+	     	}	     	
+		}		
+          return list;  	
 	}
 	
 }
