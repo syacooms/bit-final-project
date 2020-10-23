@@ -8,7 +8,7 @@
   layout:decorator="layout/layout"
 >
   <head th:replace="fragments/config :: configFragment"></head>
-<body>
+<div layout:fragment="content">
 
 
 <br><br>
@@ -26,12 +26,13 @@
 <input type="text" id="title" name="title" placeholder="제목을 작성해주세요.">
 
 <br><br>
-
-<input type="file" id="file" name="file" onchange="validateimg(this)">
+<h3>책 표지</h3>
+<input type="file" id="bookcover" name="bookcover" onchange="validateimg(this)">
 
 <br><br>
 
-<textarea id="cont" name="cont" rows="20" cols="50" placeholder="내용을 작성해주세요."></textarea>
+<h3>소설</h3>
+<input type="file" id="Novel" name="Novel"  accept=".txt">
 
 <br><br>
 
@@ -52,7 +53,7 @@
     });
   });
 </script>
-
+<th:block layout:fragment="script">
 <script type="text/javascript">
 function validateimg(ctrl) { 
     var fileUpload = ctrl;
@@ -98,10 +99,15 @@ $(document).ready(function(){
 			$("#title").focus();
 			 swal("","제목을 입력 해주세요.","error");
 			 return false;
-		} else if($("#file").val().trim() == "") {
-			$("#file").val("");
-			$("#file").focus();
+		} else if($("#bookcover").val().trim() == "") {
+			$("#bookcover").val("");
+			$("#bookcover").focus();
 			 swal("","책 표지를 업로드 해주세요.","error");
+			 return false;
+		} else if($("#Novel").val().trim() == "") {
+			$("#Novel").val("");
+			$("#Novel").focus();
+			 swal("","소설을 업로드 해주세요.","error");
 			 return false;
 		} else if($("#cont").val().trim() == "") {
 			$("#cont").val("");
@@ -120,6 +126,6 @@ $(document).ready(function(){
 	});
 });
 </script>
-
-</body>
+</th:block>
+</div>
 </html>
