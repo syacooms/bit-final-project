@@ -81,9 +81,6 @@
   }
   
   $("#bell").click(function(){
-	  let date = new Date();
-	  let today = date.getFullYear() + date.getMonth() + date.getDate();
-	  $.cookie("re_noti",today, { expires: 7 });
 	  location.href = "/notice";
   });
   </script>
