@@ -37,5 +37,16 @@ ORDER BY WRITER_SEQ DESC
    AND ROWNUM = 1                     
 </select>
 
+<select id="newNoticeCheck" resultType="java.lang.Integer">
+  SELECT COUNT(*)
+  FROM NOTICE
+  WHERE UPLOAD_DATE = SYSDATE
+</select>
+
+<select id="articleCategorys" resultType="java.lang.String">
+  SELECT CATEGORYS
+  FROM ARTICLE
+  GROUP BY CATEGORYS
+</select>
 
 </mapper>

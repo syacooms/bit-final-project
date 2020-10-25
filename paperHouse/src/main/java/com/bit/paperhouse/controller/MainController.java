@@ -38,34 +38,32 @@ public class MainController {
     @GetMapping("/main")
     public String main(Model model) throws Exception {
     	System.out.println("main()");
-    	
-    	String category = "소설";
-    	
+    	    	
+        // 책 카테고리
+        List<String> articleCategorysList = mainSvc.articleCategorys();
+        String category = articleCategorysList.get(0);
+        model.addAttribute("articleCategorysList", articleCategorysList);
+    	// 이번 달 작가
     	List<WriterDto> writerList = mainSvc.getWriterlist();
- 	
     	model.addAttribute("writerList", writerList);
-    	
-    	Calendar cal = Calendar.getInstance();
-    	List<String> today = todaySentence();
-    	String todaySentence = today.get(cal.get(Calendar.DAY_OF_MONTH));
-    	
+    	//오늘의 문장	
+    	String todaySentence = todaySentence();    	
         model.addAttribute("todaySentence", todaySentence);
-        
-        List<ArticleDto> articleList = mainSvc.getArticleList(category);
-             
+        // 이번달 책
+        List<ArticleDto> articleList = mainSvc.getArticleList(category);             
         model.addAttribute("articleList", articleList); 
-        
+        // 오늘의 작가
         WriterDto dto = mainSvc.getTodayWriter();
-        dto.setIntro('"'+dto.getIntro()+'"');
-       
+        dto.setIntro('"'+dto.getIntro()+'"');     
         model.addAttribute("todayWriter", dto); 
-        
+        // 오늘의 작가  댓글
         UserReviewDto review = mainSvc.getTodayWriterRecommend(dto.getWriterSeq());
         review.setCont("'"+ review.getCont() +"'");
         model.addAttribute("review", review);
-        
+    
         return "/main";
     }
+    
     
     // 취향별 추천글
     @GetMapping("/main/articleWrap")
@@ -75,7 +73,19 @@ public class MainController {
         
         return articleList;
     }
-    
+   
+    // 새로운 공지사항 체크
+    @GetMapping("/newNoticeCheck")
+    public @ResponseBody String newNoticeCheck() {
+    	
+    	String check = "no";
+    	int count = mainSvc.newNoticeCheck();
+    	if(count > 0) {
+    		check = "yes";
+    	}
+    	System.out.println(check);
+        return check;
+    }
 
      
     
@@ -83,7 +93,7 @@ public class MainController {
     
     
     // 오늘의 문장
-	public List<String> todaySentence() throws Exception{
+	public String todaySentence() throws Exception{
 		
 		String url = "https://www.millie.co.kr/viewfinder/more_quot.html?post_seq=293247";
 		
@@ -104,7 +114,12 @@ public class MainController {
 	     		list.add(pstr2[i]);
 	     	}	     	
 		}		
-          return list;  	
+		
+		Calendar cal = Calendar.getInstance();
+
+    	String mainTodaySentence = list.get(cal.get(Calendar.DAY_OF_MONTH));
+		
+          return mainTodaySentence;  	
 	}
 	
 }

@@ -47,5 +47,14 @@ public class MainService {
     	
     	return dao.getTodayWriterRecommend(writerSeq);
     }
+    
+    public Integer newNoticeCheck() {
+		return dao.newNoticeCheck();
+	}
+    
+    public List<String> articleCategorys() {
+		List<String> list = dao.articleCategorys();
+		return list;
+	}
 
 }

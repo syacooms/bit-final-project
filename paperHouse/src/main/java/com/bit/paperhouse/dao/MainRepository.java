@@ -25,5 +25,9 @@ public interface MainRepository {
 	
 	
 	public UserReviewDto getTodayWriterRecommend( int writerSeq );
+	
+	public Integer newNoticeCheck();
+	
+	public List<String> articleCategorys();
 
 }
