@@ -11,21 +11,28 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bit.paperhouse.dto.ArticleDto;
+import com.bit.paperhouse.dto.UserLikesDto;
 import com.bit.paperhouse.dto.UserReviewDto;
 import com.bit.paperhouse.dto.WriterDto;
 import com.bit.paperhouse.model.CustomSecurityDetails;
+import com.bit.paperhouse.service.UserLikesService;
+import com.bit.paperhouse.service.UserReviewService;
 import com.bit.paperhouse.service.WriterService;
 import com.bit.paperhouse.util.UtilEx;
 
 @Controller
 public class WriterController {
 	
-	@Autowired
-	WriterService service;
+	@Autowired WriterService service;
+	@Autowired UserLikesService UserLikesService;
+	@Autowired UserReviewService UserReviewService;
 
 	@PostMapping("/writer/application/appComplete")
 	public String appComplete(WriterDto dto,
@@ -104,4 +111,5 @@ public class WriterController {
 		
 		return "/writerDetail";
 	}
+	
 }
