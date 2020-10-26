@@ -72,10 +72,11 @@
                 <!-- //writer-PR -->
               </div>
               <div class="btnWrap">
-                <input class="btn" type="submit" id="submitbtn" value="작가신청하기" />
+                <input th:if="${status} == '0'" class="btn" type="submit" id="submitbtn" value="작가신청하기" />
                 <a class="btn goList" href="/myPage">목록으로 돌아가기</a>
               </div>
-              <p th:if="${status} == '1'">이미 신청하셨습니다!!</p>
+              <br>
+              <h3 th:if="${status} == '1'" style="text-align: center; color: red; ">이미 신청하셨습니다!!</h3>
             </form>
           </div>
         </div>
