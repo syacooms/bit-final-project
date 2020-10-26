@@ -32,12 +32,14 @@ public class ArticleController {
 	ArticleService service;
 	UserFollowService followService;
 	UserLikesService likeService;
+	MypageService myPageService;
 	
-	public ArticleController(ArticleService service, UserFollowService followService, UserLikesService likeService) {
+	public ArticleController(ArticleService service, UserFollowService followService, UserLikesService likeService, MypageService myPageService) {
 		// TODO Auto-generated constructor stub
 		this.service = service;
 		this.followService = followService;
 		this.likeService = likeService;
+		this.myPageService = myPageService;
 	}
 	
 	@PostMapping("/article/writeAf")
