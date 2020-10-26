@@ -888,6 +888,7 @@ footer .copyright {
   margin-bottom: 16px;
 }
 .search-page .result-wrap .base-result .best-writer .writer-grid .writer .writer-photo {
+  min-height: 234px;
 }
 .search-page .result-wrap .base-result .best-writer .writer-grid .writer .writer-photo img {
   width: 100%;
@@ -2112,6 +2113,86 @@ footer .copyright {
   font-size: 20px;
 }
 
+/* qna-write */
+.myPageSub.qna-write {
+}
+.myPageSub.qna-write .qnaFormWrap {
+}
+.myPageSub.qna-write .qnaFormWrap .form-row {
+  margin-bottom: 16px;
+}
+.myPageSub.qna-write .qnaFormWrap .form-row .row-title {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+.myPageSub.qna-write .qnaFormWrap .form-row .row-input {
+}
+.myPageSub.qna-write .qnaFormWrap .form-row .row-input input[type="text"] {
+  font-family: "Noto Sans KR";
+  color: #333;
+  font-size: 14px;
+  line-height: 16px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  width: 100%;
+  padding: 11px 12px;
+}
+.myPageSub.qna-write .qnaFormWrap .form-row .row-input.file {
+}
+.myPageSub.qna-write .qnaFormWrap .form-row .row-input.file .fileName {
+  float: left;
+  color: #ccc;
+  font-size: 14px;
+  line-height: 16px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  width: calc(100% - 96px);
+  padding: 11px 12px;
+  margin-right: 16px;
+  transition: all 0.25s ease;
+}
+.myPageSub.qna-write .qnaFormWrap .form-row .row-input.file .fileName.active {
+  color: #333;
+}
+.myPageSub.qna-write .qnaFormWrap .form-row .row-input.file label {
+  cursor: pointer;
+  display: block;
+  position: relative;
+  float: left;
+  width: 80px;
+  padding: 11px 12px;
+  border-radius: 2px;
+  background: #ffeb60;
+  font-size: 14px;
+  color: #333;
+  height: 40px;
+  text-align: center;
+  font-weight: 700;
+}
+.myPageSub.qna-write .qnaFormWrap .form-row .row-input.file label input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.myPageSub.qna-write .qnaFormWrap .form-row .row-input textarea {
+  font-family: "Noto Sans KR";
+  color: #333;
+  font-size: 14px;
+  line-height: 16px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  width: 100%;
+  padding: 11px 12px;
+  resize: none;
+  min-height: 350px;
+}
+
 /* notice */
 .myPageSub.notice {
 }
@@ -2155,6 +2236,13 @@ footer .copyright {
 }
 .myPageSub.notice .listWrap .list .viewCount {
   padding-right: 8px;
+}
+.myPageSub.notice .listWrap .list .notice-body {
+}
+.myPageSub.notice .listWrap .list .notice-body .img-wrap {
+}
+.myPageSub.notice .listWrap .list .notice-body .img-wrap img {
+  width: 100%;
 }
 /* notice-detail */
 .myPageSub.notice-detail {
@@ -2501,6 +2589,9 @@ footer .copyright {
     float: none;
     width: 100%;
   }
+  .search-page .result-wrap .base-result .best-writer .writer-grid .writer .writer-photo {
+    min-height: 184px;
+  }
 }
 @media all and (max-width: 600px) {
   .mobileScroll {
@@ -2529,5 +2620,8 @@ footer .copyright {
   }
   .search-page .result-wrap .base-result .best-article .article-grid .article {
     width: calc(100% / 3);
+  }
+  .search-page .result-wrap .base-result .best-writer .writer-grid .writer .writer-photo {
+    min-height: 197px;
   }
 }
