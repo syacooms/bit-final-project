@@ -17,7 +17,7 @@
 </tr>
 <th:block th:each="writer:${alist}">
 	<tr>
-		<td th:text='${writer.writerName}'></td><td th:text='${writer.intro}'></td><td>${writer.history}들어갈 자리</td><td><input type="checkbox" name='ck' th:value='${writer.writerSeq}'></td>
+		<td th:text='${writer.writerName}'></td><td th:text='${writer.intro}'></td><td><a th:href="@{/download?fileName={fileSystem}&orignalFile={fileOriginal}(fileSystem=${writer.fileSystem},fileOriginal=${writer.fileOriginal})}">포트폴리오 다운로드</a></td><td><input type="checkbox" name='ck' th:value='${writer.writerSeq}'></td>
 	</tr>
 
 </th:block>
@@ -106,6 +106,10 @@ $(document).ready(function(){
 		  }
 	});
 });
+
+function download(fileSystem){
+	location.href = '/download?fileName='+fileSystem;
+}
 </script>
 </th:block>
 
