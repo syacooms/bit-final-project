@@ -1213,6 +1213,7 @@ footer .copyright {
   border-radius: 32px;
   font-size: 24px;
   line-height: 34px;
+  word-break: keep-all;
 }
 .writerDetail .writerWorks {
 }
@@ -1471,7 +1472,7 @@ footer .copyright {
   padding: 24px;
   font-size: 16px;
   line-height: 20px;
-  word-break: break-word;
+  word-break: keep-all;
 }
 .articleDetail .articleReview {
 }
