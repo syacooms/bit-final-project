@@ -119,11 +119,13 @@
 
 </update>
 
-<update id="qnaStaus" parameterType="int">
+<update id="qnaStatus" parameterType="int">
     UPDATE QNA
     SET STATUS= 1
     WHERE QNA_SEQ = #{qnaSeq}
 </update>
+
+
 
 
 
