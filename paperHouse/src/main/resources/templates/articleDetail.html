@@ -57,12 +57,17 @@
           <div class="articleCont articleRow">
             <div class="row-title">미리보기</div>
             <div class="preview" th:text="${novel}"></div>
-            <!-- <div th:if="${userSeq} == ${writerInfo.userSeq}">
-              <a th:href="@{'/article/update?articleSeq=' + ${articleSeq}}">
-                <button id="updatebtn" style="float: left; margin-right: 10px">수정</button>
-              </a>
-              <button id="deletebtn">삭제</button>
-            </div> -->
+            <br>
+             <div class="articleReview articleRow">
+             	<div class="insertReview clearfix">
+		            <div th:if="${userSeq} == ${writerInfo.userSeq}">
+		              <a th:href="@{'/article/update?articleSeq=' + ${articleSeq}}" >
+		                <button class="insertReview clearfix" id="updatebtn" style="float: left; margin-right: 10px">수정</button>
+		              </a>
+		              <button class="insertReview clearfix"  id="deletebtn">삭제</button>
+            	</div>
+            </div>
+            </div>
           </div>
           <!-- //articleCont -->
           <!-- articleReview -->
