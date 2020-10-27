@@ -37,7 +37,7 @@ public class QnaReplyController {
         System.out.println(dto.toString());
         int qnaSeq = dto.getQnaSeq();
         service.replyInsert(dto);
-        qnaService.qnaStaus(qnaSeq);
+        qnaService.qnaStatus(qnaSeq);
 
         List<QnaReplyDto> list =  service.replyList(qnaSeq);
         model.addAttribute("reply" , list);
