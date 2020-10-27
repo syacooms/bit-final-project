@@ -35,6 +35,12 @@
                   <div class="title">작성일</div>
                   <div class="value" th:text="${list.uploadDate}"></div>
                 </div>
+                <div class="follow-wrap">
+                	<button th:if="${followChk} == '0'" id="follow" style="float: left; margin-right: 10px" th:text="팔로우"></button>
+                	<button th:if="${followChk} == '1'" id="unfollow" style="float: left; margin-right: 10px" th:text="팔로우취소"></button>
+                	<button th:if="${likesChk} == '0'"  id="goodlike" th:text="좋아요"></button>
+                	<button th:if="${likesChk} == '1'"  id="unlike" th:text="좋아요취소"></button>
+                </div>
               </div>
               <div class="info02 clearfix">
                 <div class="categorys info">
