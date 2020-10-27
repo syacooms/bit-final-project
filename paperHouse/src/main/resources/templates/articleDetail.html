@@ -35,11 +35,11 @@
                   <div class="title">작성일</div>
                   <div class="value" th:text="${list.uploadDate}"></div>
                 </div>
-                <div class="follow-wrap">
-                	<button th:if="${followChk} == '0'" id="follow" style="float: left; margin-right: 10px" th:text="팔로우"></button>
-                	<button th:if="${followChk} == '1'" id="unfollow" style="float: left; margin-right: 10px" th:text="팔로우취소"></button>
-                	<button th:if="${likesChk} == '0'"  id="goodlike" th:text="좋아요"></button>
-                	<button th:if="${likesChk} == '1'"  id="unlike" th:text="좋아요취소"></button>
+                <div class="follow-wrap info">
+                  <button class="btn" th:if="${followChk} == '0'" id="follow">follow</button>
+                  <button class="btn chk" th:if="${followChk} == '1'" id="unfollow">unfollow</button>
+                  <button class="btn" th:if="${likesChk} == '0'" id="goodlike">like</button>
+                  <button class="btn chk" th:if="${likesChk} == '1'" id="unlike">unlike</button>
                 </div>
               </div>
               <div class="info02 clearfix">
