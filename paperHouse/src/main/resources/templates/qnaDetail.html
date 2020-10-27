@@ -50,38 +50,33 @@
                 <!-- <a th:href="@{'delete?i='}+${notice.noticeSeq}" class="goList" sec:authorize="hasRole('ROLE_ADMIN')">글삭제</a> -->
               </div>
             </div>
-          </div>
-          <div sec:authorize="hasRole('ROLE_ADMIN')">
-            <div id="adminTable">
-            <th:form id="qnaReply" name="qnaReply">
-              <table>
-
-                <tr>
-                  <th>작성자</th>
-                  <td th:text="${userSeq}" name="user" id="user"></td>
-                </tr>
-                <tr>
-                  <th>답변 제목 작성</th>
-                  <td>
-                    <input type="text" id="replyTitle" name="replyTitle" >
-                  </td>
-                </tr>
-                <tr>
-                  <th>답변 내용 작성 </th>
-
-                  <td><textarea id="answerConts" name="answerConts" placeholder="답변을 입력하세요"></textarea></td>
-
-                </tr>
-                </tr>
-
-                <tr>
-                  <td>
-                    <button type="button" id="answerBtn">답글달기</button>
-                  </td>
-                </tr>
-              </table>
-            </th:form>
-            </div>
+            <div sec:authorize="hasRole('ROLE_ADMIN')">
+	            <div id="adminTable">
+	            <th:form id="qnaReply" name="qnaReply">
+	              <table>
+	                <tr>
+	                  <th>작성자</th>
+	                  <td th:text="${userSeq}" name="user" id="user"></td>
+	                </tr>
+	                <tr>
+	                  <th>답변 제목 작성</th>
+	                  <td>
+	                    <input type="text" id="replyTitle" name="replyTitle" >
+	                  </td>
+	                </tr>
+	                <tr>
+	                  <th>답변 내용 작성 </th>
+	                  <td><textarea id="answerConts" name="answerConts" placeholder="답변을 입력하세요"></textarea></td>
+	                </tr>
+	                <tr>
+	                  <td>
+	                    <button type="button" id="answerBtn">답글달기</button>
+	                  </td>
+	                </tr>
+	              </table>
+	            </th:form>
+	            </div>
+	          </div>
           </div>
         </div>
       </div>

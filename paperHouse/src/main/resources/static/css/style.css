@@ -1211,8 +1211,8 @@ footer .copyright {
   background-color: #f7f7f7;
   padding: 24px;
   border-radius: 32px;
-  font-size: 24px;
-  line-height: 34px;
+  font-size: 20px;
+  line-height: 30px;
   word-break: keep-all;
 }
 .writerDetail .writerWorks {
@@ -1470,8 +1470,8 @@ footer .copyright {
 .articleDetail .articleCont .preview {
   border: 1px solid #ccc;
   padding: 24px;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 20px;
+  line-height: 30px;
   word-break: keep-all;
 }
 .articleDetail .articleReview {
@@ -2475,6 +2475,12 @@ footer .copyright {
 }
 .myPageSub.notice .listWrap .list .notice-body .img-wrap img {
   width: 100%;
+}
+.myPageSub.notice .listWrap .list .notice-body .cont {
+	margin-top: 16px;
+    font-size: 16px;
+    line-height: 20px;
+    word-break: keep-all;
 }
 /* notice-detail */
 .myPageSub.notice-detail {
