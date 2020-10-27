@@ -31,7 +31,7 @@ public class RegiWriterController {
 	@Autowired
 	private ServletContext servletContext;
 	
-	@GetMapping("/writerApplyList")
+	@GetMapping("/admin/writerApplyList")
 	public String getApplyWriter(Model model) {
 		List<WriterDto> list = regiWriterService.getApplyWriter();
 		List<WriterDto> alist = new ArrayList<WriterDto>();
@@ -45,7 +45,7 @@ public class RegiWriterController {
 		return "/writerApplyList";
 	}
 	
-	@GetMapping("/applyWriter")
+	@GetMapping("/admin/applyWriter")
 	@ResponseBody
 	public int applyWriter(String checklist) {
 		System.out.println("applyWriter");
@@ -55,13 +55,13 @@ public class RegiWriterController {
 		return result;
 	}
 	
-	@GetMapping("/rejectWriter")
+	@GetMapping("/admin/rejectWriter")
 	@ResponseBody
 	public int rejectWriter(String checklist) {
 		int result = regiWriterService.rejectWriter(checklist);
 		return result;
 	}
-	@RequestMapping(value = "/download")
+	@RequestMapping(value = "/admin/download")
 	public ResponseEntity<InputStreamResource> download(String fileName,String orignalFile ,HttpServletRequest req)throws Exception{
 		System.out.println("FileController fileUpload");
 		
