@@ -16,11 +16,19 @@
             <div class="form-wrap">
               <form th:action="@{/article/writeAf}" id="form" method="POST" enctype="multipart/form-data">
                 <input type="hidden" class="apply" id="writerSeq" name="writerSeq" th:value="${param.writerSeq}" />
-                <select id="categorys" name="categorys">
-                  <option>소설</option>
-                  <option>에세이</option>
-                  <option>시</option>
-                </select>
+                <div class="form-row">
+                  <div class="row-title">카테고리</div>
+                  <div class="row-input clearfix">
+                    <div class="select-wrap">
+                      <select id="categorys" name="categorys">
+                        <option>소설</option>
+                        <option>에세이</option>
+                        <option>시</option>
+                      </select>
+                      <div class="arrow"><span class="iconify" data-icon="bi:chevron-down" data-inline="false"></span></div>
+                    </div>
+                  </div>
+                </div>
                 <div class="form-row">
                   <div class="row-title">책 표지</div>
                   <div class="row-input file clearfix">
@@ -39,13 +47,17 @@
                 </div>
                 <div class="form-row">
                   <div class="row-title">소설</div>
-                  <div class="row-input">
-                    <input type="file" id="novel" name="novel" accept=".txt" />
-                    <input type="submit" id="submitbtn" value="작성하기" />
+                  <div class="row-input file clearfix">
+                    <div class="fileName">파일명</div>
+                    <label for="novel">
+                      파일선택
+                      <input type="file" id="novel" name="novel" accept=".txt" />
+                    </label>
                   </div>
                 </div>
-                <div class="btn-wrap">
-                  <button class="btn" onclick="location.href = '/myPage'">목록으로 돌아가기</button>
+                <div class="btnWrap">
+                  <a class="btn" href="/myPage">목록으로 돌아가기</a>
+                  <input class="btn" type="submit" id="submitbtn" value="작성하기" />
                 </div>
               </form>
             </div>

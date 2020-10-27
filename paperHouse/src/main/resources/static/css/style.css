@@ -1427,7 +1427,8 @@ footer .copyright {
 }
 
 /* article-write */
-.article-write {}
+.article-write {
+}
 
 .article-write .form-row {
   margin-bottom: 16px;
@@ -1503,7 +1504,31 @@ footer .copyright {
   resize: none;
   min-height: 350px;
 }
+.article-write .form-row .select-wrap {
+  float: left;
+  position: relative;
+  border: 1px solid #676767;
+  border-radius: 4px;
+  margin-right: 13px;
+}
+.article-write .form-row .select-wrap select {
+  display: block;
+  padding: 4px 12px;
+  font-size: 14px;
+  width: 85px;
+  border: 0;
+  background-color: transparent;
+  appearance: none;
+}
+.article-write .form-row .select-wrap .arrow {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
 
+  font-size: 14px;
+  z-index: -1;
+}
 
 /* myLibrary */
 .myLibrary-page {
