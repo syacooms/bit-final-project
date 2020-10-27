@@ -17,7 +17,7 @@
 </tr>
 <th:block th:each="writer:${alist}">
 	<tr>
-		<td th:text='${writer.writerName}'></td><td th:text='${writer.intro}'></td><td><a th:href="@{/download?fileName={fileSystem}&orignalFile={fileOriginal}(fileSystem=${writer.fileSystem},fileOriginal=${writer.fileOriginal})}">포트폴리오 다운로드</a></td><td><input type="checkbox" name='ck' th:value='${writer.writerSeq}'></td>
+		<td th:text='${writer.writerName}'></td><td th:text='${writer.intro}'></td><td><a th:href="@{/admin/download?fileName={fileSystem}&orignalFile={fileOriginal}(fileSystem=${writer.fileSystem},fileOriginal=${writer.fileOriginal})}">포트폴리오 다운로드</a></td><td><input type="checkbox" name='ck' th:value='${writer.writerSeq}'></td>
 	</tr>
 
 </th:block>
@@ -54,7 +54,7 @@ $(document).ready(function(){
 		  }else{
 			  if(confirm("정보를 등록 하시겠습니까?")){
 				  $.ajax({
-					 url:'/applyWriter',
+					 url:'/admin/applyWriter',
 					 type:'get',
 					 data:{checklist:checkRow},
 					 success:function(data){
@@ -86,13 +86,13 @@ $(document).ready(function(){
 		  }else{
 			  if(confirm("등록을 거절 하시겠습니까?")){
 				  $.ajax({
-					 url:'/rejectWriter',
+					 url:'/admin/rejectWriter',
 					 type:'get',
 					 data:{checklist:checkRow},
 					 success:function(data){
 						 if(data>0){
 							 alert("거절 되었습니다");
-							 location.href="/writerApplyList";
+							 location.href="/admin/writerApplyList";
 						 }
 						 else{
 							 alert("거절 실패");
