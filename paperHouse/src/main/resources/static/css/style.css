@@ -2174,6 +2174,7 @@ footer .copyright {
   padding: 0 12px;
 }
 .myPageSub.qna .searchWrap button {
+  cursor: pointer;
   margin-left: 15px;
   float: left;
   width: 85px;
