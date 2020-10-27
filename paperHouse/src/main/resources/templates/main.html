@@ -75,8 +75,14 @@
                   </div>
                   <div class="grid-wrap right-down">
                     <div class="writer-recommend">
+                    <th:block th:unless="${#strings.isEmpty(review)}">
                       <div class="recommender-id" th:text="${review.nickName}"></div>
                       <div class="recommender-comment" th:text="${review.cont}">추천자 추천글내용</div>
+                      </th:block>
+                      <th:block th:if="${#strings.isEmpty(review)}">
+                      <div class="recommender-id"></div>
+                      <div class="recommender-comment" th:text="${todayWriter.writerName} 님을 위해 첫번째 댓글을 남겨주세요"></div>
+                      </th:block>
                     </div>
                   </div>
                 </div>
