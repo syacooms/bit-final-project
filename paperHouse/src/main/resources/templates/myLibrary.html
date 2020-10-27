@@ -33,7 +33,7 @@
             <th:block th:each='sub:${listSubscribe}'>
               <div class="list">
                 <div class="writerImg">
-                  <img alt='writerImg' th:src='#{sub.file_system}' />
+                  <img th:src='@{static/upload/profile/}+${sub.profileFileSystem}' alt='' />
                 </div>
                 <div class="writerName" th:text='${sub.writerName}'></div>
                 <div class="endSubDate" th:text='|구독 만료일: ${sub.endDate}|'></div>
@@ -48,7 +48,7 @@
             <th:block th:each='fol:${listFollow}'>
               <div class="list">
                 <div class="writerImg">
-                  <img alt='writerImg' th:src='#{fol.file_system}'>
+                  <img th:src='@{static/upload/profile/}+${fol.profileFileSystem}' alt='' />
                 </div>
                 <div class="writerName" th:text='${fol.writerName}'></div>
                 <div class="writerIntro" th:text='${fol.intro}'></div>
