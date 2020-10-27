@@ -25,6 +25,105 @@
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 0;
 }
+
+/* admin */
+/* =============================================================================
+   Responsive Table CSS
+   ========================================================================== */
+
+.dataTable {
+  display: block;
+  width: 100%;
+  margin: 1em 0;
+}
+.dataTable .download a {
+  padding: 3px 5px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  color: #333;
+  transition: all 0.25s ease;
+}
+.dataTable .download a:hover {
+  color: #fff;
+  background-color: #333;
+}
+.dataTable thead,
+.dataTable tbody,
+.dataTable thead tr,
+.dataTable th {
+  display: block;
+}
+
+.dataTable thead {
+  float: left;
+}
+
+.dataTable tbody {
+  width: auto;
+  position: relative;
+  overflow-x: auto;
+}
+
+.dataTable td,
+.dataTable th {
+  padding: 0.625em;
+  line-height: 1.5em;
+  border-bottom: 1px dashed #ccc;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.dataTable th {
+  text-align: left;
+  background: rgba(0, 0, 0, 0.14);
+  border-bottom: 1px dashed #aaa;
+}
+
+.dataTable tbody tr {
+  display: table-cell;
+}
+
+.dataTable tbody td {
+  display: block;
+}
+
+.dataTable tr:nth-child(odd) {
+  background: rgba(0, 0, 0, 0.07);
+}
+
+@media screen and (min-width: 50em) {
+  .dataTable {
+    display: table;
+  }
+
+  .dataTable thead {
+    display: table-header-group;
+    float: none;
+  }
+
+  .dataTable tbody {
+    display: table-row-group;
+  }
+
+  .dataTable thead tr,
+  .dataTable tbody tr {
+    display: table-row;
+  }
+
+  .dataTable th,
+  .dataTable tbody td {
+    display: table-cell;
+  }
+
+  .dataTable td,
+  .dataTable th {
+    width: auto;
+  }
+}
+
+/* --admin-- */
+
 header.main-header .close {
   position: absolute;
   left: 16px;
@@ -888,6 +987,7 @@ footer .copyright {
   margin-bottom: 16px;
 }
 .search-page .result-wrap .base-result .best-writer .writer-grid .writer .writer-photo {
+  min-height: 234px;
 }
 .search-page .result-wrap .base-result .best-writer .writer-grid .writer .writer-photo img {
   width: 100%;
@@ -1423,6 +1523,110 @@ footer .copyright {
 }
 .articleDetail .pagination li.active a {
   color: #333;
+}
+
+/* article-write */
+.article-write {
+}
+
+.article-write .form-row {
+  margin-bottom: 16px;
+}
+.article-write .form-row .row-title {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+.article-write .form-row .row-input {
+}
+.article-write .form-row .row-input input[type="text"] {
+  font-family: "Noto Sans KR";
+  color: #333;
+  font-size: 14px;
+  line-height: 16px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  width: 100%;
+  padding: 11px 12px;
+}
+.article-write .form-row .row-input.file {
+}
+.article-write .form-row .row-input.file .fileName {
+  float: left;
+  color: #ccc;
+  font-size: 14px;
+  line-height: 16px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  width: calc(100% - 96px);
+  padding: 11px 12px;
+  margin-right: 16px;
+  transition: all 0.25s ease;
+}
+.article-write .form-row .row-input.file .fileName.active {
+  color: #333;
+}
+.article-write .form-row .row-input.file label {
+  cursor: pointer;
+  display: block;
+  position: relative;
+  float: left;
+  width: 80px;
+  padding: 11px 12px;
+  border-radius: 2px;
+  background: #ffeb60;
+  font-size: 14px;
+  color: #333;
+  height: 40px;
+  text-align: center;
+  font-weight: 700;
+}
+.article-write .form-row .row-input.file label input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.article-write .form-row .row-input textarea {
+  font-family: "Noto Sans KR";
+  color: #333;
+  font-size: 14px;
+  line-height: 16px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  width: 100%;
+  padding: 11px 12px;
+  resize: none;
+  min-height: 350px;
+}
+.article-write .form-row .select-wrap {
+  float: left;
+  position: relative;
+  border: 1px solid #676767;
+  border-radius: 4px;
+  margin-right: 13px;
+}
+.article-write .form-row .select-wrap select {
+  display: block;
+  padding: 4px 12px;
+  font-size: 14px;
+  width: 85px;
+  border: 0;
+  background-color: transparent;
+  appearance: none;
+}
+.article-write .form-row .select-wrap .arrow {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  font-size: 14px;
+  z-index: -1;
 }
 
 /* myLibrary */
@@ -2112,6 +2316,86 @@ footer .copyright {
   font-size: 20px;
 }
 
+/* qna-write */
+.myPageSub.qna-write {
+}
+.myPageSub.qna-write .qnaFormWrap {
+}
+.myPageSub.qna-write .qnaFormWrap .form-row {
+  margin-bottom: 16px;
+}
+.myPageSub.qna-write .qnaFormWrap .form-row .row-title {
+  color: #666;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+.myPageSub.qna-write .qnaFormWrap .form-row .row-input {
+}
+.myPageSub.qna-write .qnaFormWrap .form-row .row-input input[type="text"] {
+  font-family: "Noto Sans KR";
+  color: #333;
+  font-size: 14px;
+  line-height: 16px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  width: 100%;
+  padding: 11px 12px;
+}
+.myPageSub.qna-write .qnaFormWrap .form-row .row-input.file {
+}
+.myPageSub.qna-write .qnaFormWrap .form-row .row-input.file .fileName {
+  float: left;
+  color: #ccc;
+  font-size: 14px;
+  line-height: 16px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  width: calc(100% - 96px);
+  padding: 11px 12px;
+  margin-right: 16px;
+  transition: all 0.25s ease;
+}
+.myPageSub.qna-write .qnaFormWrap .form-row .row-input.file .fileName.active {
+  color: #333;
+}
+.myPageSub.qna-write .qnaFormWrap .form-row .row-input.file label {
+  cursor: pointer;
+  display: block;
+  position: relative;
+  float: left;
+  width: 80px;
+  padding: 11px 12px;
+  border-radius: 2px;
+  background: #ffeb60;
+  font-size: 14px;
+  color: #333;
+  height: 40px;
+  text-align: center;
+  font-weight: 700;
+}
+.myPageSub.qna-write .qnaFormWrap .form-row .row-input.file label input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.myPageSub.qna-write .qnaFormWrap .form-row .row-input textarea {
+  font-family: "Noto Sans KR";
+  color: #333;
+  font-size: 14px;
+  line-height: 16px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  width: 100%;
+  padding: 11px 12px;
+  resize: none;
+  min-height: 350px;
+}
+
 /* notice */
 .myPageSub.notice {
 }
@@ -2155,6 +2439,13 @@ footer .copyright {
 }
 .myPageSub.notice .listWrap .list .viewCount {
   padding-right: 8px;
+}
+.myPageSub.notice .listWrap .list .notice-body {
+}
+.myPageSub.notice .listWrap .list .notice-body .img-wrap {
+}
+.myPageSub.notice .listWrap .list .notice-body .img-wrap img {
+  width: 100%;
 }
 /* notice-detail */
 .myPageSub.notice-detail {
@@ -2501,6 +2792,9 @@ footer .copyright {
     float: none;
     width: 100%;
   }
+  .search-page .result-wrap .base-result .best-writer .writer-grid .writer .writer-photo {
+    min-height: 184px;
+  }
 }
 @media all and (max-width: 600px) {
   .mobileScroll {
@@ -2529,5 +2823,8 @@ footer .copyright {
   }
   .search-page .result-wrap .base-result .best-article .article-grid .article {
     width: calc(100% / 3);
+  }
+  .search-page .result-wrap .base-result .best-writer .writer-grid .writer .writer-photo {
+    min-height: 197px;
   }
 }
