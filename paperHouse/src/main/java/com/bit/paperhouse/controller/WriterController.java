@@ -71,11 +71,21 @@ public class WriterController {
 		int userSeq = user.getUSERSEQ();
 		String email = user.getEMAIL();
 		
+		//구독 중 확인
+		WriterDto wdto = new WriterDto();
+		
+		wdto.setUserSeq(userSeq);
+		wdto.setWriterSeq(writerSeq);
+		
 		//작가상세페이지 data 조회
 		WriterDto dto = service.getWriterDetail(writerSeq);
 		int writerCount = service.getWriterAllSubCount(writerSeq);
 		int articleCount = service.getArticleAllSubCount(writerSeq);
 		int reviewCount = service.getReviewAllCount(writerSeq);
+		String subCount = service.getSubCount(wdto);
+		
+		System.out.println("11111111111111111111" + subCount);
+		System.out.println("11111111111111111111" + userSeq);
 		
 		//작가가 쓴글 , 한줄 리뷰
 		List<ArticleDto> ArticleList = service.selectWriteArticle(writerSeq);
@@ -104,6 +114,7 @@ public class WriterController {
 		model.addAttribute("writerCount", writerCount);	
 		model.addAttribute("articleCount", articleCount);	
 		model.addAttribute("reviewCount", reviewCount);	
+		model.addAttribute("subCount", subCount);	
 		
 		//작가가 쓴글 , 한줄 리뷰
 		model.addAttribute("ArticleList", ArticleList);	

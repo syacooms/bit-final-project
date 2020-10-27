@@ -99,7 +99,7 @@
 
           <!-- subscribe -->
           <div class="subscribeBtn">
-            <button id="purchase">구독하기</button>
+            <button th:if="${subCount} == null" id="purchase">구독하기</button>
           </div>
           <!-- //subscribe -->
         </div>
