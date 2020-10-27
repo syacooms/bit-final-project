@@ -11,7 +11,11 @@ spring:
   username: PAPERHOUSE
   password: PAPERHOUSE
   driver-class-name : oracle.jdbc.OracleDriver
-    
+ devtools:
+  livereload:
+   enabled: true
+ freemarker:
+  cache: false 
 # resource setting
  mvc:
   static-path-pattern: static/**
