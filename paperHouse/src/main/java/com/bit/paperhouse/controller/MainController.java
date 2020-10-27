@@ -8,7 +8,6 @@ import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -61,9 +60,10 @@ public class MainController {
         System.out.println(dto.toString());
         // 오늘의 작가  댓글
         UserReviewDto review = mainSvc.getTodayWriterRecommend(dto.getArticleSeq());
+        if(review != null) {
         review.setCont("'"+ review.getCont() +"'");
         model.addAttribute("review", review);
-    
+        }
         return "/main";
     }
     

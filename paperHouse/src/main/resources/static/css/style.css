@@ -1349,6 +1349,7 @@ footer .copyright {
   box-shadow: 12px 8px 24px rgba(0, 0, 0, 0.2), 4px 8px 8px rgba(0, 0, 0, 0.1), 0 0 2px rgba(0, 0, 0, 0.24);
 }
 .articleDetail .articleInfo .right {
+  position: relative;
   float: left;
   width: calc(100% - 400px);
   -ms-flex: 1;
@@ -1385,6 +1386,7 @@ footer .copyright {
   -webkit-box-orient: vertical;
 }
 .articleDetail .articleInfo .right .info.name-wrap {
+  max-width: 75%;
 }
 .articleDetail .articleInfo .right .info.name-wrap strong {
   font-size: 28px;
@@ -1435,6 +1437,30 @@ footer .copyright {
 .articleDetail .articleInfo .right .info02 .info .value {
   padding-left: 0;
   color: #555;
+}
+.articleDetail .articleInfo .right .follow-wrap {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+.articleDetail .articleInfo .right .follow-wrap .btn {
+  cursor: pointer;
+  background-color: transparent;
+  padding: 3px 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  line-height: 14px;
+  border: 1px solid #0095f6;
+  color: #0095f6;
+  transition: all 0.25s ease;
+}
+.articleDetail .articleInfo .right .follow-wrap .btn:hover,
+.articleDetail .articleInfo .right .follow-wrap .btn.chk {
+  background-color: #0095f6;
+  color: #fff;
+}
+.articleDetail .articleInfo .right .follow-wrap .btn:first-child {
+  margin-right: 10px;
 }
 .articleDetail .articleCont {
 }
@@ -2174,6 +2200,7 @@ footer .copyright {
   padding: 0 12px;
 }
 .myPageSub.qna .searchWrap button {
+  cursor: pointer;
   margin-left: 15px;
   float: left;
   width: 85px;
@@ -2791,6 +2818,12 @@ footer .copyright {
     display: block;
     float: none;
     width: 100%;
+  }
+  .articleDetail .articleInfo .right .info.name-wrap {
+    max-width: 100%;
+  }
+  .articleDetail .articleInfo .right .follow-wrap {
+    position: static;
   }
   .search-page .result-wrap .base-result .best-writer .writer-grid .writer .writer-photo {
     min-height: 184px;

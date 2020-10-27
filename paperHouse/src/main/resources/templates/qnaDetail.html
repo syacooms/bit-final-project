@@ -33,35 +33,19 @@
                 </div>
                 <div th:text="${qnaDetail.conts}"></div>
               </div>
-<!--              <div class="reply-wrap">-->
-<!--                <div th:if="${replyList} == null">답변 대기중입니다 !</div>-->
-<!--                <div class="reply" th:each="reply : ${replyList}">-->
-<!--                  <div class="title" th:text="${reply.title}"></div>-->
-<!--                  <div class="date" th:text="${reply.replyDate}"></div>-->
-<!--                  <div class="cont" th:text="${reply.cont}"></div>-->
-<!--                </div>-->
-<!--              </div>-->
-              <table class="list_table" style="width: 85%" id="_list_table">
-                <colgroup>
-                  <col style="width:500px">
-                  <col style="width:500px">
-                </colgroup>
-                <tbody id="replyText">
-                      <tr th:if="${reply}== null">
-                        <td>답변 작성한 글이 없습니다</td>
-                      </tr>
-                      <div th:if="${not #lists.isEmpty(reply)}" th:each="row : ${reply}">
-                        <tr>
-                            <th>답변 제목</th><td th:text="${row.title}"></td>
-                        </tr>
-                        <tr>
-                            <th>답변 내용</th><td th:text="${row.cont}"></td>
-                        </tr>
-                      </div>
-                </tbody>
-              </table>
+              <div class="reply-wrap">
+                <div th:if="${reply.isEmpty()}" style="text-align: center;">
+                  답변 작성한 글이 없습니다
+                </div>
+                <div th:if="${not #lists.isEmpty(reply)}" th:each="row : ${reply}">
+                  <div class="reply">
+                    <div class="title" th:text="${row.title}"></div>
+                    <div class="date"  th:text="${row.replyDate}"></div>
+                    <div class="cont" th:text="${row.cont}"></div>
+                  </div>
+                </div>
+              </div>
               <div class="qna-footer">
-
                 <a href="/qna" class="goList">목록으로</a>
                 <!-- <a th:href="@{'delete?i='}+${notice.noticeSeq}" class="goList" sec:authorize="hasRole('ROLE_ADMIN')">글삭제</a> -->
               </div>

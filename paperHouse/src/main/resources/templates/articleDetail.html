@@ -8,7 +8,7 @@
   layout:decorator="layout/layout"
 >
   <main class="articleDetail main-common" layout:fragment="content">
-    <div class="detail-top"><a href="#">다른책 보러가기</a></div>
+    <div class="detail-top"><a href="/search">다른책 보러가기</a></div>
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -35,6 +35,12 @@
                   <div class="title">작성일</div>
                   <div class="value" th:text="${list.uploadDate}"></div>
                 </div>
+                <div class="follow-wrap info">
+                  <button class="btn" th:if="${followChk} == '0'" id="follow">follow</button>
+                  <button class="btn chk" th:if="${followChk} == '1'" id="unfollow">unfollow</button>
+                  <button class="btn" th:if="${likesChk} == '0'" id="goodlike">like</button>
+                  <button class="btn chk" th:if="${likesChk} == '1'" id="unlike">unlike</button>
+                </div>
               </div>
               <div class="info02 clearfix">
                 <div class="categorys info">
@@ -57,16 +63,16 @@
           <div class="articleCont articleRow">
             <div class="row-title">미리보기</div>
             <div class="preview" th:text="${novel}"></div>
-            <br>
-             <div class="articleReview articleRow">
-             	<div class="insertReview clearfix">
-		            <div th:if="${userSeq} == ${writerInfo.userSeq}">
-		              <a th:href="@{'/article/update?articleSeq=' + ${articleSeq}}" >
-		                <button class="insertReview clearfix" id="updatebtn" style="float: left; margin-right: 10px">수정</button>
-		              </a>
-		              <button class="insertReview clearfix"  id="deletebtn">삭제</button>
-            	</div>
-            </div>
+            <br />
+            <div class="articleReview articleRow">
+              <div class="insertReview clearfix">
+                <div th:if="${userSeq} == ${writerInfo.userSeq}">
+                  <a th:href="@{'/article/update?articleSeq=' + ${articleSeq}}">
+                    <button class="insertReview clearfix" id="updatebtn" style="float: left; margin-right: 10px">수정</button>
+                  </a>
+                  <button class="insertReview clearfix" id="deletebtn">삭제</button>
+                </div>
+              </div>
             </div>
           </div>
           <!-- //articleCont -->
