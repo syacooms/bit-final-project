@@ -56,10 +56,6 @@ public class MyPageController {
 		String status = service.selectStatus(userSeq);
 		String writer = service.selectWriterSeq(userSeq);
 		
-		
-		
-		
-		
 		System.out.println("스테이터스: " + status);
 		System.out.println("라이터: " + writer);
 		
