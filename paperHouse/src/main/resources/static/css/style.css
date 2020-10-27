@@ -1022,6 +1022,7 @@ footer .copyright {
 }
 .search-page .result-wrap .base-result .best-article .article-grid .article .article-photo img {
   width: 100%;
+  height: 235px;
   display: block;
   background: linear-gradient(90deg, #f2f2f2 25%, #e6e6e6 37%, #f2f2f2 63%);
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1), 0 0 2px rgba(0, 0, 0, 0.2);
