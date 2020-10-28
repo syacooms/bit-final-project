@@ -27,9 +27,11 @@ public class MainController {
 	
 	  // 첫 페이지
     @GetMapping("/")
-    public String index() {
+    public String index( Model model ) {
     	System.out.println("index()");
 
+    	List<WriterDto> list = mainSvc.getWriterlist();
+    	model.addAttribute("writerList", list);
    
        return "/index";
     }

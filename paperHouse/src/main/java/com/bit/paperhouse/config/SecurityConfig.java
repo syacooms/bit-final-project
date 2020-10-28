@@ -70,6 +70,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
 			.antMatchers("/user/**").permitAll()
 			.antMatchers("/email/**").permitAll()
+			.antMatchers("/user/**/**").permitAll()
+			.antMatchers("/user/**/**/**").permitAll()
 			.antMatchers("/").permitAll()
 		.and()
 			.formLogin()
